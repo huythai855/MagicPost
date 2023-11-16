@@ -1,0 +1,4 @@
+.ENV
+server/credentials.json
+server/node_modules
+server/package-lock.json
