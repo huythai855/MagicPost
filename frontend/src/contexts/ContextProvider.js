@@ -11,6 +11,16 @@ export const ContextProvider = ({ children }) => {
   const handleClick = (clicked) => {
     setIsClicked({ ...initialState, [clicked]: true });
   };
+  const [isShowing, setIsShowing] = useState(false);
+  const [isShowingDelete, setIsShowingDelete] = useState(false);
+
+  function toggle() {
+    setIsShowing(!isShowing);
+  }
+  function toggleDelete() {
+    setIsShowingDelete(!isShowingDelete);
+  }
+
   const [screenSize, setScreenSize] = useState(undefined);
   return (
     <StateContext.Provider
@@ -22,6 +32,12 @@ export const ContextProvider = ({ children }) => {
         handleClick,
         screenSize,
         setScreenSize,
+        isShowing,
+        setIsShowing,
+        isShowingDelete,
+        setIsShowingDelete,
+        toggle,
+        toggleDelete,
       }}
     >
       {children}

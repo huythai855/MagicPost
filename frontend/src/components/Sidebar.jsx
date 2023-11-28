@@ -56,7 +56,7 @@ const Sidebar = () => {
           </div>
           <div className="mt-14">
             {links1.map((item) => (
-              <div key={item.title} className="mb-20">
+              <div key={item.title} className="mb-20 ">
                 {/* <p className='text-gray-400 m-3 mt-4 uppercase'>{item.title}</p> */}
                 {item.links.map((link) => (
                   <NavLink

@@ -1,5 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useTable, useSortBy, useFilters, usePagination } from "react-table";
+import { useStateContext } from "../../contexts/ContextProvider";
+
 import MOCK_DATA from "../MOCK_DATA.json";
 import { COLUMNS } from "./columns";
 import { FaSortDown } from "react-icons/fa";
@@ -11,12 +13,15 @@ import { MdFirstPage } from "react-icons/md";
 import { MdLastPage } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { MdEdit } from "react-icons/md";
+import FormDelete from "../Forms/FormDelete";
+import CustomModal from "../CustomModal";
 
 import "./table.css";
 
 const SortingTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => MOCK_DATA, []);
+  const { isShowingDelete, toggleDelete } = useStateContext();
 
   const {
     getTableProps,
@@ -41,8 +46,9 @@ const SortingTable = () => {
     console.log("View detail for row:", rowData);
     // You can add your logic to display details or navigate to a detail page here
   };
+
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-fit justify-center ">
+    <div className=" overflow-x-auto shadow-md sm:rounded-l ">
       <table
         className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
         {...getTableProps()}
@@ -53,31 +59,36 @@ const SortingTable = () => {
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column, index) => (
                   <th
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    {...column.getHeaderProps(
+                      index === 0 ? {} : column.getSortByToggleProps()
+                    )}
                     className={index === 0 ? "first-column" : ""}
                   >
                     {column.render("Header")}
-                    <span>
-                      {column.isSorted ? (
-                        column.isSortedDesc ? (
-                          <FaSortDown />
+                    {index !== 0 && (
+                      <span>
+                        {column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <FaSortDown />
+                          ) : (
+                            <FaSortUp />
+                          )
                         ) : (
-                          <FaSortUp />
-                        )
-                      ) : (
-                        <FaSort />
-                      )}
-                    </span>
+                          <FaSort />
+                        )}
+                      </span>
+                    )}
                   </th>
                 ))}
+                <th>ACTION</th>
               </tr>
-
               <tr>
                 {headerGroup.headers.map((column) => (
                   <th key={column.id}>
                     {column.canFilter ? column.render("Filter") : null}
                   </th>
                 ))}
+                <th></th>
               </tr>
             </React.Fragment>
           ))}
@@ -90,30 +101,38 @@ const SortingTable = () => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()} key={row.id}>
-                {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()} key={cell.column.id}>
+                {row.cells.map((cell, index) => (
+                  <td
+                    {...cell.getCellProps()}
+                    key={cell.column.id}
+                    className={index === 0 ? "first-column" : ""}
+                  >
                     {cell.render("Cell")}
                   </td>
                 ))}
-                <td class="px-6 py-4">
-                  <a
-                    href="#edit"
-                    class="font-medium text-gray-700 dark:text-blue-500 hover:underline"
-                  >
-                    <button id="edit">
-                      <MdEdit />
-                    </button>
-                  </a>
-                </td>
-                <td class="px-6 py-4">
-                  <a
-                    href="#delete"
-                    class="font-medium ext-gray-700 dark:text-blue-500 hover:underline"
-                  >
-                    <button id="delete">
-                      <RiDeleteBinFill />
-                    </button>
-                  </a>
+                <td className="px-4 py-4 w-24">
+                  <div className="flex justify-center items-center">
+                    <a
+                      href="#edit"
+                      className="font-medium text-gray-700 dark:text-blue-500 hover:underline"
+                    >
+                      <button id="edit" className="text-lg pr-2">
+                        <MdEdit />
+                      </button>
+                    </a>
+                    <a
+                      href="#delete"
+                      className="font-medium text-gray-700 dark:text-blue-500 hover:underline"
+                    >
+                      <button
+                        id="delete"
+                        className="text-lg pl-2"
+                        onClick={toggleDelete}
+                      >
+                        <RiDeleteBinFill />
+                      </button>
+                    </a>
+                  </div>
                 </td>
               </tr>
             );
@@ -164,8 +183,12 @@ const SortingTable = () => {
           <MdLastPage />
         </button>
       </div>
+      <CustomModal
+        isShowing={isShowingDelete}
+        hide={toggleDelete}
+        children={<FormDelete />}
+      />
     </div>
   );
 };
-
 export default SortingTable;
