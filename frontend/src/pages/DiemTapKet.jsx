@@ -1,15 +1,51 @@
-import React, { useState } from "react";
-import SortingTable from "../components/table/SortingTable";
-import CustomModal from "../components/CustomModal";
+import React, { useState, useEffect } from "react";
+import CustomModal from "../components/Modal/CustomModal";
 import { useStateContext } from "../contexts/ContextProvider";
 import FormTapKet from "../components/Forms/FormTapKet";
+// import DiemTapKetData from "../data/DiemTapKetData.json";
+import SortingTable from "../components/Table/SortingTable";
 
 const DiemTapKet = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const { isShowing, toggle } = useStateContext();
+  const [diemTapKetData, setDiemTapKetData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  // const diemTapKetData = DiemTapKetData;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket",
+          {
+            method: "GET",
+          }
+        );
 
+        if (response.ok) {
+          const data = await response.json();
+          setDiemTapKetData(data);
+        } else {
+          setError("Error fetching data");
+        }
+      } catch (error) {
+        setError("Error fetching data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
     <>
       <div className="flex-col align-middle px-20 py-12 ">
@@ -20,7 +56,11 @@ const DiemTapKet = () => {
           Tạo điểm tập kết
         </button>
         <div>
-          <SortingTable className="w-full" />
+          <SortingTable
+            title={"Giám đốc"}
+            dataSource={diemTapKetData}
+            className="w-full"
+          />
         </div>
       </div>
       <CustomModal

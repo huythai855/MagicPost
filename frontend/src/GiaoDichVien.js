@@ -2,15 +2,25 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-import { Navbar, Footer, Sidebar } from "./components";
-import { MagicPost, Overview, DiemGiaoDich, DiemTapKet } from "./pages";
+import { Navbar, Footer, SidebarTDG, SidebarGDV } from "./components";
+import {
+  MagicPost,
+  Overview,
+  DiemGiaoDich,
+  DiemTapKet,
+  NhanVien,
+  DanhSachDonHang,
+  DanhSachDonHangGDV,
+  DanhSachKienHang,
+} from "./pages";
 import { useStateContext } from "./contexts/ContextProvider";
 import "./App.css";
-import BasicTable from "./components/table/BasicTable";
-import SortingTable from "./components/table/SortingTable";
+
+import TableSelection from "./components/Table/TableSelection";
+import SortingTable from "./components/Table/SortingTable";
 import { GiMagicPalm } from "react-icons/gi";
 
-const App = () => {
+const GiaoDichVien = () => {
   const { activeMenu } = useStateContext();
   return (
     <div>
@@ -18,11 +28,11 @@ const App = () => {
         <div className="flex relative dark:bg-main-dark-bg">
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-              <Sidebar />
+              <SidebarGDV />
             </div>
           ) : (
             <div className="w-0 dark:bg-secondary-dark-bg">
-              <Sidebar />
+              <SidebarGDV />
             </div>
           )}
           <div
@@ -37,10 +47,15 @@ const App = () => {
             <div>
               <Routes>
                 {/* Giamdoc */}
-                <Route path="/" element={<DiemGiaoDich />} />
-                <Route path="/overview" element={<Overview />} />
-                <Route path="/diemtapket" element={<DiemTapKet />} />
-                <Route path="/diemgiaodich" element={<DiemGiaoDich />} />
+                {/* <Route path="/" element={<DiemGiaoDich />} /> */}
+                <Route
+                  path="/danhsachdonhangGDV"
+                  element={<DanhSachDonHangGDV />}
+                />
+                <Route
+                  path="/danhsachkienhang"
+                  element={<DanhSachKienHang />}
+                />
 
                 {/* Tinh nang */}
                 <Route path="/helpcentre" element="Help Centre" />
@@ -55,4 +70,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default GiaoDichVien;

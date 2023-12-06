@@ -1,7 +1,14 @@
 import React, { useMemo, useState } from "react";
-import { useTable, useSortBy, useFilters, usePagination } from "react-table";
+import {
+  useTable,
+  useSortBy,
+  useFilters,
+  usePagination,
+  useRowSelect,
+} from "react-table";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { COLUMNS } from "./columns";
+import { Checkbox } from "./Checkbox";
 import { FaSortDown } from "react-icons/fa";
 import { FaSortUp } from "react-icons/fa";
 import { FaSort } from "react-icons/fa";
@@ -16,7 +23,7 @@ import CustomModal from "../Modal/CustomModal";
 import EditModal from "../Modal/EditModal";
 import "./table.css";
 
-const SortingTable = ({ title, dataSource }) => {
+const TableSelection = ({ title, dataSource }) => {
   const columns = useMemo(() => {
     const selectedColumns = COLUMNS.find((group) => group.title === title);
     return selectedColumns ? selectedColumns.columns : [];
@@ -39,8 +46,32 @@ const SortingTable = ({ title, dataSource }) => {
     setPageSize,
     state,
     prepareRow,
+    selectedFlatRows,
     state: { filters },
-  } = useTable({ columns, data }, useFilters, useSortBy, usePagination);
+  } = useTable(
+    { columns, data },
+    useFilters,
+    useSortBy,
+    usePagination,
+    useRowSelect,
+
+    (hooks) => {
+      hooks.visibleColumns.push((columns) => {
+        return [
+          {
+            id: "selection",
+            Header: ({ getToggleAllRowsSelectedProps }) => (
+              <Checkbox {...getToggleAllRowsSelectedProps()} />
+            ),
+            Cell: ({ row }) => (
+              <Checkbox {...row.getToggleRowSelectedProps()} />
+            ),
+          },
+          ...columns,
+        ];
+      });
+    }
+  );
   const { pageIndex, pageSize } = state;
   const [selectedRow, setSelectedRow] = useState(null);
 
@@ -50,6 +81,7 @@ const SortingTable = ({ title, dataSource }) => {
   const handleCloseModal = () => {
     setSelectedRow(null);
   };
+  //   const firstPageRows = rows.slice(0, 10);
 
   return (
     <div className=" overflow-x-auto shadow-md sm:rounded-l ">
@@ -66,10 +98,10 @@ const SortingTable = ({ title, dataSource }) => {
                     {...column.getHeaderProps(
                       index === 0 ? {} : column.getSortByToggleProps()
                     )}
-                    className={index === 0 ? "first-column" : ""}
+                    className={index === 1 ? "first-column" : ""}
                   >
                     {column.render("Header")}
-                    {index !== 0 && (
+                    {index !== 0 && index !== 1 && (
                       <span>
                         {column.isSorted ? (
                           column.isSortedDesc ? (
@@ -144,6 +176,17 @@ const SortingTable = ({ title, dataSource }) => {
           })}
         </tbody>
       </table>
+      {/* <pre>
+        <code>
+          {JSON.stringify(
+            {
+              selectedFlatRows: selectedFlatRows.map((row) => row.original),
+            },
+            null,
+            2
+          )}
+        </code>
+      </pre> */}
       <div className="flex justify-center mt-4">
         <span>
           Page{" "}
@@ -199,4 +242,4 @@ const SortingTable = ({ title, dataSource }) => {
     </div>
   );
 };
-export default SortingTable;
+export default TableSelection;

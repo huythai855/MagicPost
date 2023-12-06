@@ -6,7 +6,7 @@ import {
   earningData,
   SparklineAreaData,
   ecomPieChartData,
-} from "../data/dummy";
+} from "../data/giamdoc";
 import { useStateContext } from "../contexts/ContextProvider";
 const Overview = () => {
   return (

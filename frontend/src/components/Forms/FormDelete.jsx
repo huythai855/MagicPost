@@ -20,7 +20,7 @@ const FormDelete = () => {
           />
         </svg>
         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-          Bạn chắc chắn là muốn xóa điểm này không?
+          Bạn chắc chắn là muốn xóa không?
         </h3>
         <button
           data-modal-hide="popup-modal"

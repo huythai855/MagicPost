@@ -1,5 +1,7 @@
-export { default as Sidebar } from "./Sidebar";
-export { default as Navbar } from "./Navbar";
+export { default as Sidebar } from "./GiamDoc/Sidebar";
+export { default as SidebarGDV } from "./GiaoDichVien/SidebarGDV";
+export { default as Navbar } from "./GiamDoc/Navbar";
+export { default as SidebarTDG } from "./TruongGiaoDich/SidebarTDG";
 
 export { default as Notification } from "./Notification";
 export { default as UserProfile } from "./UserProfile";

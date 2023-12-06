@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "/Users/ad2/Documents/GitHub/MagicPost/MagicPost/frontend/src/components/CustomModal.css";
+import "../Modal/CustomModal.css";
 
 const CustomModal = ({ isShowing, hide, children }) =>
   isShowing

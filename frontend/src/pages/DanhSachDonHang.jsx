@@ -1,50 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SortingTable from "../components/Table/SortingTable";
 import FormGiaoDich from "../components/Forms/FormGiaoDich";
 import CustomModal from "../components/Modal/CustomModal";
 import { useStateContext } from "../contexts/ContextProvider";
 import FormTapKet from "../components/Forms/FormTapKet";
 import FormDelete from "../components/Forms/FormDelete";
-const DiemGiaoDich = () => {
+const DanhSachDonHang = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const { isShowing, toggle } = useStateContext();
-  const [diemGiaoDichData, setDiemGiaoDichData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket",
-          {
-            method: "GET",
-          }
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-          setDiemGiaoDichData(data);
-        } else {
-          setError("Error fetching data");
-        }
-      } catch (error) {
-        setError("Error fetching data");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
   return (
     <>
       <div className="flex-col align-middle px-20 py-12 ">
@@ -55,11 +20,7 @@ const DiemGiaoDich = () => {
           Tạo điểm giao dịch
         </button>
         <div>
-          <SortingTable
-            title={"Giám đốc"}
-            dataSource={diemGiaoDichData}
-            className="w-full"
-          />
+          <SortingTable className="w-full" />
         </div>
       </div>
       <CustomModal
@@ -71,4 +32,4 @@ const DiemGiaoDich = () => {
   );
 };
 
-export default DiemGiaoDich;
+export default DanhSachDonHang;

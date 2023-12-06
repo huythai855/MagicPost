@@ -13,7 +13,7 @@ import {
   stackedCustomSeries,
   stackedPrimaryXAxis,
   stackedPrimaryYAxis,
-} from "../../data/dummy";
+} from "../../data/giamdoc";
 
 const Stacked = ({ width, height }) => {
   return (

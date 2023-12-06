@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-import avatar from "../data/avatar.jpg";
-import { Notification, UserProfile } from ".";
-import { useStateContext } from "../contexts/ContextProvider";
+import avatar from "../../data/avatar.jpg";
+// import { Notification, UserProfile } from ".";
+import { useStateContext } from "../../contexts/ContextProvider";
 import { IoMenu } from "react-icons/io5";
 import { IoMdNotificationsOutline } from "react-icons/io";
 
@@ -74,8 +74,8 @@ const Navbar = () => {
             <span className="text-gray-400 font-bold  text-14">HuyenTram</span>
           </div>
         </TooltipComponent>
-        {isClicked.notification && <Notification />}
-        {isClicked.userProfile && <UserProfile />}
+        {/* {isClicked.notification && <Notification />}
+        {isClicked.userProfile && <UserProfile />} */}
       </div>
     </div>
   );
