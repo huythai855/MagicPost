@@ -9,16 +9,61 @@ import {
   BsChatDots,
   BsBarChart,
 } from "react-icons/bs";
-import { PiArchiveBox } from "react-icons/pi";
 
 import { TbLogout } from "react-icons/tb";
 import { MdOutlineSupervisorAccount } from "react-icons/md";
 import { HiOutlineRefresh } from "react-icons/hi";
+import { PiArchiveBox } from "react-icons/pi";
 import { CgNotes } from "react-icons/cg";
-
-export const links5 = [
+export const linksGD = [
   {
-    title: "GiaoDichVien",
+    title: "Giám đốc",
+    links: [
+      {
+        name: "overview",
+        title: "Overview",
+        icon: <BsBarChart />,
+      },
+      {
+        name: "diemtapket",
+        title: "Điểm tập kết",
+        icon: <BsBank />,
+      },
+      {
+        name: "diemgiaodich",
+        title: "Điểm giao dịch",
+        icon: <BsShop />,
+      },
+    ],
+  },
+];
+
+export const linksTD = [
+  {
+    title: "Trưởng điểm",
+    links: [
+      {
+        name: "overview",
+        title: "Overview",
+        icon: <BsBarChart />,
+      },
+      {
+        name: "danhsachdonhang",
+        title: "Danh sách đơn hàng",
+        icon: <BsBank />,
+      },
+      {
+        name: "nhanvien",
+        title: "Nhân viên",
+        icon: <BsShop />,
+      },
+    ],
+  },
+];
+
+export const linksNV = [
+  {
+    title: "Nhân viên",
     links: [
       {
         name: "danhsachdonhangGDV",
@@ -33,7 +78,7 @@ export const links5 = [
     ],
   },
 ];
-export const links6 = [
+export const linksTN = [
   {
     title: "Tính năng",
     links: [

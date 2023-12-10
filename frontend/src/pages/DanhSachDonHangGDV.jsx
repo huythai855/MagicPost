@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import SortingTable from "../components/Table/SortingTable";
+import TableSelection from "../components/Table/TableSelection";
+
 import FormNhanVien from "../components/Forms/FormNhanVien";
 import CustomModal from "../components/Modal/CustomModal";
 
 import { useStateContext } from "../contexts/ContextProvider";
 import FormTapKet from "../components/Forms/FormTapKet";
 import FormDelete from "../components/Forms/FormDelete";
-import TableSelection from "../components/Table/TableSelection";
 const DanhSachDonHangGDV = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -58,7 +59,7 @@ const DanhSachDonHangGDV = () => {
         </button>
         <div>
           <TableSelection
-            title={"Giao dịch viên"}
+            title={"Đơn hàng"}
             dataSource={donHangData}
             className="w-full"
           />

@@ -23,7 +23,7 @@ export const COLUMNS = [
     ],
   },
   {
-    title: "Trưởng điểm giao dịch",
+    title: "Nhân viên",
     columns: [
       {
         Header: "STT",
@@ -43,7 +43,7 @@ export const COLUMNS = [
     ],
   },
   {
-    title: "Giao dịch viên",
+    title: "Đơn hàng",
     columns: [
       {
         Header: "STT",

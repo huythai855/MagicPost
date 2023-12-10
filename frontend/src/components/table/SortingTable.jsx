@@ -67,6 +67,7 @@ const SortingTable = ({ title, dataSource }) => {
                       index === 0 ? {} : column.getSortByToggleProps()
                     )}
                     className={index === 0 ? "first-column" : ""}
+                    key={column.id} // Add a unique key
                   >
                     {column.render("Header")}
                     {index !== 0 && (
@@ -84,15 +85,15 @@ const SortingTable = ({ title, dataSource }) => {
                     )}
                   </th>
                 ))}
-                <th>ACTION</th>
+                <th key="ACTION">ACTION</th>
               </tr>
-              <tr>
+              <tr key="filter-row">
                 {headerGroup.headers.map((column) => (
                   <th key={column.id}>
                     {column.canFilter ? column.render("Filter") : null}
                   </th>
                 ))}
-                <th></th>
+                <th key="empty"></th>
               </tr>
             </React.Fragment>
           ))}

@@ -116,7 +116,7 @@ const TableSelection = ({ title, dataSource }) => {
                     )}
                   </th>
                 ))}
-                <th>ACTION</th>
+                {/* <th>ACTION</th> */}
               </tr>
               <tr>
                 {headerGroup.headers.map((column) => (
@@ -124,7 +124,7 @@ const TableSelection = ({ title, dataSource }) => {
                     {column.canFilter ? column.render("Filter") : null}
                   </th>
                 ))}
-                <th></th>
+                {/* <th></th> */}
               </tr>
             </React.Fragment>
           ))}
@@ -146,7 +146,7 @@ const TableSelection = ({ title, dataSource }) => {
                     {cell.render("Cell")}
                   </td>
                 ))}
-                <td className="px-4 py-4 w-24">
+                {/* <td className="px-4 py-4 w-24">
                   <div className="flex justify-center items-center">
                     <a
                       href="#edit"
@@ -170,7 +170,7 @@ const TableSelection = ({ title, dataSource }) => {
                       </button>
                     </a>
                   </div>
-                </td>
+                </td> */}
               </tr>
             );
           })}

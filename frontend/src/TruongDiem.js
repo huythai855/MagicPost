@@ -2,22 +2,15 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-import { Navbar, Footer, SidebarTDG } from "./components";
-import {
-  MagicPost,
-  Overview,
-  DiemGiaoDich,
-  DiemTapKet,
-  NhanVien,
-  DanhSachDonHang,
-} from "./pages";
+import { Navbar, Footer, SidebarTD } from "./components";
+import { Overview, DSNhanVien, DanhSachDonHangGDV } from "./pages";
 import { useStateContext } from "./contexts/ContextProvider";
 import "./App.css";
 
 import SortingTable from "./components/Table/SortingTable";
 import { GiMagicPalm } from "react-icons/gi";
 
-const TruongGiaoDich = () => {
+const TruongDiem = () => {
   const { activeMenu } = useStateContext();
   return (
     <div>
@@ -25,11 +18,11 @@ const TruongGiaoDich = () => {
         <div className="flex relative dark:bg-main-dark-bg">
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-              <SidebarTDG />
+              <SidebarTD />
             </div>
           ) : (
             <div className="w-0 dark:bg-secondary-dark-bg">
-              <SidebarTDG />
+              <SidebarTD />
             </div>
           )}
           <div
@@ -46,8 +39,11 @@ const TruongGiaoDich = () => {
                 {/* Giamdoc */}
                 {/* <Route path="/" element={<DiemGiaoDich />} /> */}
                 <Route path="/overview" element={<Overview />} />
-                <Route path="/danhsachdonhang" element={<DanhSachDonHang />} />
-                <Route path="/nhanvien" element={<NhanVien />} />
+                <Route
+                  path="/danhsachdonhang"
+                  element={<DanhSachDonHangGDV />}
+                />
+                <Route path="/nhanvien" element={<DSNhanVien />} />
 
                 {/* Tinh nang */}
                 <Route path="/helpcentre" element="Help Centre" />
@@ -62,4 +58,4 @@ const TruongGiaoDich = () => {
   );
 };
 
-export default TruongGiaoDich;
+export default TruongDiem;

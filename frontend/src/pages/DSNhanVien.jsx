@@ -6,7 +6,7 @@ import CustomModal from "../components/Modal/CustomModal";
 import { useStateContext } from "../contexts/ContextProvider";
 import FormTapKet from "../components/Forms/FormTapKet";
 import FormDelete from "../components/Forms/FormDelete";
-const NhanVien = () => {
+const DSNhanVien = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -46,6 +46,10 @@ const NhanVien = () => {
   if (error) {
     return <p>Error: {error}</p>;
   }
+  const handleFormSubmit = () => {
+    // Close the modal when the form is submitted
+    toggle();
+  };
   return (
     <>
       <div className="flex-col align-middle px-20 py-12 ">
@@ -57,7 +61,7 @@ const NhanVien = () => {
         </button>
         <div>
           <SortingTable
-            title={"Trưởng điểm giao dịch"}
+            title={"Nhân viên"}
             dataSource={nhanVienData}
             className="w-full"
           />
@@ -66,10 +70,10 @@ const NhanVien = () => {
       <CustomModal
         isShowing={isShowing}
         hide={toggle}
-        children={<FormNhanVien />}
+        children={<FormNhanVien onSubmit={handleFormSubmit} />}
       />
     </>
   );
 };
 
-export default NhanVien;
+export default DSNhanVien;

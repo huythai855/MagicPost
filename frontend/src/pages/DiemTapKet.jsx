@@ -13,6 +13,10 @@ const DiemTapKet = () => {
   const [diemTapKetData, setDiemTapKetData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const handleFormSubmit = () => {
+    // Close the modal when the form is submitted
+    toggle();
+  };
   // const diemTapKetData = DiemTapKetData;
   useEffect(() => {
     const fetchData = async () => {
@@ -46,6 +50,7 @@ const DiemTapKet = () => {
   if (error) {
     return <p>Error: {error}</p>;
   }
+
   return (
     <>
       <div className="flex-col align-middle px-20 py-12 ">
@@ -66,7 +71,7 @@ const DiemTapKet = () => {
       <CustomModal
         isShowing={isShowing}
         hide={toggle}
-        children={<FormTapKet />}
+        children={<FormTapKet onSubmit={handleFormSubmit} />}
       />
     </>
   );

@@ -12,7 +12,7 @@ import { MdOutlineCancel } from "react-icons/md";
 
 import { IoLogoMedium } from "react-icons/io5";
 
-import { links1, links2 } from "../../data/giamdoc";
+import { linksGD, linksTN } from "../../data/data";
 
 import { useStateContext } from "../../contexts/ContextProvider";
 
@@ -56,7 +56,7 @@ const Sidebar = () => {
             </TooltipComponent>
           </div>
           <div className="mt-14">
-            {links1.map((item) => (
+            {linksGD.map((item) => (
               <div key={item.title} className="mb-20 ">
                 {/* <p className='text-gray-400 m-3 mt-4 uppercase'>{item.title}</p> */}
                 {item.links.map((link) => (
@@ -77,7 +77,7 @@ const Sidebar = () => {
           </div>
 
           <div className="absolute bottom-10 pl-1 w-11/12">
-            {links2.map((item) => (
+            {linksTN.map((item) => (
               <div key={item.title} className="mt-40">
                 <br></br>
                 {/* <p className='text-gray-400 m-3 mt-4 uppercase'>{item.title}</p> */}

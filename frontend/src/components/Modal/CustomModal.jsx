@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "../Modal/CustomModal.css";
 
-const CustomModal = ({ isShowing, hide, children }) =>
+const CustomModal = ({ isShowing, hide, children, onClose }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -21,7 +21,9 @@ const CustomModal = ({ isShowing, hide, children }) =>
                   className="modal-close-button"
                   data-dismiss="modal"
                   aria-label="Close"
-                  onClick={hide}
+                  onClick={() => {
+                    hide();
+                  }}
                 >
                   <span aria-hidden="true">×</span>
                 </button>

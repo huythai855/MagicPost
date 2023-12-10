@@ -7,6 +7,9 @@ const initialState = {
 };
 export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [activeForm, setActiveForm] = useState(true);
+
   const [isClicked, setIsClicked] = useState(initialState);
   const handleClick = (clicked) => {
     setIsClicked({ ...initialState, [clicked]: true });
@@ -27,6 +30,10 @@ export const ContextProvider = ({ children }) => {
       value={{
         activeMenu,
         setActiveMenu,
+        isModalOpen,
+        setIsModalOpen,
+        activeForm,
+        setActiveForm,
         isClicked,
         setIsClicked,
         handleClick,

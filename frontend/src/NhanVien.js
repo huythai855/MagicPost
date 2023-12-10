@@ -8,7 +8,6 @@ import {
   Overview,
   DiemGiaoDich,
   DiemTapKet,
-  NhanVien,
   DanhSachDonHang,
   DanhSachDonHangGDV,
   DanhSachKienHang,
@@ -20,7 +19,7 @@ import TableSelection from "./components/Table/TableSelection";
 import SortingTable from "./components/Table/SortingTable";
 import { GiMagicPalm } from "react-icons/gi";
 
-const GiaoDichVien = () => {
+const NhanVien = () => {
   const { activeMenu } = useStateContext();
   return (
     <div>
@@ -70,4 +69,4 @@ const GiaoDichVien = () => {
   );
 };
 
-export default GiaoDichVien;
+export default NhanVien;

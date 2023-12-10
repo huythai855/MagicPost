@@ -45,6 +45,10 @@ const DiemGiaoDich = () => {
   if (error) {
     return <p>Error: {error}</p>;
   }
+  const handleFormSubmit = () => {
+    // Close the modal when the form is submitted
+    toggle();
+  };
   return (
     <>
       <div className="flex-col align-middle px-20 py-12 ">
@@ -65,7 +69,7 @@ const DiemGiaoDich = () => {
       <CustomModal
         isShowing={isShowing}
         hide={toggle}
-        children={<FormGiaoDich />}
+        children={<FormGiaoDich onSubmit={handleFormSubmit} />}
       />
     </>
   );

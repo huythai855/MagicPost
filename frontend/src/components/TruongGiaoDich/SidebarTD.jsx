@@ -12,13 +12,13 @@ import { MdOutlineCancel } from "react-icons/md";
 
 import { IoLogoMedium } from "react-icons/io5";
 
-import { links3, links4 } from "../../data/truonggiaodich";
+import { linksTD, linksTN } from "../../data/data";
 
 import { useStateContext } from "../../contexts/ContextProvider";
 
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-const SidebarTDG = () => {
+const SidebarTD = () => {
   const { activeMenu, setActiveMenu, screenSize } = useStateContext();
   const handleCloseSideBar = () => {
     if (activeMenu && screenSize <= 900) {
@@ -56,7 +56,7 @@ const SidebarTDG = () => {
             </TooltipComponent>
           </div>
           <div className="mt-14">
-            {links3.map((item) => (
+            {linksTD.map((item) => (
               <div key={item.title} className="mb-20 ">
                 {/* <p className='text-gray-400 m-3 mt-4 uppercase'>{item.title}</p> */}
                 {item.links.map((link) => (
@@ -77,7 +77,7 @@ const SidebarTDG = () => {
           </div>
 
           <div className="absolute bottom-10 pl-1 w-11/12">
-            {links4.map((item) => (
+            {linksTN.map((item) => (
               <div key={item.title} className="mt-40">
                 <br></br>
                 {/* <p className='text-gray-400 m-3 mt-4 uppercase'>{item.title}</p> */}
@@ -103,4 +103,4 @@ const SidebarTDG = () => {
   );
 };
 
-export default SidebarTDG;
+export default SidebarTD;
