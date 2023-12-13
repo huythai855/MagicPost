@@ -20,22 +20,22 @@ export const linksGD = [
     title: "Giám đốc",
     links: [
       {
-        name: "overview",
+        name: "director/overview",
         title: "Overview",
         icon: <BsBarChart />,
       },
       {
-        name: "diemtapket",
+        name: "director/diemtapket",
         title: "Điểm tập kết",
         icon: <BsBank />,
       },
       {
-        name: "diemgiaodich",
+        name: "director/diemgiaodich",
         title: "Điểm giao dịch",
         icon: <BsShop />,
       },
       {
-        name: "nhanvien",
+        name: "director/nhanvien",
         title: "Danh Sách Nhân Viên",
         icon: <BsShop />,
       },

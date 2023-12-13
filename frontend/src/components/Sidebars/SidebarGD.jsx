@@ -18,7 +18,7 @@ import { useStateContext } from "../../contexts/ContextProvider";
 
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-const Sidebar = () => {
+const SidebarGD = () => {
   const { activeMenu, setActiveMenu, screenSize } = useStateContext();
   const handleCloseSideBar = () => {
     if (activeMenu && screenSize <= 900) {
@@ -103,4 +103,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SidebarGD;

@@ -4,7 +4,7 @@ import { BrowserRouter, Router, Route, Routes, Link } from "react-router-dom";
 import "./index.css";
 import GiamDoc from "./GiamDoc";
 import TruongDiemGiaoDich from "./TruongDiemGiaoDich";
-import NhanVien from "./NhanVien";
+import NhanVienGD from "./NhanVienGD";
 import {
   MagicPost,
   Overview,
@@ -18,19 +18,13 @@ function AppRouter() {
     <BrowserRouter>
       <ContextProvider>
         <Routes>
-          <Route path="/director" element={<GiamDoc />} />
+          <Route path="/director/*" element={<GiamDoc />} />
           <Route path="/gp_lead" element={<TruongDiemGiaoDich />} />
-          <Route path="/gp_employee" element={<NhanVien />} />
-
-          <Route path="/overview" element={<Overview />} />
-          <Route path="/diemtapket" element={<DiemTapKet />} />
-          <Route path="/diemgiaodich" element={<DiemGiaoDich />} />
-          <Route path="/nhanvien" element={<DSNhanVien />} />
-
-          {/* Tinh nang */}
-          <Route path="/helpcentre" element="Help Centre" />
-          <Route path="/contactus" element="Contact Us" />
-          <Route path="/logout" element="Log Out" />
+          <Route path="/gp_employee" element={<NhanVienGD />} />
+          <Route path="/director/overview" element={<Overview />} />
+          <Route path="/director/diemtapket" element={<DiemTapKet />} />
+          <Route path="/director/diemgiaodich" element={<DiemGiaoDich />} />
+          <Route path="/director/nhanvien" element={<DSNhanVien />} />
         </Routes>
       </ContextProvider>
     </BrowserRouter>

@@ -20,7 +20,6 @@ import { RiDeleteBinFill } from "react-icons/ri";
 import { MdEdit } from "react-icons/md";
 import FormDelete from "../Forms/FormDelete";
 import CustomModal from "../Modal/CustomModal";
-import EditModal from "../Modal/EditModal";
 import "./table.css";
 
 const TableSelection = ({ title, dataSource }) => {
@@ -231,14 +230,6 @@ const TableSelection = ({ title, dataSource }) => {
           <MdLastPage />
         </button>
       </div>
-      <CustomModal
-        isShowing={isShowingDelete}
-        hide={toggleDelete}
-        children={<FormDelete />}
-      />
-      {selectedRow && (
-        <EditModal selectedRow={selectedRow} onClose={handleCloseModal} />
-      )}
     </div>
   );
 };

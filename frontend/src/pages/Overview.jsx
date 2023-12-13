@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import { Stacked, Pie, Button } from "../components";
@@ -99,6 +100,7 @@ const Overview = () => {
       </div>
     </div>
   );
+  <Outlet />;
 };
 
 export default Overview;

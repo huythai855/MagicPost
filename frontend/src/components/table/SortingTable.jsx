@@ -15,7 +15,6 @@ import FormTapKet from "../Forms/FormTapKet";
 
 import FormDelete from "../Forms/FormDelete";
 import CustomModal from "../Modal/CustomModal";
-import EditModal from "../Modal/EditModal";
 import "./table.css";
 import axios from "axios";
 

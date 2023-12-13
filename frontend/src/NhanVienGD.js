@@ -19,7 +19,7 @@ import TableSelection from "./components/Table/TableSelection";
 import SortingTable from "./components/Table/SortingTable";
 import { GiMagicPalm } from "react-icons/gi";
 
-const NhanVien = () => {
+const NhanVienGD = () => {
   const { activeMenu } = useStateContext();
   return (
     <div>
@@ -69,4 +69,4 @@ const NhanVien = () => {
   );
 };
 
-export default NhanVien;
+export default NhanVienGD;
