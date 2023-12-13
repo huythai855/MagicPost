@@ -4,6 +4,7 @@ const StateContext = createContext();
 const initialState = {
   notification: false,
   userProfile: false,
+  selectedRowId: null,
 };
 export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -16,6 +17,7 @@ export const ContextProvider = ({ children }) => {
   };
   const [isShowing, setIsShowing] = useState(false);
   const [isShowingDelete, setIsShowingDelete] = useState(false);
+  const [isShowingEdit, setIsShowingEdit] = useState(false);
 
   function toggle() {
     setIsShowing(!isShowing);
@@ -23,6 +25,12 @@ export const ContextProvider = ({ children }) => {
   function toggleDelete() {
     setIsShowingDelete(!isShowingDelete);
   }
+  function toggleEdit() {
+    setIsShowingEdit(!isShowingEdit);
+  }
+  const [selectedRowId, setSelectedRowId] = useState(
+    initialState.selectedRowId
+  );
 
   const [screenSize, setScreenSize] = useState(undefined);
   return (
@@ -43,8 +51,14 @@ export const ContextProvider = ({ children }) => {
         setIsShowing,
         isShowingDelete,
         setIsShowingDelete,
+        isShowingEdit,
+        setIsShowingEdit,
+        isShowingEdit,
+        toggleEdit,
         toggle,
         toggleDelete,
+        selectedRowId,
+        setSelectedRowId,
       }}
     >
       {children}

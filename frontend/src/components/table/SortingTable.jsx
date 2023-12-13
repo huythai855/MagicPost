@@ -11,19 +11,23 @@ import { MdFirstPage } from "react-icons/md";
 import { MdLastPage } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { MdEdit } from "react-icons/md";
+import FormTapKet from "../Forms/FormTapKet";
+
 import FormDelete from "../Forms/FormDelete";
 import CustomModal from "../Modal/CustomModal";
 import EditModal from "../Modal/EditModal";
 import "./table.css";
+import axios from "axios";
 
-const SortingTable = ({ title, dataSource }) => {
+const SortingTable = ({ title, dataSource, API }) => {
   const columns = useMemo(() => {
     const selectedColumns = COLUMNS.find((group) => group.title === title);
     return selectedColumns ? selectedColumns.columns : [];
   }, [title]);
   const data = useMemo(() => dataSource, []);
+  // const { setSelectedRowId, isShowingDelete, toggleDelete } = useStateContext();
+  const { isShowingEdit, toggleEdit } = useStateContext();
   const { isShowingDelete, toggleDelete } = useStateContext();
-
   const {
     getTableProps,
     getTableBodyProps,
@@ -43,12 +47,31 @@ const SortingTable = ({ title, dataSource }) => {
   } = useTable({ columns, data }, useFilters, useSortBy, usePagination);
   const { pageIndex, pageSize } = state;
   const [selectedRow, setSelectedRow] = useState(null);
+  const [editId, setEditID] = useState(-1);
+  const { dataValue, setDataValue } = useState(null);
+  const [editedValue, setEditedValue] = useState("");
 
-  const handleViewDetail = (rowData) => {
-    setSelectedRow(rowData);
+  const handleEdit = (API, id) => {
+    // toggleEdit();
+    setEditID(id);
+    console.log(editId);
+    // setEditedValue(dataSource.value); // Replace 'value' with the actual property name you want to edit
   };
-  const handleCloseModal = () => {
-    setSelectedRow(null);
+  const handleInputChange = (e) => {
+    // Update the edited value when the input value changes
+  };
+  const handleDelete = async (API, id) => {
+    console.log(id);
+    const index = Number(dataSource[id].id);
+    try {
+      const res = await fetch(`${API}/${index}`, { method: "DELETE" }).then(
+        (res) => {
+          // console.log(res.data);
+        }
+      );
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -104,40 +127,51 @@ const SortingTable = ({ title, dataSource }) => {
         >
           {page.map((row) => {
             prepareRow(row);
+
             return (
               <tr {...row.getRowProps()} key={row.id}>
-                {row.cells.map((cell, index) => (
-                  <td
-                    {...cell.getCellProps()}
-                    key={cell.column.id}
-                    className={index === 0 ? "first-column" : ""}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                ))}
+                {row.cells.map((cell, index) =>
+                  row.id === editId ? (
+                    <td
+                      {...cell.getCellProps()}
+                      key={cell.column.id}
+                      className={index === 0 ? "first-column" : ""}
+                    >
+                      <input
+                        className={"text-center bg-gray-200"}
+                        type="text"
+                        value={cell.value}
+                        onChange={handleInputChange}
+                      />
+                    </td>
+                  ) : (
+                    <td
+                      {...cell.getCellProps()}
+                      key={cell.column.id}
+                      className={index === 0 ? "first-column" : ""}
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  )
+                )}
                 <td className="px-4 py-4 w-24">
                   <div className="flex justify-center items-center">
-                    <a
-                      href="#edit"
-                      className="font-medium text-gray-700 dark:text-blue-500 hover:underline"
-                      onClick={() => handleViewDetail(row.original)}
+                    <button
+                      id="edit"
+                      className="text-lg pr-2"
+                      onClick={() => handleEdit(API, row.id)}
                     >
-                      <button id="edit" className="text-lg pr-2">
-                        <MdEdit />
-                      </button>
-                    </a>
-                    <a
-                      href="#delete"
-                      className="font-medium text-gray-700 dark:text-blue-500 hover:underline"
+                      <MdEdit />
+                    </button>
+
+                    <button
+                      id="delete"
+                      className="text-lg pl-2"
+                      // onClick={toggleEdit}
+                      onClick={() => handleDelete(API, row.id)}
                     >
-                      <button
-                        id="delete"
-                        className="text-lg pl-2"
-                        onClick={toggleDelete}
-                      >
-                        <RiDeleteBinFill />
-                      </button>
-                    </a>
+                      <RiDeleteBinFill />
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -189,14 +223,12 @@ const SortingTable = ({ title, dataSource }) => {
           <MdLastPage />
         </button>
       </div>
+      {/* {isShowingEdit && ( */}
       <CustomModal
-        isShowing={isShowingDelete}
-        hide={toggleDelete}
-        children={<FormDelete />}
+        isShowing={isShowingEdit}
+        hide={toggleEdit}
+        children={<FormTapKet />}
       />
-      {selectedRow && (
-        <EditModal selectedRow={selectedRow} onClose={handleCloseModal} />
-      )}
     </div>
   );
 };

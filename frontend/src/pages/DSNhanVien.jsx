@@ -14,15 +14,15 @@ const DSNhanVien = () => {
   const [nhanVienData, setNhanVienData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const API =
+    "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/NhanVien";
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/NhanVien",
-          {
-            method: "GET",
-          }
-        );
+        const response = await fetch(API, {
+          method: "GET",
+        });
 
         if (response.ok) {
           const data = await response.json();
@@ -63,6 +63,7 @@ const DSNhanVien = () => {
           <SortingTable
             title={"Nhân viên"}
             dataSource={nhanVienData}
+            API={API}
             className="w-full"
           />
         </div>

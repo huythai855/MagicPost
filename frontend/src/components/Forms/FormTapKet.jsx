@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TruongDiem from "../../TruongDiem";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const host = "https://provinces.open-api.vn/api/";
 const API =
@@ -17,7 +17,8 @@ const FormTapKet = ({ onSubmit }) => {
   const [selectedManager, setSelectedManager] = useState(""); // Use a single manager, not an array
 
   const [diemTapKetData, setDiemTapKetData] = useState([]);
-
+  const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
     const fetchProvinces = async () => {
       try {
@@ -123,7 +124,7 @@ const FormTapKet = ({ onSubmit }) => {
 
       const json = await response.json();
       const id = json.id;
-
+      navigate("/diemtapket");
       // await getData();
       // alert("Your id is: " + id);
     } catch (error) {

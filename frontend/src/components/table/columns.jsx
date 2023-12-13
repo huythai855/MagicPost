@@ -7,9 +7,10 @@ export const COLUMNS = [
     columns: [
       {
         Header: "STT",
-        accessor: "id",
         Filter: ColumnFilter,
         disableFilters: true,
+        id: "index",
+        accessor: (_row, i) => i + 1,
       },
       {
         Header: "Mã điểm",

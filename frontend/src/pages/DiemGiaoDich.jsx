@@ -13,15 +13,14 @@ const DiemGiaoDich = () => {
   const [diemGiaoDichData, setDiemGiaoDichData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const API =
+    "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket";
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket",
-          {
-            method: "GET",
-          }
-        );
+        const response = await fetch(API, {
+          method: "GET",
+        });
 
         if (response.ok) {
           const data = await response.json();
@@ -62,6 +61,7 @@ const DiemGiaoDich = () => {
           <SortingTable
             title={"Giám đốc"}
             dataSource={diemGiaoDichData}
+            API={API}
             className="w-full"
           />
         </div>

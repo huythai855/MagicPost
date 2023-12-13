@@ -34,6 +34,11 @@ export const linksGD = [
         title: "Điểm giao dịch",
         icon: <BsShop />,
       },
+      {
+        name: "nhanvien",
+        title: "Danh Sách Nhân Viên",
+        icon: <BsShop />,
+      },
     ],
   },
 ];

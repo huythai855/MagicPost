@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CustomModal from "../components/Modal/CustomModal";
 import { useStateContext } from "../contexts/ContextProvider";
 import FormTapKet from "../components/Forms/FormTapKet";
@@ -13,20 +14,20 @@ const DiemTapKet = () => {
   const [diemTapKetData, setDiemTapKetData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const handleFormSubmit = () => {
     // Close the modal when the form is submitted
     toggle();
   };
   // const diemTapKetData = DiemTapKetData;
+  const API =
+    "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket";
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket",
-          {
-            method: "GET",
-          }
-        );
+        const response = await fetch(API, {
+          method: "GET",
+        });
 
         if (response.ok) {
           const data = await response.json();
@@ -64,6 +65,7 @@ const DiemTapKet = () => {
           <SortingTable
             title={"Giám đốc"}
             dataSource={diemTapKetData}
+            API={API}
             className="w-full"
           />
         </div>
