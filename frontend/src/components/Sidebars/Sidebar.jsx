@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   BsBarChart,
@@ -12,14 +12,44 @@ import { MdOutlineCancel } from "react-icons/md";
 
 import { IoLogoMedium } from "react-icons/io5";
 
-import { linksTD, linksTN } from "../../data/data";
+import {
+  linksGD,
+  linksTDGD,
+  linksTDTK,
+  linksNVGD,
+  linksNVTK,
+  linksTN,
+} from "../../data/data";
 
 import { useStateContext } from "../../contexts/ContextProvider";
 
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-const SidebarTD = () => {
+const SidebarGD = ({ role: initialRole }) => {
   const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+  const [role, setRole] = useState(initialRole); // Use the role from props
+  const [link, setLink] = useState([]);
+  useEffect(() => {
+    // Update link based on the role
+    if (role === "Giám đốc") {
+      setLink(linksGD);
+    }
+    if (role === "Trưởng điểm tập kết") {
+      setLink(linksTDTK);
+    }
+    if (role === "Trưởng điểm giao dịch") {
+      setLink(linksTDGD);
+    }
+    if (role === "Nhân viên tập kết") {
+      setLink(linksNVTK);
+    }
+    if (role === "Nhân viên giao dịch") {
+      setLink(linksNVGD);
+    }
+  }, [role]);
+  // const handleClose
   const handleCloseSideBar = () => {
     if (activeMenu && screenSize <= 900) {
       setActiveMenu(false);
@@ -56,7 +86,7 @@ const SidebarTD = () => {
             </TooltipComponent>
           </div>
           <div className="mt-14">
-            {linksTD.map((item) => (
+            {link.map((item) => (
               <div key={item.title} className="mb-20 ">
                 {/* <p className='text-gray-400 m-3 mt-4 uppercase'>{item.title}</p> */}
                 {item.links.map((link) => (
@@ -103,4 +133,4 @@ const SidebarTD = () => {
   );
 };
 
-export default SidebarTD;
+export default SidebarGD;

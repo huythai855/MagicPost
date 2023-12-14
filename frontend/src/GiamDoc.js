@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-import { Navbar, Footer, SidebarGD } from "./components";
+import { Navbar, Footer, Sidebar } from "./components";
 import {
   MagicPost,
   Overview,
@@ -22,11 +22,11 @@ const GiamDoc = () => {
       <div className="flex relative dark:bg-main-dark-bg">
         {activeMenu ? (
           <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-            <SidebarGD />
+            <Sidebar role={"Giám đốc"} />
           </div>
         ) : (
           <div className="w-0 dark:bg-secondary-dark-bg">
-            <SidebarGD />
+            <Sidebar role={"Giám đốc"} />
           </div>
         )}
         <div

@@ -20,22 +20,22 @@ export const linksGD = [
     title: "Giám đốc",
     links: [
       {
-        name: "director/overview",
+        name: "overview",
         title: "Overview",
         icon: <BsBarChart />,
       },
       {
-        name: "director/diemtapket",
+        name: "diemtapket",
         title: "Điểm tập kết",
         icon: <BsBank />,
       },
       {
-        name: "director/diemgiaodich",
+        name: "diemgiaodich",
         title: "Điểm giao dịch",
         icon: <BsShop />,
       },
       {
-        name: "director/nhanvien",
+        name: "nhanvien",
         title: "Danh Sách Nhân Viên",
         icon: <BsShop />,
       },
@@ -43,9 +43,9 @@ export const linksGD = [
   },
 ];
 
-export const linksTD = [
+export const linksTDTK = [
   {
-    title: "Trưởng điểm",
+    title: "Trưởng điểm tập kết",
     links: [
       {
         name: "overview",
@@ -65,10 +65,31 @@ export const linksTD = [
     ],
   },
 ];
-
-export const linksNV = [
+export const linksTDGD = [
   {
-    title: "Nhân viên",
+    title: "Trưởng điểm giao dịch",
+    links: [
+      {
+        name: "overview",
+        title: "Overview",
+        icon: <BsBarChart />,
+      },
+      {
+        name: "danhsachdonhang",
+        title: "Danh sách đơn hàng",
+        icon: <BsBank />,
+      },
+      {
+        name: "nhanvien",
+        title: "Nhân viên",
+        icon: <BsShop />,
+      },
+    ],
+  },
+];
+export const linksNVTK = [
+  {
+    title: "Nhân viên tập kết",
     links: [
       {
         name: "danhsachdonhangGDV",
@@ -83,6 +104,29 @@ export const linksNV = [
     ],
   },
 ];
+export const linksNVGD = [
+  {
+    title: "Nhân viên giao dịch",
+    links: [
+      {
+        name: "donnoikhu",
+        title: "Đơn nội khu",
+        icon: <CgNotes />,
+      },
+      {
+        name: "donngoaikhu",
+        title: "Đơn ngoại khu",
+        icon: <PiArchiveBox />,
+      },
+      {
+        name: "danhsachkienhang",
+        title: "Danh sách kiện hàng",
+        icon: <PiArchiveBox />,
+      },
+    ],
+  },
+];
+
 export const linksTN = [
   {
     title: "Tính năng",
