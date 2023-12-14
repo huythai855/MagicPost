@@ -63,4 +63,44 @@ export const COLUMNS = [
       { Header: "Loại hàng", accessor: "typeOfGoods", Filter: ColumnFilter },
     ],
   },
+  {
+    title: "Đơn hàng nội khu",
+    columns: [
+      {
+        Header: "STT",
+        accessor: "id",
+        Filter: ColumnFilter,
+        disableFilters: true,
+      },
+      {
+        Header: "Mã đơn hàng",
+        accessor: "maDonHang",
+        Filter: ColumnFilter,
+      },
+      { Header: "Người gửi", accessor: "fullName", Filter: ColumnFilter },
+      { Header: "Ngày gửi", accessor: "date", Filter: ColumnFilter },
+      { Header: "Điểm nhận", accessor: "address", Filter: ColumnFilter },
+      { Header: "Loại hàng", accessor: "typeOfGoods", Filter: ColumnFilter },
+      { Header: "Trạng thái", accessor: "status", Filter: ColumnFilter },
+    ],
+  },
+  {
+    title: "Danh sách kiện hàng",
+    columns: [
+      {
+        Header: "STT",
+        accessor: "id",
+        Filter: ColumnFilter,
+        disableFilters: true,
+      },
+      {
+        Header: "Mã đơn hàng",
+        accessor: "maDonHang",
+        Filter: ColumnFilter,
+      },
+      { Header: "Điểm nhận", accessor: "address", Filter: ColumnFilter },
+
+      { Header: "Trạng thái", accessor: "status", Filter: ColumnFilter },
+    ],
+  },
 ];

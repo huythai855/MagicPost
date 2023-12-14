@@ -15,6 +15,7 @@ import FormTapKet from "../Forms/FormTapKet";
 
 import FormDelete from "../Forms/FormDelete";
 import CustomModal from "../Modal/CustomModal";
+import EditModal from "../Modal/EditModal";
 
 import "./table.css";
 import axios from "axios";
@@ -26,6 +27,8 @@ const SortingTable = ({ title, dataSource, API }) => {
   }, [title]);
   const data = useMemo(() => dataSource, []);
   const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -56,6 +59,13 @@ const SortingTable = ({ title, dataSource, API }) => {
     setDeleteId(id);
     setShow(true);
     console.log(id);
+  };
+
+  const handleEditClose = () => {
+    setShowEdit(false);
+  };
+  const handleEditOpen = () => {
+    setShowEdit(true);
   };
 
   const handleDelete = async (API, id) => {
@@ -140,7 +150,13 @@ const SortingTable = ({ title, dataSource, API }) => {
                 ))}
                 <td className="px-4 py-4 w-24">
                   <div className="flex justify-center items-center">
-                    <button id="edit" className="text-lg pr-2">
+                    <button
+                      id="edit"
+                      className="text-lg pr-2"
+                      onClick={() => {
+                        handleEditOpen(); // Add parentheses to invoke the function
+                      }}
+                    >
                       <MdEdit />
                     </button>
 
@@ -213,11 +229,14 @@ const SortingTable = ({ title, dataSource, API }) => {
         children={
           <FormDelete
             onClose={handleClose}
-            // onDelete={handeHi}
-
             onDelete={() => handleDelete(API, deleteId)} // Pass a function reference
           />
         }
+      />
+      <EditModal
+        isShowing={showEdit}
+        hide={handleEditClose}
+        children={<FormTapKet />}
       />
     </div>
   );

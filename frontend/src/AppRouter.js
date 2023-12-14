@@ -10,13 +10,15 @@ import {
   DSNhanVien,
   DanhSachDonHang,
   DanhSachDonHangGDV,
+  DanhSachDonNoiKhu,
+  DanhSachKienHang,
 } from "./pages";
 import { Sidebar, Navbar } from "./components";
 import { ContextProvider } from "./contexts/ContextProvider";
 function AppRouter() {
   return (
     <BrowserRouter>
-      <Sidebar role="Giám đốc">
+      <Sidebar role="Nhân viên giao dịch">
         <ContextProvider>
           <Routes>
             {/* Giamdoc */}
@@ -33,9 +35,9 @@ function AppRouter() {
             {/* Nhanvientapket */}
 
             {/* Nhanviengiaodich */}
-            <Route path="/donnoikhu" element={<DanhSachDonHang />} />
+            <Route path="/donnoikhu" element={<DanhSachDonNoiKhu />} />
             <Route path="/donngoaikhu" element={<DanhSachDonHangGDV />} />
-            <Route path="/danhsachkienhang" element={<DanhSachDonHang />} />
+            <Route path="/danhsachkienhang" element={<DanhSachKienHang />} />
 
             {/* Nhanvienvanchuyen */}
 

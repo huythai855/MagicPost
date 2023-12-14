@@ -8,19 +8,19 @@ import CustomModal from "../components/Modal/CustomModal";
 import { useStateContext } from "../contexts/ContextProvider";
 import FormTapKet from "../components/Forms/FormTapKet";
 import FormDelete from "../components/Forms/FormDelete";
-const DanhSachKienHang = () => {
+const DanhSachDonNoiKhu = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const { isShowing, toggle } = useStateContext();
-  const [kienHangData, setKienHangData] = useState([]);
+  const [donHangData, setDonHangData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://6570c47809586eff6641ea69.mockapi.io/donhang/kienhang",
+          "https://6570c47809586eff6641ea69.mockapi.io/donhang/donhang",
           {
             method: "GET",
           }
@@ -28,7 +28,7 @@ const DanhSachKienHang = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setKienHangData(data);
+          setDonHangData(data);
         } else {
           setError("Error fetching data");
         }
@@ -53,8 +53,8 @@ const DanhSachKienHang = () => {
       <div className="flex-col align-middle px-20 py-12 ">
         <div>
           <SortingTable
-            title={"Danh sách kiện hàng"}
-            dataSource={kienHangData}
+            title={"Đơn hàng nội khu"}
+            dataSource={donHangData}
             className="w-full"
           />
         </div>
@@ -63,4 +63,4 @@ const DanhSachKienHang = () => {
   );
 };
 
-export default DanhSachKienHang;
+export default DanhSachDonNoiKhu;

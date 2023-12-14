@@ -50,11 +50,10 @@ const FormNhanVien = ({ onSubmit }) => {
   return (
     <div>
       <>
-        <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-          Tạo nhân viên
-        </h2>
-
         <form onSubmit={handleSubmit}>
+          <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+            Tạo nhân viên
+          </h2>
           <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
             {/* Other form elements */}
             <div class="sm:col-span-2">

@@ -6,3 +6,4 @@ export { default as DSNhanVien } from "./DSNhanVien";
 export { default as DanhSachDonHang } from "./DanhSachDonHang";
 export { default as DanhSachDonHangGDV } from "./DanhSachDonHangGDV";
 export { default as DanhSachKienHang } from "./DanhSachKienHang";
+export { default as DanhSachDonNoiKhu } from "./DanhSachDonNoiKhu";
