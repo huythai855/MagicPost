@@ -20,22 +20,22 @@ export const linksGD = [
     title: "Giám đốc",
     links: [
       {
-        name: "overview",
+        path: "overview",
         title: "Overview",
         icon: <BsBarChart />,
       },
       {
-        name: "diemtapket",
+        path: "diemtapket",
         title: "Điểm tập kết",
         icon: <BsBank />,
       },
       {
-        name: "diemgiaodich",
+        path: "diemgiaodich",
         title: "Điểm giao dịch",
         icon: <BsShop />,
       },
       {
-        name: "nhanvien",
+        path: "nhanvien",
         title: "Danh Sách Nhân Viên",
         icon: <BsShop />,
       },
@@ -48,17 +48,17 @@ export const linksTDTK = [
     title: "Trưởng điểm tập kết",
     links: [
       {
-        name: "overview",
+        path: "overview",
         title: "Overview",
         icon: <BsBarChart />,
       },
       {
-        name: "danhsachdonhang",
+        path: "danhsachdonhang",
         title: "Danh sách đơn hàng",
         icon: <BsBank />,
       },
       {
-        name: "nhanvien",
+        path: "nhanvien",
         title: "Nhân viên",
         icon: <BsShop />,
       },
@@ -70,17 +70,17 @@ export const linksTDGD = [
     title: "Trưởng điểm giao dịch",
     links: [
       {
-        name: "overview",
+        path: "overview",
         title: "Overview",
         icon: <BsBarChart />,
       },
       {
-        name: "danhsachdonhang",
+        path: "danhsachdonhang",
         title: "Danh sách đơn hàng",
         icon: <BsBank />,
       },
       {
-        name: "nhanvien",
+        path: "nhanvien",
         title: "Nhân viên",
         icon: <BsShop />,
       },
@@ -92,12 +92,12 @@ export const linksNVTK = [
     title: "Nhân viên tập kết",
     links: [
       {
-        name: "danhsachdonhangGDV",
+        path: "danhsachdonhangGDV",
         title: "Danh Sách Đơn Hàng",
         icon: <CgNotes />,
       },
       {
-        name: "danhsachkienhang",
+        path: "danhsachkienhang",
         title: "Danh Sách Kiện Hàng",
         icon: <PiArchiveBox />,
       },
@@ -109,17 +109,17 @@ export const linksNVGD = [
     title: "Nhân viên giao dịch",
     links: [
       {
-        name: "donnoikhu",
+        path: "donnoikhu",
         title: "Đơn nội khu",
         icon: <CgNotes />,
       },
       {
-        name: "donngoaikhu",
+        path: "donngoaikhu",
         title: "Đơn ngoại khu",
         icon: <PiArchiveBox />,
       },
       {
-        name: "danhsachkienhang",
+        path: "danhsachkienhang",
         title: "Danh sách kiện hàng",
         icon: <PiArchiveBox />,
       },
@@ -133,17 +133,17 @@ export const linksTN = [
     links: [
       {
         title: "Hỗ trợ",
-        name: "hotro",
+        path: "hotro",
         icon: <BsInfoCircle />,
       },
       {
         title: "Liên hệ",
-        name: "lienhe",
+        path: "lienhe",
         icon: <BsChatDots />,
       },
       {
         title: "Đăng xuất",
-        name: "dangxuat",
+        path: "dangxuat",
         icon: <TbLogout />,
       },
     ],
@@ -225,7 +225,7 @@ export const stackedCustomSeries = [
     dataSource: stackedChartData[0],
     xName: "x",
     yName: "y",
-    name: "Budget",
+    path: "Budget",
     type: "StackingColumn",
     background: "blue",
   },
@@ -234,7 +234,7 @@ export const stackedCustomSeries = [
     dataSource: stackedChartData[1],
     xName: "x",
     yName: "y",
-    name: "Expense",
+    path: "Expense",
     type: "StackingColumn",
     background: "red",
   },

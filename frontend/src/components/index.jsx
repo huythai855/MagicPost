@@ -1,5 +1,4 @@
 export { default as Sidebar } from "./Sidebars/Sidebar";
-// export { default as SidebarS } from "./Sidebars/d";
 
 export { default as Navbar } from "./Navbars/Navbar";
 export { default as Notification } from "./Notification";

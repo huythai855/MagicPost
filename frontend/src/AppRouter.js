@@ -1,34 +1,48 @@
 import React from "react";
 import { BrowserRouter, Router, Route, Routes, Link } from "react-router-dom";
-
 import "./index.css";
-import GiamDoc from "./GiamDoc";
-import TruongDiemGiaoDich from "./TruongDiemGiaoDich";
-import NhanVienGD from "./NhanVienGD";
+import "./App.css";
 import {
   MagicPost,
   Overview,
   DiemGiaoDich,
   DiemTapKet,
   DSNhanVien,
+  DanhSachDonHang,
+  DanhSachDonHangGDV,
 } from "./pages";
-import { Sidebar, SidebarS } from "./components";
+import { Sidebar, Navbar } from "./components";
 import { ContextProvider } from "./contexts/ContextProvider";
 function AppRouter() {
   return (
     <BrowserRouter>
-      <ContextProvider>
-        <Routes>
-          <Route path="/director/*" element={<GiamDoc />} />
-          <Route path="/gp_lead/*" element={<TruongDiemGiaoDich />} />
-          <Route path="/gp_employee/*" element={<NhanVienGD />} />
-          {/* <Route path="/" element={<Overview />} />
+      <Sidebar role="Trưởng điểm giao dịch">
+        <ContextProvider>
+          <Routes>
+            {/* Giamdoc */}
+            <Route path="/" element={<Overview />} />
             <Route path="/overview" element={<Overview />} />
-            <Route path="/director/diemtapket" element={<DiemTapKet />} />
-            <Route path="/director/diemgiaodich" element={<DiemGiaoDich />} />
-            <Route path="/director/nhanvien" element={<DSNhanVien />} /> */}
-        </Routes>
-      </ContextProvider>
+            <Route path="/diemtapket" element={<DiemTapKet />} />
+            <Route path="/diemgiaodich" element={<DiemGiaoDich />} />
+            <Route path="/nhanvien" element={<DSNhanVien />} />
+            {/* Truongdiemtapket */}
+
+            {/* Truongdiemgiaodich*/}
+            <Route path="/danhsachdonhang" element={<DanhSachDonHang />} />
+
+            {/* Nhanvientapket */}
+
+            {/* Nhanviengiaodich */}
+            <Route path="/donnoikhu" element={<DanhSachDonHang />} />
+            <Route path="/donngoaikhu" element={<DanhSachDonHangGDV />} />
+            <Route path="/danhsachkienhang" element={<DanhSachDonHang />} />
+
+            {/* Nhanvienvanchuyen */}
+
+            {/* Nhanviengiaohang */}
+          </Routes>
+        </ContextProvider>
+      </Sidebar>
     </BrowserRouter>
   );
 }
