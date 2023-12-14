@@ -15,6 +15,7 @@ import FormTapKet from "../Forms/FormTapKet";
 
 import FormDelete from "../Forms/FormDelete";
 import CustomModal from "../Modal/CustomModal";
+
 import "./table.css";
 import axios from "axios";
 
@@ -24,9 +25,7 @@ const SortingTable = ({ title, dataSource, API }) => {
     return selectedColumns ? selectedColumns.columns : [];
   }, [title]);
   const data = useMemo(() => dataSource, []);
-  // const { setSelectedRowId, isShowingDelete, toggleDelete } = useStateContext();
-  const { isShowingEdit, toggleEdit } = useStateContext();
-  const { isShowingDelete, toggleDelete } = useStateContext();
+  const [show, setShow] = useState(false);
   const {
     getTableProps,
     getTableBodyProps,
@@ -46,19 +45,19 @@ const SortingTable = ({ title, dataSource, API }) => {
   } = useTable({ columns, data }, useFilters, useSortBy, usePagination);
   const { pageIndex, pageSize } = state;
   const [selectedRow, setSelectedRow] = useState(null);
-  const [editId, setEditID] = useState(-1);
-  const { dataValue, setDataValue } = useState(null);
-  const [editedValue, setEditedValue] = useState("");
+  const [deleteId, setDeleteId] = useState("");
 
-  const handleEdit = (API, id) => {
-    // toggleEdit();
-    setEditID(id);
-    console.log(editId);
-    // setEditedValue(dataSource.value); // Replace 'value' with the actual property name you want to edit
+  const { dataValue, setDataValue } = useState(null);
+
+  const handleClose = () => {
+    setShow(false);
   };
-  const handleInputChange = (e) => {
-    // Update the edited value when the input value changes
+  const handleOpen = (id) => {
+    setDeleteId(id);
+    setShow(true);
+    console.log(id);
   };
+
   const handleDelete = async (API, id) => {
     console.log(id);
     const index = Number(dataSource[id].id);
@@ -71,6 +70,7 @@ const SortingTable = ({ title, dataSource, API }) => {
     } catch (error) {
       alert(error.message);
     }
+    setShow(false);
   };
 
   return (
@@ -129,45 +129,29 @@ const SortingTable = ({ title, dataSource, API }) => {
 
             return (
               <tr {...row.getRowProps()} key={row.id}>
-                {row.cells.map((cell, index) =>
-                  row.id === editId ? (
-                    <td
-                      {...cell.getCellProps()}
-                      key={cell.column.id}
-                      className={index === 0 ? "first-column" : ""}
-                    >
-                      <input
-                        className={"text-center bg-gray-200"}
-                        type="text"
-                        value={cell.value}
-                        onChange={handleInputChange}
-                      />
-                    </td>
-                  ) : (
-                    <td
-                      {...cell.getCellProps()}
-                      key={cell.column.id}
-                      className={index === 0 ? "first-column" : ""}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  )
-                )}
+                {row.cells.map((cell, index) => (
+                  <td
+                    {...cell.getCellProps()}
+                    key={cell.column.id}
+                    className={index === 0 ? "first-column" : ""}
+                  >
+                    {cell.render("Cell")}
+                  </td>
+                ))}
                 <td className="px-4 py-4 w-24">
                   <div className="flex justify-center items-center">
-                    <button
-                      id="edit"
-                      className="text-lg pr-2"
-                      onClick={() => handleEdit(API, row.id)}
-                    >
+                    <button id="edit" className="text-lg pr-2">
                       <MdEdit />
                     </button>
 
                     <button
                       id="delete"
                       className="text-lg pl-2"
-                      // onClick={toggleEdit}
-                      onClick={() => handleDelete(API, row.id)}
+                      onClick={() => {
+                        console.log(row.id); // Log the current row.id
+                        // setRowID(row.id);
+                        handleOpen(row.id); // Perform other actions with the updated state
+                      }}
                     >
                       <RiDeleteBinFill />
                     </button>
@@ -222,11 +206,18 @@ const SortingTable = ({ title, dataSource, API }) => {
           <MdLastPage />
         </button>
       </div>
-      {/* {isShowingEdit && ( */}
+
       <CustomModal
-        isShowing={isShowingEdit}
-        hide={toggleEdit}
-        children={<FormTapKet />}
+        isShowing={show}
+        hide={handleClose}
+        children={
+          <FormDelete
+            onClose={handleClose}
+            // onDelete={handeHi}
+
+            onDelete={() => handleDelete(API, deleteId)} // Pass a function reference
+          />
+        }
       />
     </div>
   );

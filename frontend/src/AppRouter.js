@@ -16,7 +16,7 @@ import { ContextProvider } from "./contexts/ContextProvider";
 function AppRouter() {
   return (
     <BrowserRouter>
-      <Sidebar role="Trưởng điểm giao dịch">
+      <Sidebar role="Giám đốc">
         <ContextProvider>
           <Routes>
             {/* Giamdoc */}
