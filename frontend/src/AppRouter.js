@@ -9,9 +9,10 @@ import {
   DiemTapKet,
   DSNhanVien,
   DanhSachDonHang,
-  DanhSachDonHangGDV,
+  DanhSachNgoaiKhu,
   DanhSachDonNoiKhu,
   DanhSachKienHang,
+  FormBienNhan,
 } from "./pages";
 import { Sidebar, Navbar } from "./components";
 import { ContextProvider } from "./contexts/ContextProvider";
@@ -36,8 +37,9 @@ function AppRouter() {
 
             {/* Nhanviengiaodich */}
             <Route path="/donnoikhu" element={<DanhSachDonNoiKhu />} />
-            <Route path="/donngoaikhu" element={<DanhSachDonHangGDV />} />
+            <Route path="/donngoaikhu" element={<DanhSachNgoaiKhu />} />
             <Route path="/danhsachkienhang" element={<DanhSachKienHang />} />
+            <Route path="/formbiennhan" element={<FormBienNhan />} />
 
             {/* Nhanvienvanchuyen */}
 

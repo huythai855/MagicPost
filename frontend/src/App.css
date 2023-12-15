@@ -58,7 +58,7 @@ main{
   padding: 20px;
 }
 .sidebar{
-  background: #eff1f4;
+  background: #181c1e;
  
   height: 100vh;
   width: 200px;
@@ -68,6 +68,8 @@ main{
   display: flex;
   align-items:center;
   padding:20px 15px;
+  color: white
+
 }
 .logo{
   font-size: 30px;
@@ -76,10 +78,11 @@ main{
   display: flex;
   font-size: 25px;
   margin-left: 50px;
+  color: white
 }
 .link{
   display: flex;
-  color: black;
+  color: white;
   padding: 10px 15px;
   gap: 15px;
   transition: all 0.5s;
