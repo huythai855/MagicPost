@@ -6,7 +6,7 @@ import CustomModal from "../components/Modal/CustomModal";
 import { useStateContext } from "../contexts/ContextProvider";
 import FormTapKet from "../components/Forms/FormTapKet";
 import FormDelete from "../components/Forms/FormDelete";
-const DSNhanVien = () => {
+const DSNhanVien = ({ boss }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -68,11 +68,27 @@ const DSNhanVien = () => {
           />
         </div>
       </div>
-      <CustomModal
-        isShowing={isShowing}
-        hide={toggle}
-        children={<FormNhanVien onSubmit={handleFormSubmit} />}
-      />
+      {boss === "Giám đốc" && (
+        <CustomModal
+          isShowing={isShowing}
+          hide={toggle}
+          children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
+        />
+      )}
+      {boss === "Trưởng điểm tập kết" && (
+        <CustomModal
+          isShowing={isShowing}
+          hide={toggle}
+          children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
+        />
+      )}
+      {boss === "Trưởng điểm giao dịch" && (
+        <CustomModal
+          isShowing={isShowing}
+          hide={toggle}
+          children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
+        />
+      )}
     </>
   );
 };

@@ -20,22 +20,22 @@ export const linksGD = [
     title: "Giám đốc",
     links: [
       {
-        path: "overview",
+        path: "director/overview",
         title: "Overview",
         icon: <BsBarChart />,
       },
       {
-        path: "diemtapket",
+        path: "director/diemtapket",
         title: "Điểm tập kết",
         icon: <BsBank />,
       },
       {
-        path: "diemgiaodich",
+        path: "director/diemgiaodich",
         title: "Điểm giao dịch",
         icon: <BsShop />,
       },
       {
-        path: "nhanvien",
+        path: "director/nhanvien",
         title: "Danh Sách Nhân Viên",
         icon: <BsShop />,
       },
@@ -48,17 +48,17 @@ export const linksTDTK = [
     title: "Trưởng điểm tập kết",
     links: [
       {
-        path: "overview",
+        path: "gp_lead/overview",
         title: "Overview",
         icon: <BsBarChart />,
       },
       {
-        path: "danhsachdonhang",
+        path: "gp_lead/danhsachdonhang",
         title: "Danh sách đơn hàng",
         icon: <BsBank />,
       },
       {
-        path: "nhanvien",
+        path: "gp_lead/nhanvien",
         title: "Nhân viên",
         icon: <BsShop />,
       },
@@ -70,17 +70,17 @@ export const linksTDGD = [
     title: "Trưởng điểm giao dịch",
     links: [
       {
-        path: "overview",
+        path: "tp_lead/overview",
         title: "Overview",
         icon: <BsBarChart />,
       },
       {
-        path: "danhsachdonhang",
+        path: "tp_lead/danhsachdonhang",
         title: "Danh sách đơn hàng",
         icon: <BsBank />,
       },
       {
-        path: "nhanvien",
+        path: "tp_lead/nhanvien",
         title: "Nhân viên",
         icon: <BsShop />,
       },
@@ -92,14 +92,9 @@ export const linksNVTK = [
     title: "Nhân viên tập kết",
     links: [
       {
-        path: "danhsachdonhangGDV",
+        path: "gp_employee/danhsachdonhang",
         title: "Danh Sách Đơn Hàng",
         icon: <CgNotes />,
-      },
-      {
-        path: "danhsachkienhang",
-        title: "Danh Sách Kiện Hàng",
-        icon: <PiArchiveBox />,
       },
     ],
   },
@@ -109,18 +104,13 @@ export const linksNVGD = [
     title: "Nhân viên giao dịch",
     links: [
       {
-        path: "donnoikhu",
+        path: "tp_employee/donnoikhu",
         title: "Đơn nội khu",
         icon: <CgNotes />,
       },
       {
-        path: "donngoaikhu",
+        path: "tp_employee/donngoaikhu",
         title: "Đơn ngoại khu",
-        icon: <PiArchiveBox />,
-      },
-      {
-        path: "danhsachkienhang",
-        title: "Danh sách kiện hàng",
         icon: <PiArchiveBox />,
       },
     ],

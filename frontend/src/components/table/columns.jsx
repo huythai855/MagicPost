@@ -3,7 +3,7 @@ import { FaEye } from "react-icons/fa";
 
 export const COLUMNS = [
   {
-    title: "Giám đốc",
+    title: "Điểm tập kết",
     columns: [
       {
         Header: "STT",
@@ -18,7 +18,39 @@ export const COLUMNS = [
         Filter: ColumnFilter,
       },
       { Header: "Tên điểm", accessor: "name", Filter: ColumnFilter },
-      { Header: "Địa chỉ", accessor: "address", Filter: ColumnFilter },
+      { Header: "Địa chỉ", accessor: "province", Filter: ColumnFilter },
+      {
+        Header: "Số lượng nhân viên",
+        accessor: "total_employee",
+        Filter: ColumnFilter,
+      },
+
+      { Header: "Trưởng điểm", accessor: "manager", Filter: ColumnFilter },
+      { Header: "Doanh số", accessor: "sales", Filter: ColumnFilter },
+    ],
+  },
+  {
+    title: "Điểm giao dịch",
+    columns: [
+      {
+        Header: "STT",
+        Filter: ColumnFilter,
+        disableFilters: true,
+        id: "index",
+        accessor: (_row, i) => i + 1,
+      },
+      {
+        Header: "Mã điểm",
+        accessor: "id_company",
+        Filter: ColumnFilter,
+      },
+      { Header: "Tên điểm", accessor: "name", Filter: ColumnFilter },
+      { Header: "Địa chỉ", accessor: "district", Filter: ColumnFilter },
+      {
+        Header: "Số lượng nhân viên",
+        accessor: "total_employee",
+        Filter: ColumnFilter,
+      },
       { Header: "Trưởng điểm", accessor: "manager", Filter: ColumnFilter },
       { Header: "Doanh số", accessor: "sales", Filter: ColumnFilter },
     ],
@@ -61,6 +93,7 @@ export const COLUMNS = [
       { Header: "Ngày gửi", accessor: "date", Filter: ColumnFilter },
       { Header: "Điểm nhận", accessor: "address", Filter: ColumnFilter },
       { Header: "Loại hàng", accessor: "typeOfGoods", Filter: ColumnFilter },
+      { Header: "Trạng thái", accessor: "status", Filter: ColumnFilter },
     ],
   },
   {
@@ -81,25 +114,6 @@ export const COLUMNS = [
       { Header: "Ngày gửi", accessor: "date", Filter: ColumnFilter },
       { Header: "Điểm nhận", accessor: "address", Filter: ColumnFilter },
       { Header: "Loại hàng", accessor: "typeOfGoods", Filter: ColumnFilter },
-      { Header: "Trạng thái", accessor: "status", Filter: ColumnFilter },
-    ],
-  },
-  {
-    title: "Danh sách kiện hàng",
-    columns: [
-      {
-        Header: "STT",
-        accessor: "id",
-        Filter: ColumnFilter,
-        disableFilters: true,
-      },
-      {
-        Header: "Mã đơn hàng",
-        accessor: "maDonHang",
-        Filter: ColumnFilter,
-      },
-      { Header: "Điểm nhận", accessor: "address", Filter: ColumnFilter },
-
       { Header: "Trạng thái", accessor: "status", Filter: ColumnFilter },
     ],
   },

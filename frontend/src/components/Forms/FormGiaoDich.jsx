@@ -81,7 +81,7 @@ const FormGiaoDich = ({ onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newDGD = {
-      address: selectedDistrict,
+      district: selectedDistrict,
       manager: selectedManager,
       name: name,
       id_company: id_company,

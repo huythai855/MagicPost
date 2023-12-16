@@ -105,7 +105,7 @@ const FormTapKet = ({ onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newDTK = {
-      address: selectedProvince,
+      province: selectedProvince,
       manager: selectedManager,
       name: name,
       id_company: id_company,

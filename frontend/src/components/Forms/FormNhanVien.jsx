@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useStateContext } from "../../contexts/ContextProvider";
 
-const FormNhanVien = ({ onSubmit }) => {
+const FormNhanVien = ({ onSubmit, boss }) => {
   const API =
     "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/NhanVien";
+
   const [fullName, setFullName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -76,7 +77,6 @@ const FormNhanVien = ({ onSubmit }) => {
                 required=""
               />
             </div>
-
             <div class="w-full">
               <label
                 for="brand"
@@ -190,10 +190,35 @@ const FormNhanVien = ({ onSubmit }) => {
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               >
                 <option selected="">Select role</option>
-                <option value="Giao dịch viên">Giao dịch viên</option>
-                <option value="Nhân viên giao hàng">Nhân viên giao hàng</option>
+                {boss === "Giám đốc" && (
+                  <>
+                    <option value="Trưởng điểm giao dịch">
+                      Trưởng điểm giao dịch
+                    </option>
+                    <option value="Trưởng điểm tập kết">
+                      Trưởng điểm tập kết
+                    </option>
+                  </>
+                )}
+                {boss === "Trưởng điểm tập kết" && (
+                  <>
+                    <option value="Nhân viên tập kết">Nhân viên tập kết</option>
+                    <option value="Nhân viên giao hàng">
+                      Nhân viên giao hàng
+                    </option>
+                  </>
+                )}
+                {boss === "Trưởng điểm giao dịch" && (
+                  <>
+                    <option value="Giao dịch viên">Giao dịch viên</option>
+                    <option value="Nhân viên giao hàng">
+                      Nhân viên giao hàng
+                    </option>
+                  </>
+                )}
               </select>
             </div>
+
             <div className="sm:col-span-2">
               <label
                 htmlFor="province"
@@ -213,7 +238,6 @@ const FormNhanVien = ({ onSubmit }) => {
                 required
               />
             </div>
-
             {/* Other form elements */}
           </div>
           <div className="flex justify-end">

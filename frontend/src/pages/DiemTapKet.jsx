@@ -63,7 +63,7 @@ const DiemTapKet = () => {
         </button>
         <div>
           <SortingTable
-            title={"Giám đốc"}
+            title={"Điểm tập kết"}
             dataSource={diemTapKetData}
             API={API}
             className="w-full"

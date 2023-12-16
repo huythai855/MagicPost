@@ -24,24 +24,55 @@ function AppRouter() {
           <Routes>
             {/* Giamdoc */}
             <Route path="/" element={<Overview />} />
-            <Route path="/overview" element={<Overview />} />
-            <Route path="/diemtapket" element={<DiemTapKet />} />
-            <Route path="/diemgiaodich" element={<DiemGiaoDich />} />
-            <Route path="/nhanvien" element={<DSNhanVien />} />
+            <Route path="director/overview" element={<Overview />} />
+            <Route path="director/diemtapket" element={<DiemTapKet />} />
+            <Route path="director/diemgiaodich" element={<DiemGiaoDich />} />
+            <Route
+              path="director/nhanvien"
+              element={<DSNhanVien boss={"Giám đốc"} />}
+            />
+
             {/* Truongdiemtapket */}
+            <Route path="gp_lead/overview" element={<Overview />} />
+            <Route
+              path="gp_lead/danhsachdonhang"
+              element={<DanhSachDonHang />}
+            />
+            <Route
+              path="gp_lead/nhanvien"
+              element={<DSNhanVien boss={"Trưởng điểm tập kết"} />}
+            />
 
             {/* Truongdiemgiaodich*/}
-            <Route path="/danhsachdonhang" element={<DanhSachDonHang />} />
+            <Route path="tp_lead/overview" element={<Overview />} />
+            <Route
+              path="tp_lead/danhsachdonhang"
+              element={<DanhSachDonHang />}
+            />
+            <Route
+              path="tp_lead/nhanvien"
+              element={<DSNhanVien boss={"Trưởng điểm giao dịch"} />}
+            />
 
             {/* Nhanvientapket */}
+            <Route
+              path="gp_employee/danhsachdonhang"
+              element={<DanhSachDonHang />}
+            />
 
             {/* Nhanviengiaodich */}
-            <Route path="/donnoikhu" element={<DanhSachDonNoiKhu />} />
-            <Route path="/donngoaikhu" element={<DanhSachNgoaiKhu />} />
-            <Route path="/danhsachkienhang" element={<DanhSachKienHang />} />
-            <Route path="/formbiennhan" element={<FormBienNhan />} />
-
-            {/* Nhanvienvanchuyen */}
+            <Route
+              path="tp_employee/donnoikhu"
+              element={<DanhSachDonNoiKhu />}
+            />
+            <Route
+              path="tp_employee/donngoaikhu"
+              element={<DanhSachNgoaiKhu />}
+            />
+            <Route
+              path="tp_employee/donngoaikhu/formbiennhan"
+              element={<FormBienNhan />}
+            />
 
             {/* Nhanviengiaohang */}
           </Routes>

@@ -54,7 +54,7 @@ const DanhSachNgoaiKhu = () => {
   const addDonHang = () => {
     // Thực hiện logic khác nếu cần
     // Chuyển hướng đến trang "/formbiennhan"
-    navigate("/formbiennhan");
+    navigate("./formbiennhan");
   };
 
   <button
@@ -72,25 +72,15 @@ const DanhSachNgoaiKhu = () => {
         >
           Tạo đơn mới
         </button>
-        <button
-          onClick={toggle}
-          className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
-        >
-          Tạo kiện hàng
-        </button>
+
         <div>
-          <TableSelection
+          <SortingTable
             title={"Đơn hàng"}
             dataSource={donHangData}
             className="w-full"
           />
         </div>
       </div>
-      <CustomModal
-        isShowing={isShowing}
-        hide={toggle}
-        children={<FormNhanVien />}
-      />
     </>
   );
 };

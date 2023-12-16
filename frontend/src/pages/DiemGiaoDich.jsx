@@ -59,7 +59,7 @@ const DiemGiaoDich = () => {
         </button>
         <div>
           <SortingTable
-            title={"Giám đốc"}
+            title={"Điểm giao dịch"}
             dataSource={diemGiaoDichData}
             API={API}
             className="w-full"
