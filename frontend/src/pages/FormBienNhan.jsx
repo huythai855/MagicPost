@@ -5,7 +5,7 @@ import QRCode from "qrcode.react";
 
 const FormBienNhan = () => {
   const host = "https://provinces.open-api.vn/api/";
-
+  const API = "https://6570c47809586eff6641ea69.mockapi.io/donhang/donhang";
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
   const [provincesNhan, setProvincesNhan] = useState();
@@ -14,6 +14,8 @@ const FormBienNhan = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [selectedProvinceNhan, setSelectedProvinceNhan] = useState("");
   const [selectedDistrictNhan, setSelectedDistrictNhan] = useState("");
+  const [status, setStatus] = useState("Chờ gửi");
+
   useEffect(() => {
     const fetchProvinces = async () => {
       try {
@@ -134,12 +136,38 @@ const FormBienNhan = () => {
     }));
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your submission logic here
-    console.log("Form submitted:", formData);
+    const newDH = {
+      maDonHang: "65852",
+      address: formData.nguoiNhan.diaChi,
+      date: `${ngay} / ${thang} / ${nam}`,
+      typeOfGoods: formData.donHang.loaiHang,
+      fullName: formData.nguoiGui.hoTen,
+      status: status,
+    };
+
+    console.log(newDH);
+    try {
+      const response = await fetch(API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newDH),
+      });
+
+      const json = await response.json();
+      const id = json.id;
+
+      // await getData();
+      alert("Your id is: " + id);
+    } catch (error) {
+      alert(error.message);
+    }
+    // onSubmit();
   };
+
   const d = new Date();
   const ngay = d.getDate();
   const thang = d.getMonth() + 1; // Lưu ý: Tháng bắt đầu từ 0, nên cần cộng thêm 1
@@ -170,13 +198,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Họ và tên:
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nguyen Van A"
                   value={formData.nguoiGui.hoTen}
                   onChange={(e) =>
@@ -236,13 +264,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Địa chỉ:
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="144 Xuan Thuy"
                   value={formData.nguoiGui.diaChi}
                   onChange={(e) =>
@@ -254,13 +282,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Số điện thoại
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0987654343"
                   value={formData.nguoiGui.dienThoai}
                   onChange={(e) =>
@@ -279,13 +307,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Họ và tên:
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nguyen Van A"
                   value={formData.nguoiNhan.hoTen}
                   onChange={(e) =>
@@ -344,13 +372,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Địa chỉ:
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="144 Xuan Thuy"
                   value={formData.nguoiNhan.diaChi}
                   onChange={(e) =>
@@ -362,13 +390,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Số điện thoại
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0987654343"
                   value={formData.nguoiNhan.dienThoai}
                   onChange={(e) =>
@@ -387,13 +415,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Loại hàng
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="quần áo"
                   value={formData.donHang.loaiHang}
                   onChange={(e) =>
@@ -405,13 +433,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Khối lượng
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0.5kg"
                   value={formData.donHang.khoiLuong}
                   onChange={(e) =>
@@ -423,13 +451,13 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Tổng cước
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="30.000"
                   value={formData.donHang.tongCuoc}
                   onChange={(e) =>
@@ -441,12 +469,12 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Dịch vụ thêm
                 </label>
                 <select
-                  class="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   value={formData.donHang.dichVuThem}
                   onChange={(e) =>
                     handleInputChange("donHang", "dichVuThem", e.target.value)
@@ -462,12 +490,12 @@ const FormBienNhan = () => {
               <div className="w-90">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Người thanh toán cước
                 </label>
                 <select
-                  class="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   value={formData.donHang.nguoiThanhToanCuoc}
                   onChange={(e) =>
                     handleInputChange(
@@ -486,13 +514,13 @@ const FormBienNhan = () => {
               <div className="w-100">
                 <label
                   for="first_name"
-                  class="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Người tạo đơn
                 </label>
                 <input
                   type="text"
-                  class="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nguyen Van A"
                   value={formData.donHang.nguoiTaoDon}
                   onChange={(e) =>

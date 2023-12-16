@@ -88,10 +88,9 @@ const Sidebar = ({ role: initialRole, children }) => {
             ))
           )}
         </div>
-        <div className="pt-64 "></div>
-        {linksTN.map((item) => (
+        {/* <div className="pt-64 "></div> */}
+        {/* {linksTN.map((item) => (
           <div key={item.title} className="mt-40">
-            {/* <p className='text-gray-400 m-3 mt-4 uppercase'>{item.title}</p> */}
             {item.links.map((link) => (
               <NavLink
                 to={`/${link.path}`}
@@ -109,7 +108,7 @@ const Sidebar = ({ role: initialRole, children }) => {
               </NavLink>
             ))}
           </div>
-        ))}
+        ))} */}
       </div>
       <main>{children}</main>
     </div>

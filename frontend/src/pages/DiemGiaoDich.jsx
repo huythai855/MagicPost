@@ -69,6 +69,7 @@ const DiemGiaoDich = () => {
       <CustomModal
         isShowing={isShowing}
         hide={toggle}
+        title={"điểm giao dịch"}
         children={<FormGiaoDich onSubmit={handleFormSubmit} />}
       />
     </>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SortingTable from "../components/Table/SortingTable";
-import TableSelection from "../components/Table/TableSelection";
+import TableDonHang from "../components/Table/TableDonHang";
 
 import FormNhanVien from "../components/Forms/FormNhanVien";
 import CustomModal from "../components/Modal/CustomModal";
@@ -74,8 +74,8 @@ const DanhSachNgoaiKhu = () => {
         </button>
 
         <div>
-          <SortingTable
-            title={"Đơn hàng"}
+          <TableDonHang
+            title={"Đơn hàng ngoại khu"}
             dataSource={donHangData}
             className="w-full"
           />

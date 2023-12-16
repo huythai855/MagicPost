@@ -57,7 +57,7 @@ function AppRouter() {
             {/* Nhanvientapket */}
             <Route
               path="gp_employee/danhsachdonhang"
-              element={<DanhSachDonHang />}
+              element={<DanhSachDonHang boss="Nhân viên tập kết" />}
             />
 
             {/* Nhanviengiaodich */}

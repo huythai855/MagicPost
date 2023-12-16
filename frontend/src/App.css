@@ -59,8 +59,7 @@ main{
 }
 .sidebar{
   background: #181c1e;
- 
-  height: 100vh;
+  /* height: 120vh; */
   width: 200px;
   transition: all 0.5s;
 }

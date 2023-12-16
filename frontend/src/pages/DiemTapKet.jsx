@@ -72,6 +72,7 @@ const DiemTapKet = () => {
       </div>
       <CustomModal
         isShowing={isShowing}
+        title={"điểm tập kết"}
         hide={toggle}
         children={<FormTapKet onSubmit={handleFormSubmit} />}
       />

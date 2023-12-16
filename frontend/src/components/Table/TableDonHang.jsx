@@ -12,7 +12,7 @@ import { MdLastPage } from "react-icons/md";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { MdEdit } from "react-icons/md";
 import FormTapKet from "../Forms/FormTapKet";
-import FormNhanVien from "../Forms/FormNhanVien";
+import { FaLink } from "react-icons/fa6";
 
 import FormDelete from "../Forms/FormDelete";
 import CustomModal from "../Modal/CustomModal";
@@ -20,9 +20,8 @@ import EditModal from "../Modal/EditModal";
 
 import "./table.css";
 import axios from "axios";
-import FormGiaoDich from "../Forms/FormGiaoDich";
 
-const SortingTable = ({ title, dataSource, API }) => {
+const TableDonHang = ({ title, dataSource, API }) => {
   const columns = useMemo(() => {
     const selectedColumns = COLUMNS.find((group) => group.title === title);
     return selectedColumns ? selectedColumns.columns : [];
@@ -51,55 +50,10 @@ const SortingTable = ({ title, dataSource, API }) => {
   const { pageIndex, pageSize } = state;
   const [selectedRow, setSelectedRow] = useState(null);
   const [deleteId, setDeleteId] = useState("");
-  const [rowToEdit, setRowToEdit] = useState(null);
 
-  const handleClose = () => {
-    setShow(false);
-  };
-  const handleOpen = (id) => {
-    setDeleteId(id);
-    setShow(true);
-    console.log(id);
-  };
+  const { dataValue, setDataValue } = useState(null);
 
-  const handleEditClose = () => {
-    setShowEdit(false);
-  };
-  const handleEditOpen = async (API, id) => {
-    setRowToEdit(id);
-    await handleGetData(API, id);
-    setShowEdit(true);
-  };
-  const handleGetData = async (API, id) => {
-    console.log(id);
-    const index = Number(dataSource[id].id);
-    try {
-      const res = await fetch(`${API}/${index}`, { method: "GET" }).then(
-        async (res) => {
-          const re = await res.json();
-          console.log(re);
-        }
-      );
-    } catch (error) {
-      alert(error.message);
-    }
-    setShow(false);
-  };
-  const handleDelete = async (API, id) => {
-    await handleGetData(API, id);
-    console.log(id);
-    const index = Number(dataSource[id].id);
-    try {
-      const res = await fetch(`${API}/${index}`, { method: "DELETE" }).then(
-        (res) => {
-          console.log(res.id);
-        }
-      );
-    } catch (error) {
-      alert(error.message);
-    }
-    setShow(false);
-  };
+  const handleViewOpen = () => {};
 
   return (
     <div className=" overflow-x-auto shadow-md sm:rounded-l ">
@@ -135,7 +89,7 @@ const SortingTable = ({ title, dataSource, API }) => {
                     )}
                   </th>
                 ))}
-                <th key="ACTION">ACTION</th>
+                {title === "Đơn hàng ngoại khu" && <th key="ACTION">ACTION</th>}
               </tr>
               <tr key="filter-row">
                 {headerGroup.headers.map((column) => (
@@ -143,7 +97,9 @@ const SortingTable = ({ title, dataSource, API }) => {
                     {column.canFilter ? column.render("Filter") : null}
                   </th>
                 ))}
-                <th key="empty"></th>
+                {title === "Đơn hàng ngoại khu" && (
+                  <th style={{ backgroundColor: "#04AA6D" }} key="empty"></th>
+                )}
               </tr>
             </React.Fragment>
           ))}
@@ -166,31 +122,18 @@ const SortingTable = ({ title, dataSource, API }) => {
                     {cell.render("Cell")}
                   </td>
                 ))}
-                <td className="px-4 py-4 w-24">
-                  <div className="flex justify-center items-center">
-                    <button
-                      id="edit"
-                      className="text-lg pr-2"
-                      onClick={() => {
-                        handleEditOpen(API, row.id); // Add parentheses to invoke the function
-                      }}
-                    >
-                      <MdEdit />
-                    </button>
-
-                    <button
-                      id="delete"
-                      className="text-lg pl-2"
-                      onClick={() => {
-                        console.log(row.id); // Log the current row.id
-                        // setRowID(row.id);
-                        handleOpen(row.id); // Perform other actions with the updated state
-                      }}
-                    >
-                      <RiDeleteBinFill />
-                    </button>
-                  </div>
-                </td>
+                {title === "Đơn hàng ngoại khu" && (
+                  <td>
+                    <div className="flex justify-center items-center">
+                      <button
+                        id="send"
+                        className="focus:outline-none w-28 text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5   dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
+                      >
+                        Gửi hàng
+                      </button>
+                    </div>
+                  </td>
+                )}
               </tr>
             );
           })}
@@ -240,42 +183,7 @@ const SortingTable = ({ title, dataSource, API }) => {
           <MdLastPage />
         </button>
       </div>
-
-      <CustomModal
-        isShowing={show}
-        hide={handleClose}
-        children={
-          <FormDelete
-            onClose={handleClose}
-            onDelete={() => handleDelete(API, deleteId)} // Pass a function reference
-          />
-        }
-      />
-      {title === "Điểm tập kết" && (
-        <EditModal
-          isShowing={showEdit}
-          hide={handleEditClose}
-          title={"điểm tập kết"}
-          children={<FormTapKet />}
-        />
-      )}
-      {title === "Điểm giao dịch" && (
-        <EditModal
-          isShowing={showEdit}
-          hide={handleEditClose}
-          title={"điểm giao dịch"}
-          children={<FormGiaoDich />}
-        />
-      )}
-      {title === "Nhân viên" && (
-        <EditModal
-          isShowing={showEdit}
-          hide={handleEditClose}
-          title={"nhân viên"}
-          children={<FormNhanVien />}
-        />
-      )}
     </div>
   );
 };
-export default SortingTable;
+export default TableDonHang;

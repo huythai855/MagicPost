@@ -72,6 +72,7 @@ const DSNhanVien = ({ boss }) => {
         <CustomModal
           isShowing={isShowing}
           hide={toggle}
+          title={"nhân viên"}
           children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
         />
       )}
@@ -79,6 +80,7 @@ const DSNhanVien = ({ boss }) => {
         <CustomModal
           isShowing={isShowing}
           hide={toggle}
+          title={"nhân viên"}
           children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
         />
       )}
@@ -86,6 +88,7 @@ const DSNhanVien = ({ boss }) => {
         <CustomModal
           isShowing={isShowing}
           hide={toggle}
+          title={"nhân viên"}
           children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
         />
       )}

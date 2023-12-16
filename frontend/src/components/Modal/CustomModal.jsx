@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "../Modal/CustomModal.css";
 
-const CustomModal = ({ isShowing, hide, children, onClose }) =>
+const CustomModal = ({ isShowing, hide, children, onClose, title }) =>
   isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
@@ -16,6 +16,9 @@ const CustomModal = ({ isShowing, hide, children, onClose }) =>
           >
             <div className="modal">
               <div className="modal-header">
+                <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+                  Tạo {title}
+                </h2>
                 <button
                   type="button"
                   className="modal-close-button"

@@ -124,7 +124,7 @@ const FormTapKet = ({ onSubmit }) => {
 
       const json = await response.json();
       const id = json.id;
-      navigate("/diemtapket");
+
       // await getData();
       // alert("Your id is: " + id);
     } catch (error) {
@@ -136,9 +136,6 @@ const FormTapKet = ({ onSubmit }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-          Tạo điểm tập kết
-        </h2>
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <div className="sm:col-span-2">
             <label

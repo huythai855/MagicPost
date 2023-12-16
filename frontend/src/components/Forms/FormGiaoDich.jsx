@@ -111,9 +111,6 @@ const FormGiaoDich = ({ onSubmit }) => {
 
   return (
     <div>
-      <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-        Tạo điểm giao dịch
-      </h2>
       <form onSubmit={handleSubmit}>
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           {/* Other form elements */}

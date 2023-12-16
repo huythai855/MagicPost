@@ -52,15 +52,12 @@ const FormNhanVien = ({ onSubmit, boss }) => {
     <div>
       <>
         <form onSubmit={handleSubmit}>
-          <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-            Tạo nhân viên
-          </h2>
-          <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
             {/* Other form elements */}
-            <div class="sm:col-span-2">
+            <div className="sm:col-span-2">
               <label
-                for="name"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Họ tên
               </label>
@@ -72,15 +69,15 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 type="text"
                 name="name"
                 id="name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Nhập họ tên"
                 required=""
               />
             </div>
-            <div class="w-full">
+            <div className="w-full">
               <label
-                for="brand"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="brand"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Username
               </label>
@@ -92,15 +89,15 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 type="text"
                 name="brand"
                 id="brand"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="username"
                 required=""
               />
             </div>
-            <div class="w-full">
+            <div className="w-full">
               <label
-                for="password"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="password"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Password
               </label>
@@ -112,14 +109,14 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 type="password"
                 id="password"
                 placeholder="password"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
-            <div class="w-full">
+            <div className="w-full">
               <label
-                for="name"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 CCCD
               </label>
@@ -129,17 +126,17 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                   setCCCD(e.target.value);
                 }}
                 type="text"
-                name="name"
-                id="name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                name="CCCD"
+                id="CCCD"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Nhập CCCD"
                 required=""
               />
             </div>
-            <div class="w-full">
+            <div className="w-full">
               <label
-                for="dateOfBirth"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="dateOfBirth"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Ngày sinh
               </label>
@@ -149,16 +146,16 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                   setDateOfBirth(e.target.value);
                 }}
                 type="date"
-                name="name"
-                id="name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                name="dateOfBirth"
+                id="dateOfBirth"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 required=""
               />
             </div>
             <div className="sm:col-span-1">
               <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="email"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Email
               </label>
@@ -169,15 +166,15 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 }}
                 type="email"
                 id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="name@flowbite.com"
                 required
               />
             </div>
             <div className="sm:col-span-1">
               <label
-                for="category"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="category"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Vai trò
               </label>
@@ -187,9 +184,9 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                   setRole(e.target.value);
                 }}
                 id="category"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               >
-                <option selected="">Select role</option>
+                <option defaultValue="">Select role</option>
                 {boss === "Giám đốc" && (
                   <>
                     <option value="Trưởng điểm giao dịch">
@@ -232,8 +229,8 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                   setAddress(e.target.value);
                 }}
                 type="text"
-                id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                id="address"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="44 Xuân Thuỷ, Hà Nội"
                 required
               />
@@ -243,7 +240,7 @@ const FormNhanVien = ({ onSubmit, boss }) => {
           <div className="flex justify-end">
             <button
               type="submit"
-              class="inline-flex items-center  px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-buttonCreate rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+              className="inline-flex items-center  px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-buttonCreate rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
             >
               Tạo nhân viên
             </button>

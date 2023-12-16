@@ -1,26 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import { Outlet } from "react-router-dom";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import { Stacked, Pie, Button } from "../components";
 import { earningData, SparklineAreaData, ecomPieChartData } from "../data/data";
 import { useStateContext } from "../contexts/ContextProvider";
+import TableDonHang from "../components/Table/TableDonHang";
+
+import { useNavigate } from "react-router-dom";
 const Overview = () => {
+  const [donHangData, setDonHangData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://657dee733e3f5b18946358ee.mockapi.io/thongke",
+          {
+            method: "GET",
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setDonHangData(data);
+        } else {
+          setError("Error fetching data");
+        }
+      } catch (error) {
+        setError("Error fetching data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
-    <div className="mt-12">
-      {/* <div className="flex flex-wrap lg:flex-nowrap justify-center">
-        <div
-          className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-56 
-        rounded-xl w-full lg:w-2/3 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center"
-        >
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="mt-8 font-bold text-xl text-gray-500">Lợi nhuận</p>
-              <p className="text-2xl">$63,448.78</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
+    <div className="mt-12 ">
       <div className="flex m-3 flex-wrap justify-center gap-5 items-center">
         {earningData.map((item) => (
           <div
@@ -46,7 +74,14 @@ const Overview = () => {
           </div>
         ))}
       </div>
-      <div className="flex gap-10 flex-wrap justify-center">
+      <div className="flex mt-10 gap-10 flex-wrap justify-center">
+        <TableDonHang
+          title={"Thống kê"}
+          dataSource={donHangData}
+          className="w-full"
+        />
+      </div>
+      <div className="flex mt-10 gap-10 flex-wrap justify-center">
         <div
           className="bg-white dark:text-gray-200 
          m-3 p-4 rounded-2xl"
