@@ -110,7 +110,18 @@ const TableDonHang = ({ title, dataSource, API }) => {
         >
           {page.map((row) => {
             prepareRow(row);
+            let action = "";
 
+            if (row.values && row.values.status) {
+              if (row.values.status === "Chờ gửi") {
+                action = "Gửi hàng";
+              } else if (
+                row.values.status === "Chờ xác nhận" ||
+                row.values.status === "Giao thành công"
+              ) {
+                action = "Xác nhận";
+              }
+            }
             return (
               <tr {...row.getRowProps()} key={row.id}>
                 {row.cells.map((cell, index) => (
@@ -125,12 +136,21 @@ const TableDonHang = ({ title, dataSource, API }) => {
                 {title === "Đơn hàng ngoại khu" && (
                   <td>
                     <div className="flex justify-center items-center">
-                      <button
-                        id="send"
-                        className="focus:outline-none w-28 text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5   dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
-                      >
-                        Gửi hàng
-                      </button>
+                      {row.value.status !== "Đang giao" ? (
+                        <button
+                          id="send"
+                          className="focus:outline-none w-28 text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
+                        >
+                          {action}
+                        </button>
+                      ) : (
+                        <button
+                          id="send"
+                          className="focus:outline-none w-28 text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
+                        >
+                          HIHI
+                        </button>
+                      )}
                     </div>
                   </td>
                 )}

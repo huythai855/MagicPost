@@ -47,19 +47,13 @@ const Navbar = () => {
   }, [screenSize]);
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
-      <NavButton
-        title="Menu"
-        customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
-        color="black"
-        icon={<IoMenu />}
-      />
       <div className="flex">
-        <NavButton
+        {/* <NavButton
           title="Notifications"
           customFunc={() => handleClick("notification")}
           color="black"
           icon={<IoMdNotificationsOutline />}
-        />
+        /> */}
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"

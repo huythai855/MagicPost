@@ -48,6 +48,8 @@ const DSNhanVien = ({ boss }) => {
   }
   const handleFormSubmit = () => {
     // Close the modal when the form is submitted
+    window.location.reload();
+
     toggle();
   };
   return (

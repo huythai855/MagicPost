@@ -1,5 +1,4 @@
-import React from "react";
-import { BrowserRouter, Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import "./App.css";
 import {
@@ -16,69 +15,33 @@ import {
 } from "./pages";
 import { Sidebar, Navbar } from "./components";
 import { ContextProvider } from "./contexts/ContextProvider";
+import { publicRoutes } from "./routes";
 function AppRouter() {
   return (
-    <BrowserRouter>
-      <Sidebar role="Nhân viên giao dịch">
+    <Router>
+      <div className="App">
         <ContextProvider>
           <Routes>
-            {/* Giamdoc */}
-            <Route path="/" element={<Overview />} />
-            <Route path="director/overview" element={<Overview />} />
-            <Route path="director/diemtapket" element={<DiemTapKet />} />
-            <Route path="director/diemgiaodich" element={<DiemGiaoDich />} />
-            <Route
-              path="director/nhanvien"
-              element={<DSNhanVien boss={"Giám đốc"} />}
-            />
-
-            {/* Truongdiemtapket */}
-            <Route path="gp_lead/overview" element={<Overview />} />
-            <Route
-              path="gp_lead/danhsachdonhang"
-              element={<DanhSachDonHang />}
-            />
-            <Route
-              path="gp_lead/nhanvien"
-              element={<DSNhanVien boss={"Trưởng điểm tập kết"} />}
-            />
-
-            {/* Truongdiemgiaodich*/}
-            <Route path="tp_lead/overview" element={<Overview />} />
-            <Route
-              path="tp_lead/danhsachdonhang"
-              element={<DanhSachDonHang />}
-            />
-            <Route
-              path="tp_lead/nhanvien"
-              element={<DSNhanVien boss={"Trưởng điểm giao dịch"} />}
-            />
-
-            {/* Nhanvientapket */}
-            <Route
-              path="gp_employee/danhsachdonhang"
-              element={<DanhSachDonHang boss="Nhân viên tập kết" />}
-            />
-
-            {/* Nhanviengiaodich */}
-            <Route
-              path="tp_employee/donnoikhu"
-              element={<DanhSachDonNoiKhu />}
-            />
-            <Route
-              path="tp_employee/donngoaikhu"
-              element={<DanhSachNgoaiKhu />}
-            />
-            <Route
-              path="tp_employee/donngoaikhu/formbiennhan"
-              element={<FormBienNhan />}
-            />
-
-            {/* Nhanviengiaohang */}
+            {publicRoutes.map((route, index) => {
+              const Page = route.component;
+              const boss = route.boss;
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    <Sidebar role="Giám đốc">
+                      <Navbar />
+                      <Page boss={boss} />
+                    </Sidebar>
+                  }
+                />
+              );
+            })}
           </Routes>
         </ContextProvider>
-      </Sidebar>
-    </BrowserRouter>
+      </div>
+    </Router>
   );
 }
 export default AppRouter;
