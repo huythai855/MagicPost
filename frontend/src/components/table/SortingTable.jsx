@@ -17,7 +17,7 @@ import FormNhanVien from "../Forms/FormNhanVien";
 import FormDelete from "../Forms/FormDelete";
 import CustomModal from "../Modal/CustomModal";
 import EditModal from "../Modal/EditModal";
-
+import DeleteModal from "../Modal/DeleteModal";
 import "./table.css";
 import axios from "axios";
 import FormGiaoDich from "../Forms/FormGiaoDich";
@@ -241,7 +241,7 @@ const SortingTable = ({ title, dataSource, API }) => {
         </button>
       </div>
 
-      <CustomModal
+      <DeleteModal
         isShowing={show}
         hide={handleClose}
         children={
