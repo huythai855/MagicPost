@@ -26,7 +26,7 @@
             console.log(data);
 
             var request = new XMLHttpRequest();
-            request.open('POST', 'https://shiny-orbit-jq6wp4qv679cjqww-3000.app.github.dev/api/login', true);
+            request.open('POST', 'https://shiny-orbit-jq6wp4qv679cjqww-3001.app.github.dev/api/login', true);
             request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
             request.send(JSON.stringify(data));
 
@@ -36,9 +36,13 @@
                     console.log(data);
                     if (data.message == 'Login success') {
                         // document.cookie = 'token=' + data.user;
-                        setCookie('user', data.user, 1);
+                        setCookie('username', data.username, 1);
+                        setCookie('id', data.id, 1);
+                        setCookie('fullname', data.fullname, 1);
+                        setCookie('role', data.role, 1);
+
                         console.log(document.cookie);
-                        window.location.href = 'https://shiny-orbit-jq6wp4qv679cjqww-3000.app.github.dev/home';
+                        window.location.href = 'https://shiny-orbit-jq6wp4qv679cjqww-3001.app.github.dev/home';
                     } else {
                         alert('Invalid username or password');
                     }
