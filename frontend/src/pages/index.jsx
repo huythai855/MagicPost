@@ -7,3 +7,4 @@ export { default as DanhSachDonHang } from "./DanhSachDonHang";
 export { default as DanhSachNgoaiKhu } from "./DanhSachNgoaiKhu";
 export { default as DanhSachDonNoiKhu } from "./DanhSachDonNoiKhu";
 export { default as FormBienNhan } from "./FormBienNhan";
+export {default as Login} from './Login'

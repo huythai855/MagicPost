@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter, Router, Route, Routes, Link } from "react-router-dom";
 import "./index.css";
 import "./App.css";
+import { useEffect, useState } from 'react';
 import {
+  Login,
   MagicPost,
   Overview,
   DiemGiaoDich,
@@ -17,11 +19,16 @@ import {
 import { Sidebar, Navbar } from "./components";
 import { ContextProvider } from "./contexts/ContextProvider";
 function AppRouter() {
+  const [email, setEmail] = useState("")
   return (
     <BrowserRouter>
       <Sidebar role="Nhân viên giao dịch">
         <ContextProvider>
           <Routes>
+
+            {/* Dang nhap */}
+            <Route path="/login" element={<Login setEmail={setEmail} />} />
+
             {/* Giamdoc */}
             <Route path="/" element={<Overview />} />
             <Route path="director/overview" element={<Overview />} />
