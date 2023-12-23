@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+
+
+    <script>
+        function search() {
+            var id = document.getElementById('id').value;
+            console.log(id);
+
+            var data = {
+                id: id,
+            };
+
+            console.log(data);
+
+            var request = new XMLHttpRequest();
+            request.open('POST', 'http://localhost:3001/api/search', true);
+            request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            request.send(JSON.stringify(data));
+
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+                    var data = JSON.parse(request.responseText);
+                    console.log('search success');
+                    console.log(data);
+                    // console.log("message: ", data.message);
+                    
+
+                    // Định làm hộ đoạn xử lý này nma lười lắm nên ai làm giao diện phần này thì tự sửa (chia các trường hợp để hiển thị ra giao diện) nhé .-.
+                    if(data.message != undefined){
+                        document.getElementById('stage1').innerHTML = data.message;
+                    }
+                    else{
+                        document.getElementById('stage1').innerHTML = JSON.stringify(data);
+                    }
+                } else {
+                    console.log('search error');
+                }
+            };
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="title">Search</div>
+    <br />
+
+    <label>Mã vận đơn</label> <input type="text" id="id" name="id" />
+    <br />
+    <button onclick="search()">Tìm kiếm</button>
+
+    <br /><br />
+
+
+    
+    <!-- điểm giao dịch nhận -->
+    <div id="stage1"></div>
+    <div id="time1"></div>
+
+    <!-- điểm tập kết nhận -->
+    <div id="stage3"></div>
+    <div id="time3"></div>
+
+    <!-- điểm tập kết giao -->
+    <div id="stage5"></div>
+    <div id="time5"></div>
+
+    <!-- điểm giao dịch giao -->
+    <div id="stage7"></div>
+    <div id="time7"></div>
+
+    <!-- giao đến khách hàng -->
+    <div id="stage9"></div>
+    <div id="time9"></div>
+
+
+</body>
+</html>

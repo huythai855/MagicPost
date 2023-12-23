@@ -27,7 +27,34 @@ app.get('/home', (req, res, next) => {
 app.get('/clear_cookies', (req, res, next) => {
     res.sendFile(__dirname + '/public/clear-cookies.html')
 })
+
+app.get('/search', (req, res, next) => {
+    res.sendFile(__dirname + '/public/search.html')
+});
 ///
+
+
+/// SEARCH
+app.post('/api/search', (req, res, next) => {
+    console.log("/api/search triggered");
+    console.log(req.body);
+    var id = req.body.id;
+    console.log(id);
+
+    db.all("SELECT * FROM items WHERE id = ?", [id], (err, rows) => {
+        if (err) {
+            console.log(err);
+            res.json({ message: 'Lỗi tìm kiếm' })
+        } else {
+            console.log(rows);
+            if(rows.length == 0) {
+                res.json({ message: 'Không có đơn hàng như tìm kiếm' })
+            }
+            else
+                res.json(rows[0]);
+        }
+    });
+});
 
 
 /// LOGIN
@@ -284,6 +311,12 @@ app.post('/employees/new', async (req, res, next) => {
     );
 });
 
+
+
+
+app.get('/', (req, res) => {
+    res.send('Homepage. Nothing to see here!')
+})
 
 
 app.get('/', (req, res) => {
