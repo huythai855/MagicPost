@@ -5,6 +5,7 @@ import "./App.css";
 import { useEffect, useState } from 'react';
 import {
   Login,
+  Shipper,
   MagicPost,
   Overview,
   DiemGiaoDich,
@@ -28,6 +29,9 @@ function AppRouter() {
 
             {/* Dang nhap */}
             <Route path="/login" element={<Login setEmail={setEmail} />} />
+
+            {/* Shipper */}
+            <Route path="/shipper" element={<Shipper />} />
 
             {/* Giamdoc */}
             <Route path="/" element={<Overview />} />
