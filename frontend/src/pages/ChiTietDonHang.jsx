@@ -2,25 +2,32 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import QRCode from "qrcode.react";
-const API = "https://6586f3f1468ef171392f0aae.mockapi.io/detail"
-const ChiTietDonHang = () => {
+const API = "https://6586f3f1468ef171392f0aae.mockapi.io/detail";
+const ChiTietDonHang = ({ packageId }) => {
   // State for form data
-  const [formData, setFormData] = useState([]);
+  // const [formData, setFormData] = useState([]);
 
-  const fetchData =  async (url) => {
-      try{
-          const res = await fetch(url);
-          const data = await res.json();
-          setFormData(data);
-          console.log(data);
+  const fetchData = async (url) => {
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      setFormData(data);
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  const [formData, setFormData] = useState({
+    sender: "",
+    // ... other fields
+  });
 
-      } catch(e) {
-          console.error(e)
-      }
-  }
   useEffect(() => {
-      fetchData(API);
-  }, [])
+    fetchData(`${API}/${packageId}`);
+  }, [packageId]);
+  useEffect(() => {
+    fetchData(API);
+  }, []);
 
   return (
     <div className="bg-gray-100 p-4 mx-20 mt-10 ">
@@ -75,8 +82,7 @@ const ChiTietDonHang = () => {
                     value={formData.senderpro}
                     id="province"
                     className="bg-gray-50 mr-28  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  >        
-                  </select>
+                  ></select>
                 </div>
 
                 <div className="md:ml-10 md:col-span-2">
@@ -93,8 +99,7 @@ const ChiTietDonHang = () => {
                     id="district"
                     className="bg-gray-50 mr-28   border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     // Other attributes
-                  >
-                  </select>
+                  ></select>
                 </div>
               </div>
 
@@ -110,7 +115,6 @@ const ChiTietDonHang = () => {
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="144 Xuan Thuy"
                   value={formData.senderlo}
-            
                 />
               </div>
               <div className="w-90">
@@ -163,9 +167,7 @@ const ChiTietDonHang = () => {
                     id="province"
                     className="bg-gray-50 mr-28  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     // Other attributes
-                  >
-                
-                  </select>
+                  ></select>
                 </div>
 
                 <div className="md:ml-10 md:col-span-2">
@@ -183,8 +185,7 @@ const ChiTietDonHang = () => {
                     className="bg-gray-50 mr-28   border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
 
                     // Other attributes
-                  >
-                  </select>
+                  ></select>
                 </div>
               </div>
               <div className="w-90">
@@ -274,8 +275,7 @@ const ChiTietDonHang = () => {
                 <select
                   className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   value={formData.service}
-                >
-                </select>
+                ></select>
               </div>
 
               <div className="w-90">
@@ -316,9 +316,7 @@ const ChiTietDonHang = () => {
                 >
                   Trạng thái
                 </label>
-                <select
-                  className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
+                <select className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option value="">Thay đổi trạng thái</option>
                   <option value="danggiao">Đang giao</option>
                   <option value="thanhcong">Giao thành công</option>
@@ -328,20 +326,19 @@ const ChiTietDonHang = () => {
 
               <div className="flex justify-end mt-40">
                 <button
-                //   type="submit"
+                  //   type="submit"
                   className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
                 >
                   Xác nhận
                 </button>
 
                 <button
-                //   type="submit"
+                  //   type="submit"
                   className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
                 >
                   Chỉ đường
                 </button>
               </div>
-
             </div>
           </div>
         </div>
