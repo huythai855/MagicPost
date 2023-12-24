@@ -19,6 +19,7 @@ const ChiTietDonHang = ({ packageId }) => {
   };
   const [formData, setFormData] = useState({
     sender: "",
+    status: "",
     // ... other fields
   });
 
@@ -67,7 +68,7 @@ const ChiTietDonHang = ({ packageId }) => {
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nguyen Van A"
                   value={formData.sender}
-                  disabled = "true"
+                  disabled="true"
                 />
               </div>
 
@@ -82,7 +83,7 @@ const ChiTietDonHang = ({ packageId }) => {
 
                   <input
                     name=""
-                    disabled = "true"
+                    disabled="true"
                     value={formData.senderpro}
                     id="province"
                     className="bg-gray-50 mr-28  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -99,7 +100,7 @@ const ChiTietDonHang = ({ packageId }) => {
 
                   <input
                     name=""
-                    disabled = "true"
+                    disabled="true"
                     value={formData.sendervil}
                     id="district"
                     className="bg-gray-50 mr-28   border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -117,7 +118,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="144 Xuan Thuy"
                   value={formData.senderlo}
@@ -132,7 +133,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0987654343"
                   value={formData.senderphone}
@@ -154,7 +155,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nguyen Van A"
                   value={formData.receiver}
@@ -171,7 +172,7 @@ const ChiTietDonHang = ({ packageId }) => {
 
                   <input
                     name=""
-                    disabled = "true"
+                    disabled="true"
                     value={formData.recpro}
                     id="province"
                     className="bg-gray-50 mr-28  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -189,7 +190,7 @@ const ChiTietDonHang = ({ packageId }) => {
 
                   <input
                     name=""
-                    disabled = "true"
+                    disabled="true"
                     value={formData.recvil}
                     id="district"
                     className="bg-gray-50 mr-28   border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -207,7 +208,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="144 Xuan Thuy"
                   value={formData.reclo}
@@ -222,7 +223,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0987654343"
                   value={formData.recphone}
@@ -244,7 +245,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="quần áo"
                   value={formData.type}
@@ -259,7 +260,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0.5kg"
                   value={formData.klg}
@@ -274,7 +275,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="30.000"
                   value={formData.total}
@@ -288,7 +289,7 @@ const ChiTietDonHang = ({ packageId }) => {
                   Dịch vụ thêm
                 </label>
                 <input
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   value={formData.service}
                 />
@@ -302,7 +303,7 @@ const ChiTietDonHang = ({ packageId }) => {
                   Người thanh toán cước
                 </label>
                 <input
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   value={formData.payer}
                 />
@@ -316,7 +317,7 @@ const ChiTietDonHang = ({ packageId }) => {
                 </label>
                 <input
                   type="text"
-                  disabled = "true"
+                  disabled="true"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nguyen Van A"
                   value={formData.maker}
@@ -331,10 +332,33 @@ const ChiTietDonHang = ({ packageId }) => {
                   Trạng thái
                 </label>
                 <select className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option disabled value="" selected="selected">Chờ xác nhận</option>
-                  <option value="danggiao">Đang giao</option>
-                  <option value="thanhcong">Giao thành công</option>
-                  <option value="thatbai">Giao thất bại</option>
+                  <option disabled value="" selected="selected">
+                    {formData.status}
+                  </option>
+                  <option
+                    value="Đang giao"
+                    disabled={formData.status === "Đang giao"}
+                  >
+                    Đang giao
+                  </option>
+                  <option
+                    value=""
+                    disabled={formData.status === "Giao thành công"}
+                  >
+                    Giao thành công
+                  </option>
+                  <option
+                    value="Giao thất bại"
+                    disabled={formData.status === "Giao thất bại"}
+                  >
+                    Giao thất bại
+                  </option>
+                  <option
+                    value="Hoàn thành"
+                    disabled={formData.status === "Hoàn thành"}
+                  >
+                    Hoàn thành
+                  </option>
                 </select>
               </div>
 
