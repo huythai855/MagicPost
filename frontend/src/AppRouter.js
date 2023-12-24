@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Router, Route, Routes, Link } from "react-router-dom";
 import "./index.css";
 import "./App.css";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   Login,
   Shipper,
@@ -13,20 +13,23 @@ import {
   DSNhanVien,
   DanhSachDonHang,
   DanhSachNgoaiKhu,
+  DanhSachNgoaiKhuNew,
   DanhSachDonNoiKhu,
   DanhSachKienHang,
   FormBienNhan,
+  DanhSachNK,
+  DanhSachDonHangDenTKV,
+  DanhSachDonHangDiTKV,
 } from "./pages";
 import { Sidebar, Navbar } from "./components";
 import { ContextProvider } from "./contexts/ContextProvider";
 function AppRouter() {
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
   return (
     <BrowserRouter>
-      <Sidebar role="Nhân viên giao hàng">
+      <Sidebar role="Nhân viên tập kết">
         <ContextProvider>
           <Routes>
-
             {/* Dang nhap */}
             <Route path="/login" element={<Login setEmail={setEmail} />} />
 
@@ -67,25 +70,24 @@ function AppRouter() {
 
             {/* Nhanvientapket */}
             <Route
-              path="gp_employee/danhsachdonhang"
-              element={<DanhSachDonHang boss="Nhân viên tập kết" />}
+              path="gp_employee/danhsachdonden"
+              element={<DanhSachDonHangDenTKV />}
+            />
+            <Route
+              path="gp_employee/danhsachdondi"
+              element={<DanhSachDonHangDiTKV />}
             />
 
             {/* Nhanviengiaodich */}
-            <Route
-              path="tp_employee/donnoikhu"
-              element={<DanhSachDonNoiKhu />}
-            />
+            <Route path="tp_employee/donnoikhu" element={<DanhSachNK />} />
             <Route
               path="tp_employee/donngoaikhu"
-              element={<DanhSachNgoaiKhu />}
+              element={<DanhSachNgoaiKhuNew />}
             />
             <Route
               path="tp_employee/donngoaikhu/formbiennhan"
               element={<FormBienNhan />}
             />
-
-            {/* Nhanviengiaohang */}
           </Routes>
         </ContextProvider>
       </Sidebar>

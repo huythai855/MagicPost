@@ -92,8 +92,13 @@ export const linksNVTK = [
     title: "Nhân viên tập kết",
     links: [
       {
-        path: "gp_employee/danhsachdonhang",
-        title: "Danh Sách Đơn Hàng",
+        path: "gp_employee/danhsachdonden",
+        title: "Danh Sách Đơn Đến",
+        icon: <CgNotes />,
+      },
+      {
+        path: "gp_employee/danhsachdondi",
+        title: "Danh Sách Đơn Đi",
         icon: <CgNotes />,
       },
     ],

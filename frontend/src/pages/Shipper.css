@@ -24,3 +24,12 @@
 .pagination .active{
     background-color: rgb(67, 155, 111);
 }
+.th {
+    display: flex;
+    align-items: center;
+  }
+  
+  .th-icon {
+    margin-left: 24px;
+  }
+  
