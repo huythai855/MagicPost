@@ -136,7 +136,7 @@ const Shipper = () => {
                 );
             })}
             <DetailModal openPopup={openPopup} setOpenPopup={setOpenPopup}>
-                <ChiTietDonHang packageId={selectedPackageId} />
+                <ChiTietDonHang packageId={selectedPackageId}/>
             </DetailModal>
             </tbody>
         </table>
