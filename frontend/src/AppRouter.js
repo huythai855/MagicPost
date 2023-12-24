@@ -23,7 +23,7 @@ function AppRouter() {
   const [email, setEmail] = useState("")
   return (
     <BrowserRouter>
-      <Sidebar role="Nhân viên giao dịch">
+      <Sidebar role="Nhân viên giao hàng">
         <ContextProvider>
           <Routes>
 

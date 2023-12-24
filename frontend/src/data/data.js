@@ -140,6 +140,19 @@ export const linksTN = [
   },
 ];
 
+export const linksShipper = [
+  {
+    title: "Nhân viên giao hàng",
+    links: [
+      {
+        path: "shipper",
+        title: "Danh Sách Đơn Hàng",
+        icon: <CgNotes />,
+      },
+    ],
+  },
+];
+
 export const earningData = [
   {
     icon: <FiBarChart />,

@@ -18,6 +18,7 @@ import {
   linksTDTK,
   linksNVGD,
   linksNVTK,
+  linksShipper,
   linksTN,
 } from "../../data/data";
 import {
@@ -56,6 +57,10 @@ const Sidebar = ({ role: initialRole, children }) => {
     if (role === "Nhân viên giao dịch") {
       setLink(linksNVGD);
     }
+    if (role === "Nhân viên giao hàng") {
+      setLink(linksShipper);
+    }
+
   }, [role]);
   return (
     <div className="container">
