@@ -7,7 +7,9 @@ table {
 /* Apply border and padding to table cells and header cells */
 table td, table th {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  
 }
 
 /* Apply background color to even rows */

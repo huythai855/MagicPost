@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider";
 const FormDelete = ({ onClose, onDelete }) => {
   return (
-    <div className="relative bg-white rounded-lg dark:bg-gray-700">
+    <div className="relative bg-white mt-8  rounded-lg dark:bg-gray-700">
       <div className="p-4 md:p-5 text-center">
         <svg
           className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"

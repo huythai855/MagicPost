@@ -17,7 +17,7 @@ const CustomModal = ({ isShowing, hide, children, onClose, title }) =>
             <div className="modal">
               <div className="modal-header">
                 <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-                  Tạo {title}
+                  {title}
                 </h2>
                 <button
                   type="button"

@@ -37,7 +37,7 @@ function AppRouter() {
           path="/*"
           element={
             <ContextProvider>
-              <Sidebar role="Giám đốc">
+              <Sidebar role="Nhân viên tập kết">
                 <Navbar />
                 <Routes>
                   {/* Shipper */}
