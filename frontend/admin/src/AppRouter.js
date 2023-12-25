@@ -84,8 +84,6 @@ function AppRouter() {
               path="tp_employee/donngoaikhu/formbiennhan"
               element={<FormBienNhan />}
             />
-
-            {/* Nhanviengiaohang */}
           </Routes>
         </ContextProvider>
       </Sidebar>
