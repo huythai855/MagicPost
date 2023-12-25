@@ -1,0 +1,45 @@
+:root {
+  --whiteColor: hsl(0, 0%, 100%);
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl (187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --bodyColor: rgb(240, 240, 246);
+  --blackColor: hsl(201, 33%, 16%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --textColor: hsl(240, 4%, 36%);
+}
+
+.about {
+  padding-top: 15rem;
+}
+.about .secContainer .mainContent {
+  gap: 1rem;
+}
+.about .secContainer .mainContent .singleItem {
+  text-align: center;
+}
+.about .secContainer .mainContent .singleItem img {
+  background: rgba(84, 173, 66, 0.265);
+  width: 100px;
+  border-radius: 50%;
+  padding: 1rem;
+}
+.about .secContainer .mainContent .singleItem p {
+  font-size: 13px;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+  color: var(--textColor);
+}
+.about .secContainer .videoCard video {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (min-width: 884px) {
+  .about .secContainer .videoCard {
+    width: 100%;
+    height: 75%;
+  }
+}/*# sourceMappingURL=about.css.map */
