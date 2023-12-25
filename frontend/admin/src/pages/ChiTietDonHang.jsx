@@ -50,7 +50,7 @@ const ChiTietDonHang = ({ packageId}) => {
           Chi tiết đơn hàng
         </h2>
 
-        <div className="flex justify-end">
+        {formData ? <><div className="flex justify-end">
           <p className="text-md mr-10  text-gray-500 dark:text-gray-300  inline-block">
             {/* {ngay} / {thang} / {nam} */}
           </p>
@@ -373,10 +373,10 @@ const ChiTietDonHang = ({ packageId}) => {
                 <button
                   type="submit"
                   className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
-                  disabled={formData.status === "Giao thất bại" || formData.status === "Giao thành công"}
+                  disabled={!!(formData.status === "Giao thất bại" || formData.status === "Giao thành công")}
                   style = { ["Giao thất bại", "Giao thành công"].includes(formData.status) ? 
                   {
-                    backgroundColor: 'green'
+                    backgroundColor: 'gray'
                   } : {}}
                   
                 >
@@ -392,8 +392,7 @@ const ChiTietDonHang = ({ packageId}) => {
               </div>
             </div>
           </div>
-        </div>
-
+        </div></> : <>Loading...</>}
         {/* Thông tin đơn hàng */}
 
         {/* Nút submit */}
