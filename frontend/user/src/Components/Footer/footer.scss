@@ -1,0 +1,79 @@
+:root{
+    --whiteColor: hsl(0, 0%, 100%);
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl (187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%)); 
+    --bodyColor: rgb(240, 240, 246);
+    --blackColor: hsl(201, 33%, 16%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --textColor: hsl(240, 4%, 36%);
+
+}
+
+.footer{
+    background: rgb(182, 181, 181);
+    padding: 2rem 0;
+
+    .secContainer{
+        gap: 1.5rem;
+        text-align: center;
+        .footerLogo{
+            padding-bottom: .5rem;
+            .logo{
+                color: var(--blackColor);
+                font-weight: 500;
+                cursor: 500;
+                align-items: center;
+                justify-content: center;
+
+                .icon{
+                    font-size: 25px;
+                    color: var(--PrimaryColor);
+                    margin-right: .5rem;
+                }
+            }
+        }
+        .socials{
+            gap: .5rem;
+            margin: auto;
+            justify-content: center;
+
+            .icon{
+                font-size: 30px;
+                background: var(--PrimaryColor);
+                border-radius: 50%;
+                padding: 8px;
+                color: var(--whiteColor);
+                &:hover{
+                    background: var(--blackColor);
+                }
+            }
+        }
+
+        .footerLinks{
+            display: grid;
+            row-gap: .2rem;
+
+            .linkTitle{
+                padding-bottom: .5rem;
+                color: var(--blackColor);
+                font-weight: 700;
+            }
+
+            li{
+                &:hover{
+                    transform: translateX(10px);
+                    a{
+                        color: var(--PrimaryColor);                       
+                    }
+                }
+            }
+
+            a, .phone, .email{
+                color: var(--textColor);
+                font-size: 13px;
+                font-weight: 500;
+            }
+        }
+    }
+}

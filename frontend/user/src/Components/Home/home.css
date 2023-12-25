@@ -1,0 +1,137 @@
+:root {
+  --whiteColor: hsl(0, 0%, 100%);
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl (187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --bodyColor: rgb(240, 240, 246);
+  --blackColor: hsl(201, 33%, 16%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --textColor: hsl(240, 4%, 36%);
+}
+
+.home {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+}
+.home .homeContent .searchBox {
+  width: 100%;
+  height: 20rem;
+  position: relative;
+  border-radius: 2rem;
+  background: rgb(255, 255, 255);
+  justify-content: center;
+  margin: auto;
+}
+.home .homeContent .searchBox .tab {
+  width: 75%;
+  height: auto;
+  position: absolute;
+  border-radius: 1rem;
+  left: 15%;
+}
+.home .homeContent .searchBox .tab .tab-headers {
+  display: flex;
+}
+.home .homeContent .searchBox .tab .tabs {
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  box-sizing: content-box;
+  outline: none;
+  border-radius: 1rem;
+  border: none;
+  color: black;
+}
+.home .homeContent .searchBox .tab .tabs:not(:last-child) {
+  border: none;
+  border-radius: 1rem;
+}
+.home .homeContent .searchBox .tab .active-tabs {
+  background: rgb(4, 54, 4);
+  border-bottom: 1px solid transparent;
+  color: rgb(255, 255, 255);
+}
+.home .homeContent .searchBox .tab .active-tabs::before {
+  content: "";
+  display: block;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  border-radius: 1rem;
+}
+.home .homeContent .searchBox .tab .content {
+  background: var(--whiteColor);
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.home .homeContent .searchBox .tab .active-content {
+  display: block;
+}
+.home .homeContent .searchBox .tab .content-tabs {
+  width: 100%;
+  border-radius: 2rem;
+  background: var(--whiteColor);
+  position: relative;
+  gap: 1rem;
+  justify-content: center;
+  transform: translate(-50%);
+  left: 50%;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchO {
+  display: flex;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard input {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  width: 50%;
+  height: 100%;
+  border-radius: 5px;
+  border: none;
+  font-size: 17px;
+  font-weight: 300;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard input::-moz-placeholder {
+  font-size: 17px;
+  opacity: 0.5;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard input::placeholder {
+  font-size: 17px;
+  opacity: 0.5;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .btn {
+  color: white;
+  width: 50%;
+  font-weight: 600;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .btn:hover {
+  background-color: rgb(23, 99, 23);
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .icon {
+  padding-top: 1rem;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  list-style-type: none;
+  padding: 0;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard select {
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  border-radius: 2rem;
+  font-size: 17px;
+}/*# sourceMappingURL=home.css.map */
