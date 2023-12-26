@@ -56,6 +56,27 @@ app.post('/api/search', (req, res, next) => {
     });
 });
 
+app.post('/api/search/transaction_point', (req, res, next) => {
+    console.log("/api/search/transaction_point triggered");
+    console.log(req.body);
+    var city = req.body.city;
+    console.log(city);
+
+    db.all("SELECT * FROM departments WHERE type = ? AND city = ?", [1, city], (err, rows) => {
+        if (err) {
+            console.log(err);
+            res.json({ message: 'Lỗi tìm kiếm' })
+        } else {
+            console.log(rows);
+            if(rows.length == 0) {
+                res.json({ message: 'Không có điểm giao dịch như tìm kiếm' })
+            }
+            else
+                res.json(rows);
+        }
+    });
+});
+
 
 /// LOGIN
 app.post('/api/login',(req, res, next) => {
