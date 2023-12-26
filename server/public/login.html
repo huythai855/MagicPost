@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="css/app.css"> -->
+    <script>
+        setCookie('username', '', 1);
+        setCookie('id', '', 1);
+        setCookie('fullname', '', 1);
+        setCookie('role', '', 1);
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            var data = {
+                username: username,
+                password: password
+            };
+
+            console.log(data);
+
+            var request = new XMLHttpRequest();
+            request.open('POST', 'http://localhost:3001/api/login', true);
+            request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            request.send(JSON.stringify(data));
+
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+                    var data = JSON.parse(request.responseText);
+                    console.log(data);
+                    if (data.message == 'Login success') {
+                        // document.cookie = 'token=' + data.user;
+                        setCookie('username', data.username, 1);
+                        setCookie('id', data.id, 1);
+                        setCookie('fullname', data.fullname, 1);
+                        setCookie('role', data.role, 1);
+                        setCookie('department_id', data.department_id, 1);
+
+                        console.log(document.cookie);
+                        window.location.href = 'http://localhost:3001/home';
+                    } else {
+                        alert('Invalid username or password');
+                    }
+                } else {
+                    console.log('error');
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="title">Login</div>
+
+            <div>
+                <br />
+                <label>Username</label> <input type="text" id="username" name="username" />
+                <br />
+                <label>Password</label> <input type="password" id="password" name="password" />
+                <br />
+                <button onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+</html>
