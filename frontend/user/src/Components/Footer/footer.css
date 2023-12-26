@@ -1,0 +1,69 @@
+:root {
+  --whiteColor: hsl(0, 0%, 100%);
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl (187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --bodyColor: rgb(240, 240, 246);
+  --blackColor: hsl(201, 33%, 16%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --textColor: hsl(240, 4%, 36%);
+}
+
+.footer {
+  background: rgb(182, 181, 181);
+  padding: 2rem 0;
+}
+.footer .secContainer {
+  gap: 1.5rem;
+  text-align: center;
+}
+.footer .secContainer .footerLogo {
+  padding-bottom: 0.5rem;
+}
+.footer .secContainer .footerLogo .logo {
+  color: var(--blackColor);
+  font-weight: 500;
+  cursor: 500;
+  align-items: center;
+  justify-content: center;
+}
+.footer .secContainer .footerLogo .logo .icon {
+  font-size: 25px;
+  color: var(--PrimaryColor);
+  margin-right: 0.5rem;
+}
+.footer .secContainer .socials {
+  gap: 0.5rem;
+  margin: auto;
+  justify-content: center;
+}
+.footer .secContainer .socials .icon {
+  font-size: 30px;
+  background: var(--PrimaryColor);
+  border-radius: 50%;
+  padding: 8px;
+  color: var(--whiteColor);
+}
+.footer .secContainer .socials .icon:hover {
+  background: var(--blackColor);
+}
+.footer .secContainer .footerLinks {
+  display: grid;
+  row-gap: 0.2rem;
+}
+.footer .secContainer .footerLinks .linkTitle {
+  padding-bottom: 0.5rem;
+  color: var(--blackColor);
+  font-weight: 700;
+}
+.footer .secContainer .footerLinks li:hover {
+  transform: translateX(10px);
+}
+.footer .secContainer .footerLinks li:hover a {
+  color: var(--PrimaryColor);
+}
+.footer .secContainer .footerLinks a, .footer .secContainer .footerLinks .phone, .footer .secContainer .footerLinks .email {
+  color: var(--textColor);
+  font-size: 13px;
+  font-weight: 500;
+}/*# sourceMappingURL=footer.css.map */

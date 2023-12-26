@@ -1,0 +1,70 @@
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Apply border and padding to table cells and header cells */
+table td, table th {
+  border: 1px solid #ddd;
+  padding-left: 8px;
+  padding-right: 8px;
+  
+}
+
+/* Apply background color to even rows */
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Apply background color on hover for any row */
+table tr:hover {
+  background-color: #ddd;
+}
+
+/* Style for table header cells */
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04AA6D; /* Header background color */
+  color: white; /* Header text color */
+}
+/* Add these styles to your existing CSS file or create a new one */
+
+/* Add these styles to your existing CSS file or create a new one */
+
+/* Style for the table header cells */
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04AA6D; /* Header background color */
+  color: white; /* Header text color */
+  position: relative; /* Set position to relative to position the icon and filter input relative to the header text */
+}
+
+/* Style for the sort icons */
+th span {
+  position: absolute;
+  top: 50%;
+  right: 8px; /* Adjust the right margin as needed */
+  transform: translateY(-50%);
+}
+
+/* Style for the sort icons - adjust for FaSortDown */
+th span svg {
+  vertical-align: middle;
+}
+
+/* Style for the filter input */
+th div {
+  position: absolute;
+  bottom: 0;
+  left: 8px; /* Adjust the left margin as needed */
+}
+.first-column {
+  width: 50px; 
+  text-align: center;
+}
+
