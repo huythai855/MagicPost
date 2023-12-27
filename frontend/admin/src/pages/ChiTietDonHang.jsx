@@ -6,8 +6,6 @@ import { green } from "@material-ui/core/colors";
 import { useNavigate, useParams } from "react-router";
 const API = "https://6586f3f1468ef171392f0aae.mockapi.io/detail";
 const ChiTietDonHang = ({ packageId}) => {
-  // State for form data
-  // const [formData, setFormData] = useState([]);
 
   const fetchData = async (url) => {
     try {
@@ -19,22 +17,32 @@ const ChiTietDonHang = ({ packageId}) => {
       console.error(e);
     }
   };
-
-  // const navigate = useNavigate();
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios.put("https://6586f3f1468ef171392f0aae.mockapi.io/detail/" + packageId, formData)
-  //   .then(res => {
-  //     navigate('/shipper');
-  //   })
-  //   .catch(err => console.log(err))
-  // }
+  const [selectedStatus, setSelectedStatus] = useState('');
   const [formData, setFormData] = useState({
-    sender: "",
-    status: "",
+    // sender: "",
+    // status: "",
     // ... other fields
   });
+
+  const handleChange = (event) => {
+    setSelectedStatus(event.target.value);
+  };
+
+  const handleSubmit = async () => {
+    const id = packageId;
+    const url = `https://6586f3f1468ef171392f0aae.mockapi.io/detail/${id}`;
+
+    try {
+      const response = await axios.post(url, { selectedStatus }, {
+        headers: {
+          'Cache-Control': 'no-cache'
+        }
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     fetchData(`${API}/${packageId}`);
@@ -343,7 +351,8 @@ const ChiTietDonHang = ({ packageId}) => {
                   Trạng thái
                 </label>
                 <select
-                // onChange={e => setFormData({...formData, status: e.target.value})}
+                value={selectedStatus}
+                onChange={handleChange}
                 className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option disabled value="" selected="selected">
                     {formData.status}
@@ -355,7 +364,7 @@ const ChiTietDonHang = ({ packageId}) => {
                     Đang giao
                   </option>
                   <option
-                    value=""
+                    value="Giao thành công"
                     hidden={formData.status === "Giao thành công"}
                   >
                     Giao thành công
@@ -371,6 +380,7 @@ const ChiTietDonHang = ({ packageId}) => {
 
               <div className="flex justify-end mt-40">
                 <button
+                  onClick={handleSubmit}
                   type="submit"
                   className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
                   disabled={!!(formData.status === "Giao thất bại" || formData.status === "Giao thành công")}
