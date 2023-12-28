@@ -36,7 +36,7 @@ const Blog = () => {
             <div className="secContainer">
                 <div className="secIntro">
                     <h2 className="secTitle">
-                        Tin tuc moi
+                        Tin tức mới
                     </h2>
 
                 </div>
@@ -55,10 +55,9 @@ const Blog = () => {
                                         {title}
                                     </h3>
                                     <p>{desc}</p>
-                                </div>
-        
+                                </div>       
                                 <a href="#" className="flex">
-                                    Read more
+                                    Đọc thêm
                                 </a>
                             </div>
                             )

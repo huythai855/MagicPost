@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import './home.css'
 import img from '../../Image/back_gr.png'
 import { FcInspection } from "react-icons/fc";
+import ImageSlide from '../ImageSlide/ImageSlide';
 import axios from "axios"
 import OfficeInfo from '../OfficeInfo/OfficeInfo';
 // import Aos from 'aos'
@@ -117,6 +118,7 @@ const Home = () => {
                 <div className='bgr'>
                     <img src={img} alt="image" />
                 </div>
+                {/* {<ImageSlide />} */}
                 
                 <div className="searchBox">
                   <div className="tab grid">
@@ -143,7 +145,8 @@ const Home = () => {
                                           Tra cứu
                                       </button>
 
-                                      {position ? (
+                                      <div className='listPosition grid'>
+                                        {position ? (
                                       <>
                                         {show && (() => {
                                           let keys = Object.keys(position);
@@ -153,25 +156,34 @@ const Home = () => {
                                             <li 
                                               style={{
                                                 color: 'black',
+                                                width: '100%'
                                               }}
                                             > 
+                                              
                                               <FcInspection 
                                                 className='icon'
                                                 style={{
-                                                  marginTop: 2
+                                                  //marginTop: '1.5rem'
                                                 }}
                                               />
+                                              Đơn hàng của bạn đã đến
+                                              &nbsp;
                                               {position[keys[i]]}
+
                                             </li>
+                                          
                                           );
                                           }
                                           
-                                          return <ul className='list'>{items}</ul>;
+                                          return <ul className='list'
+                                          >{items}</ul>;
                                         })()}
                                       </>
                                     ) : (
                                       <>Loading...</>
                                     )}
+                                      </div>
+                                      
                                       
 
 
@@ -208,7 +220,9 @@ const Home = () => {
                                   { showList && <div
                                   style={{
                                     overflow:'hidden',
-                                    height: '10rem'}}>
+                                    height: '17rem',
+                                    border: 'solid grey 0.1px'
+                                    }}>
                                     <ul
                                   style={{
                                     overflowY : 'scroll',

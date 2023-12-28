@@ -9,7 +9,11 @@
   --textColor: hsl(240, 4%, 36%);
 }
 
+.blog {
+  padding-top: 2rem;
+}
 .blog .mainContainer {
+  border: hidden;
   gap: 1rem;
 }
 .blog .mainContainer .singlePost {
@@ -39,7 +43,7 @@
   font-size: 15px;
   color: var(--PrimaryColor);
   font-weight: 600;
-  padding-top: 0.5rem;
+  padding-top: 0.1rem;
   width: -moz-max-content;
   width: max-content;
 }

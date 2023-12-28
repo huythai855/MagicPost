@@ -23,9 +23,8 @@
 }
 .home .homeContent .searchBox {
   width: 100%;
-  height: 20rem;
+  height: 30rem;
   position: relative;
-  border-radius: 2rem;
   background: rgb(255, 255, 255);
   justify-content: center;
   margin: auto;
@@ -47,13 +46,13 @@
   cursor: pointer;
   box-sizing: content-box;
   outline: none;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   border: none;
   color: black;
 }
 .home .homeContent .searchBox .tab .tabs:not(:last-child) {
   border: none;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 .home .homeContent .searchBox .tab .active-tabs {
   background: rgb(4, 54, 4);
@@ -93,15 +92,18 @@
 .home .homeContent .searchBox .tab .content-tabs .homeCard .searchO {
   display: flex;
 }
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchO button {
+  width: 40%;
+}
 .home .homeContent .searchBox .tab .content-tabs .homeCard input {
-  margin-right: 2rem;
-  margin-bottom: 2rem;
-  width: 50%;
-  height: 100%;
-  border-radius: 5px;
-  border: none;
-  font-size: 17px;
-  font-weight: 300;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: black;
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard input::-moz-placeholder {
   font-size: 17px;
@@ -111,9 +113,14 @@
   font-size: 17px;
   opacity: 0.5;
 }
+.home .homeContent .searchBox .tab .content-tabs .homeCard .listPosition {
+  font-size: 14px;
+}
 .home .homeContent .searchBox .tab .content-tabs .homeCard .btn {
+  margin: 20px 0;
   color: white;
-  width: 50%;
+  width: 30%;
+  height: 3rem;
   font-weight: 600;
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard .btn:hover {
@@ -124,14 +131,16 @@
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 10px;
   list-style-type: none;
   padding: 0;
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard select {
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
   margin-right: 2rem;
   border-radius: 2rem;
-  font-size: 17px;
+  height: 3rem;
+  font-size: 15px;
 }/*# sourceMappingURL=home.css.map */
