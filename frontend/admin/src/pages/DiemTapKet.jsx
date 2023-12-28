@@ -20,13 +20,21 @@ const DiemTapKet = () => {
     toggle();
   };
   // const diemTapKetData = DiemTapKetData;
-  const API =
-    "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket";
+
+  const API = "http://localhost:3001/api/departments";
+  const deleteAPI = "http://localhost:3001/department/delete";
   useEffect(() => {
     const fetchData = async () => {
+      var body = {
+        type: 2,
+      };
       try {
         const response = await fetch(API, {
-          method: "GET",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         });
 
         if (response.ok) {
@@ -66,6 +74,7 @@ const DiemTapKet = () => {
             title={"Điểm tập kết"}
             dataSource={diemTapKetData}
             API={API}
+            deleteAPI={deleteAPI}
             className="w-full"
           />
         </div>

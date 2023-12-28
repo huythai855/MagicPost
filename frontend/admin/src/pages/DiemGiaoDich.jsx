@@ -13,13 +13,20 @@ const DiemGiaoDich = () => {
   const [diemGiaoDichData, setDiemGiaoDichData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const API =
-    "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket";
+  const API = "http://localhost:3001/api/departments";
+  const deleteAPI = "http://localhost:3001/department/delete";
   useEffect(() => {
     const fetchData = async () => {
+      var body = {
+        type: 1,
+      };
       try {
         const response = await fetch(API, {
-          method: "GET",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         });
 
         if (response.ok) {
@@ -61,6 +68,7 @@ const DiemGiaoDich = () => {
           <SortingTable
             title={"Điểm giao dịch"}
             dataSource={diemGiaoDichData}
+            deleteAPI={deleteAPI}
             API={API}
             className="w-full"
           />
@@ -69,7 +77,7 @@ const DiemGiaoDich = () => {
       <CustomModal
         isShowing={isShowing}
         hide={toggle}
-        title={"điểm giao dịch"}
+        title={"Tạo điểm giao dịch"}
         children={<FormGiaoDich onSubmit={handleFormSubmit} />}
       />
     </>

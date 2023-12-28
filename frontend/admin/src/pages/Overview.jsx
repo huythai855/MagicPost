@@ -19,9 +19,9 @@ const Overview = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://657dee733e3f5b18946358ee.mockapi.io/thongke",
+          "http://localhost:3001/api/transaction_point",
           {
-            method: "GET",
+            method: "POST",
           }
         );
 
@@ -29,7 +29,7 @@ const Overview = () => {
           const data = await response.json();
           setDonHangData(data);
         } else {
-          setError("Error fetching data");
+          setError("Error fetching data 1");
         }
       } catch (error) {
         setError("Error fetching data");
@@ -74,13 +74,7 @@ const Overview = () => {
           </div>
         ))}
       </div>
-      <div className="flex mt-10 gap-10 flex-wrap justify-center">
-        <TableDonHang
-          title={"Thống kê"}
-          dataSource={donHangData}
-          className="w-full"
-        />
-      </div>
+
       <div className="flex mt-10 gap-10 flex-wrap justify-center">
         <div
           className="bg-white dark:text-gray-200 
@@ -132,6 +126,14 @@ const Overview = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex mt-32 gap-10 flex-wrap justify-center">
+        <TableDonHang
+          title={"Thống kê"}
+          dataSource={donHangData}
+          className="w-full"
+        />
       </div>
     </div>
   );

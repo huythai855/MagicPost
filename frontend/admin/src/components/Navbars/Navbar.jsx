@@ -1,10 +1,96 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import avatar from "../../data/avatar.jpg";
-// import { Notification, UserProfile } from ".";
 import { useStateContext } from "../../contexts/ContextProvider";
-import { IoMenu } from "react-icons/io5";
-import { IoMdNotificationsOutline } from "react-icons/io";
+// import { IoMdNotificationsOutline } from "react-icons/io5";
+import { TbLogout } from "react-icons/tb";
+
+const Navbar = ({ username }) => {
+  // const { dispatch } = useStateContext();
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleLogout = () => {
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    setCookie("username", "", 1);
+    setCookie("id", "", 1);
+    setCookie("fullname", "", 1);
+    setCookie("role", "", 1);
+    localStorage.setItem("role", "");
+    localStorage.setItem("fullname", "");
+    localStorage.setItem("department_id", "");
+    // localStorage.clear();
+
+    window.location.href = "http://localhost:3000/login";
+    // dispatch({ type: "LOGOUT" });
+    setShowDropdown(false);
+  };
+
+  const handleEditProfile = () => {
+    // Handle edit profile logic
+    setShowDropdown(false);
+  };
+
+  return (
+    <div className="flex justify-between p-2 md:mx-6 relative">
+      <div className="flex">
+        {/* Notifications Button */}
+        {/* <TooltipComponent content="Notifications" position="BottomCenter">
+          <NavButton
+            title="Notifications"
+            color="black"
+            icon={<IoMdNotificationsOutline />}
+          />
+        </TooltipComponent> */}
+
+        {/* Profile Section with Dropdown */}
+        <div
+          className="relative"
+          onClick={() => setShowDropdown(!showDropdown)}
+        >
+          <TooltipComponent content="Profile" position="BottomCenter">
+            <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg">
+              <img
+                className="rounded-full w-8 h-8"
+                src={avatar}
+                alt="user-profile"
+              />
+              <span className="text-gray-400 text-14">Hi,</span>
+              <span className="text-gray-400 font-bold text-14">
+                {username}
+              </span>
+            </div>
+          </TooltipComponent>
+
+          {/* Dropdown Menu */}
+          {showDropdown && (
+            <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-md shadow-md">
+              <div
+                className="p-2 cursor-pointer hover:bg-gray-100"
+                onClick={handleEditProfile}
+              >
+                <TbLogout className="mr-2" />
+                Edit Profile
+              </div>
+              <div
+                className="p-2 cursor-pointer hover:bg-gray-100"
+                onClick={handleLogout}
+              >
+                <TbLogout className="mr-2" />
+                Logout
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position={"BottomCenter"}>
@@ -22,32 +108,5 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
     </button>
   </TooltipComponent>
 );
-const Navbar = ({ username }) => {
-  return (
-    <div className="flex justify-between p-2 md:mx-6 relative">
-      <div className="flex">
-        <NavButton
-          title="Notifications"
-          color="black"
-          icon={<IoMdNotificationsOutline />}
-        />
-        <TooltipComponent content="Profile" position="BottomCenter">
-          <div
-            className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            // onClick={() => handleClick("userProfile")}
-          >
-            <img
-              className="rounded-full w-8 h-8"
-              src={avatar}
-              alt="user-profile"
-            />
-            <span className="text-gray-400 text-14"> Hi,</span>
-            <span className="text-gray-400 font-bold  text-14">{username}</span>
-          </div>
-        </TooltipComponent>
-      </div>
-    </div>
-  );
-};
 
 export default Navbar;

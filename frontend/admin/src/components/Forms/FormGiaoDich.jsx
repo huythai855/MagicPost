@@ -3,14 +3,17 @@ import axios from "axios";
 
 const FormGiaoDich = ({ onSubmit }) => {
   const host = "https://provinces.open-api.vn/api/";
-  const API =
-    "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/diemtapket";
+  const API = "http://localhost:3001/department/new";
   const [id_company, setId_company] = useState("id51");
   const [sales, setSales] = useState("534534");
   const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
+  const [provinces2, setProvinces2] = useState();
 
+  const [districts2, setDistricts2] = useState();
   const [manager, setManager] = useState([]);
   const [selectedProvince, setSelectedProvince] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
@@ -31,7 +34,18 @@ const FormGiaoDich = ({ onSubmit }) => {
 
     fetchProvinces();
   }, []);
+  useEffect(() => {
+    const fetchProvinces2 = async () => {
+      try {
+        const response = await axios.get(host + "?depth=1");
+        setProvinces2(response.data);
+      } catch (error) {
+        console.error("Error fetching provinces:", error);
+      }
+    };
 
+    fetchProvinces2();
+  }, []);
   useEffect(() => {
     if (selectedProvince) {
       const fetchDistricts = async () => {
@@ -51,6 +65,7 @@ const FormGiaoDich = ({ onSubmit }) => {
 
   const handleProvinceChange = (event) => {
     const selectedProvinceCode = event.target.value;
+    console.log(event.target.value);
     setSelectedProvince(selectedProvinceCode);
   };
 
@@ -81,12 +96,14 @@ const FormGiaoDich = ({ onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newDGD = {
-      district: selectedDistrict,
-      manager: selectedManager,
       name: name,
-      id_company: id_company,
-      sales: sales,
+      address: address,
+      city: provinces2[selectedProvince - 1].name,
+      district: selectedDistrict,
+      leader_id: selectedManager,
+      type: 1,
     };
+    console.log(provinces2);
 
     console.log(newDGD);
     try {
@@ -107,6 +124,7 @@ const FormGiaoDich = ({ onSubmit }) => {
       alert(error.message);
     }
     onSubmit();
+    window.location.href = "diemgiaodich";
   };
 
   return (
@@ -139,7 +157,7 @@ const FormGiaoDich = ({ onSubmit }) => {
               htmlFor="province"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Địa điểm
+              Tỉnh
             </label>
 
             <select
@@ -178,7 +196,26 @@ const FormGiaoDich = ({ onSubmit }) => {
               {districts && renderOptions(districts)}
             </select>
           </div>
-
+          <div className="sm:col-span-2">
+            <label
+              htmlFor="address"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Địa điểm
+            </label>
+            <input
+              value={address}
+              onChange={(e) => {
+                setAddress(e.target.value);
+              }}
+              type="text"
+              name="name"
+              id="address"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Nhập địa điểm"
+              required=""
+            />
+          </div>
           <div className="sm:col-span-2">
             <label
               htmlFor="category"

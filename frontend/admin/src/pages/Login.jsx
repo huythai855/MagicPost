@@ -66,6 +66,7 @@ const Login = (props) => {
           console.log(document.cookie);
           localStorage.setItem("role", data.role);
           localStorage.setItem("fullname", data.fullname);
+          localStorage.setItem("department_id", data.department_id);
 
           if (data.role === "director")
             window.location.href = "http://localhost:3000/director";
@@ -108,6 +109,7 @@ const Login = (props) => {
       <div className="inputContainer">
         <input
           value={password}
+          type="password"
           placeholder="Mật khâu"
           onChange={(ev) => setPassword(ev.target.value)}
           className="inputBox"

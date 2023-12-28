@@ -10,28 +10,42 @@ const DSNhanVien = ({ boss }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const [role, setRole] = useState(localStorage.getItem("role"));
+  const [department_id, setDepartment_id] = useState(
+    localStorage.getItem("department_id")
+  );
+
   const { isShowing, toggle } = useStateContext();
   const [nhanVienData, setNhanVienData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const API =
-    "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/NhanVien";
+  const API = "http://localhost:3001/employees";
+  const deleteAPI = "http://localhost:3001/employees/delete";
 
   useEffect(() => {
     const fetchData = async () => {
+      const body = {
+        role: role,
+        department_id: department_id,
+      };
+
       try {
         const response = await fetch(API, {
-          method: "GET",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         });
 
         if (response.ok) {
           const data = await response.json();
           setNhanVienData(data);
         } else {
-          setError("Error fetching data");
+          setError("Error fetching data1");
         }
       } catch (error) {
-        setError("Error fetching data");
+        setError("Error fetching data2");
       } finally {
         setLoading(false);
       }
@@ -64,6 +78,7 @@ const DSNhanVien = ({ boss }) => {
             title={"Nhân viên"}
             dataSource={nhanVienData}
             API={API}
+            deleteAPI={deleteAPI}
             className="w-full"
           />
         </div>
@@ -72,7 +87,7 @@ const DSNhanVien = ({ boss }) => {
         <CustomModal
           isShowing={isShowing}
           hide={toggle}
-          title={"nhân viên"}
+          title={"Tạo nhân viên"}
           children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
         />
       )}
@@ -80,7 +95,7 @@ const DSNhanVien = ({ boss }) => {
         <CustomModal
           isShowing={isShowing}
           hide={toggle}
-          title={"nhân viên"}
+          title={"Tạo nhân viên"}
           children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
         />
       )}
@@ -88,7 +103,7 @@ const DSNhanVien = ({ boss }) => {
         <CustomModal
           isShowing={isShowing}
           hide={toggle}
-          title={"nhân viên"}
+          title={"Tạo nhân viên"}
           children={<FormNhanVien onSubmit={handleFormSubmit} boss={boss} />}
         />
       )}

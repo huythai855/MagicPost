@@ -3,14 +3,15 @@ import axios from "axios";
 import { useStateContext } from "../../contexts/ContextProvider";
 
 const FormNhanVien = ({ onSubmit, boss }) => {
-  const API =
-    "https://6570b2dc09586eff6641d340.mockapi.io/api/diemtapket/NhanVien";
+  const API = "http://localhost:3001/employees/new";
 
   const [fullName, setFullName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [CCCD, setCCCD] = useState("");
-  const [email, setEmail] = useState("");
+  const [tel_number, setTel_number] = useState("");
+
+  const [department_id, setDepartment_id] = useState("");
   const [role, setRole] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [address, setAddress] = useState("");
@@ -18,13 +19,14 @@ const FormNhanVien = ({ onSubmit, boss }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newNV = {
-      fullName: fullName,
-      userName: userName,
+      fullname: fullName,
+      username: userName,
       password: password,
-      CCCD: CCCD,
-      email: email,
+      id_number: CCCD,
+      tel_number: tel_number,
+      department_id: department_id,
       role: role,
-      dateOfBirth: dateOfBirth,
+      date_of_birth: dateOfBirth,
       address: address,
     };
 
@@ -47,6 +49,7 @@ const FormNhanVien = ({ onSubmit, boss }) => {
       alert(error.message);
     }
     onSubmit();
+    window.location.reload();
   };
   return (
     <div>
@@ -70,7 +73,7 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 name="name"
                 id="name"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Nhập họ tên"
+                placeholder="Nguyễn Văn A"
                 required=""
               />
             </div>
@@ -157,17 +160,17 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Email
+                Mã điểm
               </label>
               <input
-                value={email}
+                value={department_id}
                 onChange={(e) => {
-                  setEmail(e.target.value);
+                  setDepartment_id(e.target.value);
                 }}
-                type="email"
-                id="email"
+                type="department_id"
+                id="department_id"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="name@flowbite.com"
+                placeholder="1"
                 required
               />
             </div>
@@ -189,28 +192,28 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 <option defaultValue="">Select role</option>
                 {boss === "Giám đốc" && (
                   <>
-                    <option value="Trưởng điểm giao dịch">
+                    <option value="transaction_point_leader">
                       Trưởng điểm giao dịch
                     </option>
-                    <option value="Trưởng điểm tập kết">
+                    <option value="gathering_point_leader">
                       Trưởng điểm tập kết
                     </option>
                   </>
                 )}
                 {boss === "Trưởng điểm tập kết" && (
                   <>
-                    <option value="Nhân viên tập kết">Nhân viên tập kết</option>
-                    <option value="Nhân viên giao hàng">
-                      Nhân viên giao hàng
+                    <option value="gathering_point_staff">
+                      Nhân viên tập kết
                     </option>
+                    <option value="shipper">Nhân viên giao hàng</option>
                   </>
                 )}
                 {boss === "Trưởng điểm giao dịch" && (
                   <>
-                    <option value="Giao dịch viên">Giao dịch viên</option>
-                    <option value="Nhân viên giao hàng">
-                      Nhân viên giao hàng
+                    <option value="transaction_point_staff">
+                      Nhân viên giao dịch
                     </option>
+                    <option value="shipper">Nhân viên giao hàng</option>
                   </>
                 )}
               </select>
@@ -221,7 +224,7 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 htmlFor="province"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Địa điểm
+                Địa chỉ
               </label>
               <input
                 value={address}
@@ -231,7 +234,26 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 type="text"
                 id="address"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="44 Xuân Thuỷ, Hà Nội"
+                placeholder="số nhà 20, đường Tô Hiệu, quận Cầu Giấy"
+                required
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="province"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Số điện thoại
+              </label>
+              <input
+                value={tel_number}
+                onChange={(e) => {
+                  setTel_number(e.target.value);
+                }}
+                type="text"
+                id="tel_number"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="0987532742"
                 required
               />
             </div>

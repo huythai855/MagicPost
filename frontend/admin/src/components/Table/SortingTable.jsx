@@ -22,7 +22,7 @@ import "./table.css";
 import axios from "axios";
 import FormGiaoDich from "../Forms/FormGiaoDich";
 
-const SortingTable = ({ title, dataSource, API }) => {
+const SortingTable = ({ title, dataSource, API, deleteAPI }) => {
   const columns = useMemo(() => {
     const selectedColumns = COLUMNS.find((group) => group.title === title);
     return selectedColumns ? selectedColumns.columns : [];
@@ -71,10 +71,13 @@ const SortingTable = ({ title, dataSource, API }) => {
     setShowEdit(true);
   };
   const handleGetData = async (API, id) => {
+    console.log("handleGetData triggered");
+
     console.log(id);
     const index = Number(dataSource[id].id);
+    // const index = 1;
     try {
-      const res = await fetch(`${API}/${index}`, { method: "GET" }).then(
+      const res = await fetch(`${API}/${index}`, { method: "POST" }).then(
         async (res) => {
           const re = await res.json();
           console.log(re);
@@ -83,22 +86,32 @@ const SortingTable = ({ title, dataSource, API }) => {
     } catch (error) {
       alert(error.message);
     }
-    setShow(false);
+    // setShow(false);
   };
-  const handleDelete = async (API, id) => {
-    await handleGetData(API, id);
-    console.log(id);
+  const handleDelete = async (deleteAPI, id) => {
+    // await handleGetData(API, id);
+    // console.log(id);
     const index = Number(dataSource[id].id);
+    console.log(dataSource);
+    console.log(index);
+    const body = {
+      id: index,
+    };
     try {
-      const res = await fetch(`${API}/${index}`, { method: "DELETE" }).then(
-        (res) => {
-          console.log(res.id);
-        }
-      );
+      const res = await fetch(`${deleteAPI}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      }).then((res) => {
+        console.log("MS", res.body.message);
+      });
     } catch (error) {
       alert(error.message);
     }
     setShow(false);
+    window.location.reload();
   };
 
   return (
@@ -247,7 +260,7 @@ const SortingTable = ({ title, dataSource, API }) => {
         children={
           <FormDelete
             onClose={handleClose}
-            onDelete={() => handleDelete(API, deleteId)} // Pass a function reference
+            onDelete={() => handleDelete(deleteAPI, deleteId)} // Pass a function reference
           />
         }
       />

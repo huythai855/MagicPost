@@ -14,19 +14,18 @@ export const COLUMNS = [
       },
       {
         Header: "Mã điểm",
-        accessor: "id_company",
+        accessor: "id",
         Filter: ColumnFilter,
       },
       { Header: "Tên điểm", accessor: "name", Filter: ColumnFilter },
-      { Header: "Địa chỉ", accessor: "province", Filter: ColumnFilter },
+      { Header: "Địa chỉ", accessor: "address", Filter: ColumnFilter },
       {
         Header: "Số lượng nhân viên",
         accessor: "total_employee",
         Filter: ColumnFilter,
       },
 
-      { Header: "Trưởng điểm", accessor: "manager", Filter: ColumnFilter },
-      { Header: "Doanh số", accessor: "sales", Filter: ColumnFilter },
+      { Header: "Trưởng điểm", accessor: "leader_id", Filter: ColumnFilter },
     ],
   },
   {
@@ -41,7 +40,7 @@ export const COLUMNS = [
       },
       {
         Header: "Mã điểm",
-        accessor: "id_company",
+        accessor: "id",
         Filter: ColumnFilter,
       },
       { Header: "Tên điểm", accessor: "name", Filter: ColumnFilter },
@@ -50,19 +49,15 @@ export const COLUMNS = [
         accessor: "total_revenue_today",
         Filter: ColumnFilter,
       },
-      {
-        Header: "số đơn hàng mới",
-        accessor: "total_orders_today",
-        Filter: ColumnFilter,
-      },
+
       {
         Header: "tổng số nhân viên",
         accessor: "total_employees",
         Filter: ColumnFilter,
       },
       {
-        Header: "số lượng truy cập",
-        accessor: "total_accesses_today",
+        Header: "địa chỉ",
+        accessor: "address",
         Filter: ColumnFilter,
       },
     ],
@@ -79,18 +74,17 @@ export const COLUMNS = [
       },
       {
         Header: "Mã điểm",
-        accessor: "id_company",
+        accessor: "id",
         Filter: ColumnFilter,
       },
       { Header: "Tên điểm", accessor: "name", Filter: ColumnFilter },
-      { Header: "Địa chỉ", accessor: "district", Filter: ColumnFilter },
+      { Header: "Địa chỉ", accessor: "address", Filter: ColumnFilter },
       {
         Header: "Số lượng nhân viên",
         accessor: "total_employee",
         Filter: ColumnFilter,
       },
-      { Header: "Trưởng điểm", accessor: "manager", Filter: ColumnFilter },
-      { Header: "Doanh số", accessor: "sales", Filter: ColumnFilter },
+      { Header: "Trưởng điểm", accessor: "leader_id", Filter: ColumnFilter },
     ],
   },
   {
@@ -104,13 +98,15 @@ export const COLUMNS = [
       },
       {
         Header: "Họ tên",
-        accessor: "fullName",
+        accessor: "fullname",
         Filter: ColumnFilter,
       },
-      { Header: "Ngày sinh", accessor: "dateOfBirth", Filter: ColumnFilter },
+      { Header: "Ngày sinh", accessor: "date_of_birth", Filter: ColumnFilter },
+      { Header: "Số điện thoại", accessor: "tel_number", Filter: ColumnFilter },
       { Header: "Địa chỉ", accessor: "address", Filter: ColumnFilter },
-      { Header: "Email", accessor: "email", Filter: ColumnFilter },
       { Header: "Vai trò", accessor: "role", Filter: ColumnFilter },
+      { Header: "Nơi làm việc", accessor: "department_id", Filter: ColumnFilter },
+
     ],
   },
   {
