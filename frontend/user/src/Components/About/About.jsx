@@ -5,7 +5,7 @@ import img from '../../Image/ranking.png'
 import img1 from '../../Image/world-wide.png'
 import img2 from '../../Image/fast.png'
 import img3 from '../../Image/customer-service.png'
-import video from '../../Image/video.mp4'
+import video from '../../Image/delivery.mp4'
 
 const About = () => {
     return (

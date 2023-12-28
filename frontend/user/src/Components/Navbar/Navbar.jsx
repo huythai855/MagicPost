@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import './navbar.css'
+import logo from '../../Image/logo.png'
 import { LuPackageCheck } from "react-icons/lu"
 import { IoIosCloseCircleOutline } from "react-icons/io"
 import { RxDragHandleDots2 } from "react-icons/rx"
@@ -24,7 +25,8 @@ const Navbar = () => {
 
                 <div className="logoDiv">
                     <a href="#" className="logo flex">
-                        <h1>< LuPackageCheck className="icon"/> MagicPost </h1>
+                        <img src={logo} className="icon"/>
+                        {/* <h1>< LuPackageCheck className="icon"/> MagicPost </h1> */}
                     </a>
                 </div>
 

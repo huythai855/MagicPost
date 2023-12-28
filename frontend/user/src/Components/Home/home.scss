@@ -26,7 +26,11 @@
     position: relative;
 
     .homeContent{
+        .bgr{
+            padding-bottom: 2rem;
+        }
         .searchBox {
+            padding-top: 2rem;
             width: 100%;
             height: 30rem;
             position: relative;
@@ -104,6 +108,7 @@
                     
                     
                     .homeCard{
+
                         .searchO{
                             display: flex;
 

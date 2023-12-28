@@ -136,7 +136,7 @@ const Home = () => {
                       <div className="content-tabs">
                           <div 
                           className={toggleState === 1 ? "content active-content" : "content"} >
-                              <div className="homeCard">
+                              <div className="homeCard ">
                               
                                       <label htmlFor="code"></label>
                                       <input type="text" placeholder="Mã đơn hàng" onChange={handleInputChange}/>
@@ -182,11 +182,10 @@ const Home = () => {
                                     ) : (
                                       <>Loading...</>
                                     )}
-                                      </div>
-                                      
-                                      
 
-
+                                </div>
+                                      
+                                
                               </div>
                               
                           </div>
