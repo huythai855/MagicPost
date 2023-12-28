@@ -1,8 +1,8 @@
-:root{
+:root {
     --whiteColor: hsl(0, 0%, 100%);
     --PrimaryColor: hsl(199, 100%, 33%);
     --SecondaryColor: hsl (187, 85%, 43%);
-    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%)); 
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
     --bodyColor: rgb(240, 240, 246);
     --blackColor: hsl(201, 33%, 16%);
     --whiteColorDeam: hsl(0, 0%, 93%);
@@ -10,16 +10,20 @@
 
 }
 
-.blog{
+.blog {
     padding-top: 2rem;
+
     //background-color: white;
-    .mainContainer{
-       // background-color: white;
+    .mainContainer {
+        // background-color: white;
         border: hidden;
         gap: 1rem;
-        .singlePost{
+
+        .singlePost {
+            width: 100%;
             gap: 2rem;
-            .imgDiv{
+
+            .imgDiv {
                 height: 100%;
                 width: 100%;
                 //border-radius: 1rem;
@@ -33,46 +37,54 @@
                 //     }
                 // }
 
-                img{
+                img {
                     height: 100%;
                     object-fit: cover;
                 }
             }
 
-            .postDetails{
-                h3{
+            .postDetails {
+                h3 {
                     color: var(--blackColor);
                     font-weight: 600;
                     padding-bottom: 10px;
                 }
-                p{
+
+                p {
                     font-size: 13px;
                     color: var(--textColor);
                     font-weight: 200;
                 }
             }
-                a{
-                    font-size: 15px;
-                    color: var(--PrimaryColor);
-                    font-weight: 600;
-                    padding-top: 0.1rem;
-                    width: max-content;
-                    
-                    &:hover{
-                        color: var(--SecondaryColor);
-                        font-weight: 600;
-                    }
 
+            a {
+                font-size: 15px;
+                color: var(--PrimaryColor);
+                font-weight: 600;
+                padding-top: 0.1rem;
+                width: max-content;
+
+                &:hover {
+                    color: var(--SecondaryColor);
+                    font-weight: 600;
                 }
-            
+
+            }
+
         }
     }
 }
 
 @media screen and (min-width: 884px) {
-    .blog{
-        .mainContainer{
-            grid-template-columns: (2, 1fr) !important;
+    .blog {
+        .mainContainer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            //grid-gap: 20px;
+            .singlePost {
+                width: 100%;
+                //height: 100%;
+            }
         }
     }
 }

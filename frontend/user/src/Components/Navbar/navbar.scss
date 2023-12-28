@@ -61,7 +61,7 @@
         
                         .navLink{
                             color: var(--textColor);
-                            font-size: .9rem;
+                            font-size: 4rem;
                             font-weight: 600;
                             &:hover{
                                 color: var(--PrimaryColor);
@@ -126,11 +126,20 @@
                     .navLink{
                         color: var(--textColor);
                         padding: 0 0.45rem;
-                        font-size: 0.9rem;
+                        font-size: 1.2rem;
                         font-weight: 500;
 
                         &:hover{
-                            color: var(--PrimaryColor);
+                            
+                                /* background: lightskyblue; */
+                                color: white;
+                                background: #054700;
+                                font-weight: 500;
+                                border-radius: 1rem;
+                                width: 3rem;
+                                height: 3rem;
+                                
+                              
                         }
                     }
                 }
