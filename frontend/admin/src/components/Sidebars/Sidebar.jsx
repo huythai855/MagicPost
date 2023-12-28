@@ -42,25 +42,24 @@ const Sidebar = ({ role: initialRole, children }) => {
 
   useEffect(() => {
     // Update link based on the role
-    if (role === "Giám đốc") {
+    if (role === "director") {
       setLink(linksGD);
     }
-    if (role === "Trưởng điểm tập kết") {
+    if (role === "gathering_point_leader") {
       setLink(linksTDTK);
     }
-    if (role === "Trưởng điểm giao dịch") {
+    if (role === "transaction_point_leader") {
       setLink(linksTDGD);
     }
-    if (role === "Nhân viên tập kết") {
+    if (role === "gathering_point_staff") {
       setLink(linksNVTK);
     }
-    if (role === "Nhân viên giao dịch") {
+    if (role === "transaction_point_staff") {
       setLink(linksNVGD);
     }
-    if (role === "Nhân viên giao hàng") {
+    if (role === "shipper") {
       setLink(linksShipper);
     }
-
   }, [role]);
   return (
     <div className="container">
@@ -94,7 +93,7 @@ const Sidebar = ({ role: initialRole, children }) => {
           )}
         </div>
         {/* <div className="pt-64 "></div> */}
-        {/* {linksTN.map((item) => (
+        {linksTN.map((item) => (
           <div key={item.title} className="mt-40">
             {item.links.map((link) => (
               <NavLink
@@ -113,7 +112,7 @@ const Sidebar = ({ role: initialRole, children }) => {
               </NavLink>
             ))}
           </div>
-        ))} */}
+        ))}
       </div>
       <main>{children}</main>
     </div>

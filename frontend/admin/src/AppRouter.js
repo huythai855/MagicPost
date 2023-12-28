@@ -25,6 +25,10 @@ import { Sidebar, Navbar } from "./components";
 import { ContextProvider } from "./contexts/ContextProvider";
 function AppRouter() {
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState(localStorage.getItem("role"));
+  const [name, setName] = useState(localStorage.getItem("fullname"));
+  console.log(name);
+  console.log(localStorage.getItem("fullname"));
 
   return (
     <BrowserRouter>
@@ -37,70 +41,103 @@ function AppRouter() {
           path="/*"
           element={
             <ContextProvider>
-              <Sidebar role="Nhân viên tập kết">
-                <Navbar />
+              <Sidebar role={role}>
+                <Navbar username={name} />
                 <Routes>
                   {/* Shipper */}
-                  <Route path="/shipper" element={<Shipper />} />
+                  {role === "shipper" && (
+                    <Route path="/shipper" element={<Shipper />} />
+                  )}
 
                   {/* Giamdoc */}
-                  <Route path="/" element={<Overview />} />
-                  <Route path="director/overview" element={<Overview />} />
-                  <Route path="director/diemtapket" element={<DiemTapKet />} />
-                  <Route
-                    path="director/diemgiaodich"
-                    element={<DiemGiaoDich />}
-                  />
-                  <Route
-                    path="director/nhanvien"
-                    element={<DSNhanVien boss={"Giám đốc"} />}
-                  />
+                  {role === "director" && (
+                    <>
+                      <Route path="director/" element={<Overview />} />
+                      <Route path="director/overview" element={<Overview />} />
+                      <Route
+                        path="director/diemtapket"
+                        element={<DiemTapKet />}
+                      />
+                      <Route
+                        path="director/diemgiaodich"
+                        element={<DiemGiaoDich />}
+                      />
+                      <Route
+                        path="director/nhanvien"
+                        element={<DSNhanVien boss={"Giám đốc"} />}
+                      />{" "}
+                    </>
+                  )}
 
                   {/* Truongdiemtapket */}
-                  <Route path="gp_lead/overview" element={<Overview />} />
-                  <Route
-                    path="gp_lead/danhsachdonhang"
-                    element={<DanhSachDonHang />}
-                  />
-                  <Route
-                    path="gp_lead/nhanvien"
-                    element={<DSNhanVien boss={"Trưởng điểm tập kết"} />}
-                  />
+                  {role === "gathering_point_leader" && (
+                    <>
+                      <Route path="gp_lead/" element={<Overview />} />
+
+                      <Route path="gp_lead/overview" element={<Overview />} />
+                      <Route
+                        path="gp_lead/danhsachdonhang"
+                        element={<DanhSachDonHang />}
+                      />
+                      <Route
+                        path="gp_lead/nhanvien"
+                        element={<DSNhanVien boss={"Trưởng điểm tập kết"} />}
+                      />
+                    </>
+                  )}
 
                   {/* Truongdiemgiaodich*/}
-                  <Route path="tp_lead/overview" element={<Overview />} />
-                  <Route
-                    path="tp_lead/danhsachdonhang"
-                    element={<DanhSachDonHang />}
-                  />
-                  <Route
-                    path="tp_lead/nhanvien"
-                    element={<DSNhanVien boss={"Trưởng điểm giao dịch"} />}
-                  />
+                  {role === "transaction_point_leader" && (
+                    <>
+                      <Route path="tp_lead/" element={<Overview />} />
+                      <Route path="tp_lead/overview" element={<Overview />} />
+                      <Route
+                        path="tp_lead/danhsachdonhang"
+                        element={<DanhSachDonHang />}
+                      />
+                      <Route
+                        path="tp_lead/nhanvien"
+                        element={<DSNhanVien boss={"Trưởng điểm giao dịch"} />}
+                      />
+                    </>
+                  )}
 
                   {/* Nhanvientapket */}
-                  <Route
-                    path="gp_employee/danhsachdonden"
-                    element={<DanhSachDonHangDenTKV />}
-                  />
-                  <Route
-                    path="gp_employee/danhsachdondi"
-                    element={<DanhSachDonHangDiTKV />}
-                  />
+                  {role === "gathering_point_staff" && (
+                    <>
+                      <Route
+                        path="gp_employee/"
+                        element={<DanhSachDonHangDenTKV />}
+                      />
+
+                      <Route
+                        path="gp_employee/danhsachdonden"
+                        element={<DanhSachDonHangDenTKV />}
+                      />
+                      <Route
+                        path="gp_employee/danhsachdondi"
+                        element={<DanhSachDonHangDiTKV />}
+                      />
+                    </>
+                  )}
 
                   {/* Nhanviengiaodich */}
-                  <Route
-                    path="tp_employee/donnoikhu"
-                    element={<DanhSachNK />}
-                  />
-                  <Route
-                    path="tp_employee/donngoaikhu"
-                    element={<DanhSachNgoaiKhuNew />}
-                  />
-                  <Route
-                    path="tp_employee/donngoaikhu/formbiennhan"
-                    element={<FormBienNhan />}
-                  />
+                  {role === "transaction_point_staff" && (
+                    <>
+                      <Route
+                        path="tp_employee/donnoikhu"
+                        element={<DanhSachNK />}
+                      />
+                      <Route
+                        path="tp_employee/donngoaikhu"
+                        element={<DanhSachNgoaiKhuNew />}
+                      />
+                      <Route
+                        path="tp_employee/donngoaikhu/formbiennhan"
+                        element={<FormBienNhan />}
+                      />
+                    </>
+                  )}
                 </Routes>
               </Sidebar>
             </ContextProvider>

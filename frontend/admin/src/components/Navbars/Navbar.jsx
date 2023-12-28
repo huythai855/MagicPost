@@ -22,7 +22,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
     </button>
   </TooltipComponent>
 );
-const Navbar = () => {
+const Navbar = ({ username }) => {
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
       <div className="flex">
@@ -42,7 +42,7 @@ const Navbar = () => {
               alt="user-profile"
             />
             <span className="text-gray-400 text-14"> Hi,</span>
-            <span className="text-gray-400 font-bold  text-14">HuyenTram</span>
+            <span className="text-gray-400 font-bold  text-14">{username}</span>
           </div>
         </TooltipComponent>
       </div>
