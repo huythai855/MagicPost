@@ -39,7 +39,30 @@ const Sidebar = ({ role: initialRole, children }) => {
   const toggle = () => setIsOpen(!isOpen);
   const [role, setRole] = useState(initialRole); // Use the role from props
   const [link, setLink] = useState([]);
+  const handleNavLinkClick = () => {
+    // Đây là nơi bạn đặt logic xử lý khi NavLink được click
 
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    setCookie("username", "", 1);
+    setCookie("id", "", 1);
+    setCookie("fullname", "", 1);
+    setCookie("role", "", 1);
+    localStorage.setItem("role", "");
+    localStorage.setItem("fullname", "");
+    localStorage.setItem("department_id", "");
+    // localStorage.clear();
+
+    window.location.href = "http://localhost:3000/login";
+
+    console.log("NavLink clicked!");
+    // Thêm các xử lý khác tại đây
+  };
   useEffect(() => {
     // Update link based on the role
     if (role === "director") {
@@ -101,6 +124,7 @@ const Sidebar = ({ role: initialRole, children }) => {
                 key={link.path}
                 className="link"
                 activeClassName="active"
+                onClick={handleNavLinkClick}
               >
                 <div className="icon">{link.icon}</div>
                 <div

@@ -92,7 +92,8 @@ export const COLUMNS = [
     columns: [
       {
         Header: "STT",
-        accessor: "id",
+        id: "index",
+        accessor: (_row, i) => i + 1,
         Filter: ColumnFilter,
         disableFilters: true,
       },
@@ -105,8 +106,11 @@ export const COLUMNS = [
       { Header: "Số điện thoại", accessor: "tel_number", Filter: ColumnFilter },
       { Header: "Địa chỉ", accessor: "address", Filter: ColumnFilter },
       { Header: "Vai trò", accessor: "role", Filter: ColumnFilter },
-      { Header: "Nơi làm việc", accessor: "department_id", Filter: ColumnFilter },
-
+      {
+        Header: "Nơi làm việc",
+        accessor: "department_id",
+        Filter: ColumnFilter,
+      },
     ],
   },
   {

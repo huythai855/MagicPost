@@ -31,10 +31,7 @@ const Navbar = ({ username }) => {
     setShowDropdown(false);
   };
 
-  const handleEditProfile = () => {
-    // Handle edit profile logic
-    setShowDropdown(false);
-  };
+ 
 
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
@@ -71,18 +68,11 @@ const Navbar = ({ username }) => {
           {showDropdown && (
             <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-md shadow-md">
               <div
-                className="p-2 cursor-pointer hover:bg-gray-100"
-                onClick={handleEditProfile}
-              >
-                <TbLogout className="mr-2" />
-                Edit Profile
-              </div>
-              <div
-                className="p-2 cursor-pointer hover:bg-gray-100"
+                className="p-2 flex  cursor-pointer hover:bg-gray-100"
                 onClick={handleLogout}
               >
-                <TbLogout className="mr-2" />
-                Logout
+                <TbLogout className="mr-2 mt-1" />
+                <span>Logout</span>
               </div>
             </div>
           )}

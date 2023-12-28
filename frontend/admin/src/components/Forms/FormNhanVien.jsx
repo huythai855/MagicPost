@@ -55,12 +55,12 @@ const FormNhanVien = ({ onSubmit, boss }) => {
     <div>
       <>
         <form onSubmit={handleSubmit}>
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div className="grid gap-4 md:grid-cols-2 md:gap-6">
             {/* Other form elements */}
             <div className="sm:col-span-2">
               <label
                 htmlFor="name"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-full"
               >
                 Họ tên
               </label>
@@ -116,45 +116,6 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 required
               />
             </div>
-            <div className="w-full">
-              <label
-                htmlFor="name"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                CCCD
-              </label>
-              <input
-                value={CCCD}
-                onChange={(e) => {
-                  setCCCD(e.target.value);
-                }}
-                type="text"
-                name="CCCD"
-                id="CCCD"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Nhập CCCD"
-                required=""
-              />
-            </div>
-            <div className="w-full">
-              <label
-                htmlFor="dateOfBirth"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Ngày sinh
-              </label>
-              <input
-                value={dateOfBirth}
-                onChange={(e) => {
-                  setDateOfBirth(e.target.value);
-                }}
-                type="date"
-                name="dateOfBirth"
-                id="dateOfBirth"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                required=""
-              />
-            </div>
             <div className="sm:col-span-1">
               <label
                 htmlFor="email"
@@ -174,10 +135,50 @@ const FormNhanVien = ({ onSubmit, boss }) => {
                 required
               />
             </div>
-            <div className="sm:col-span-1">
+           
+            <div className="w-full">
+              <label
+                htmlFor="dateOfBirth"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Ngày sinh
+              </label>
+              <input
+                value={dateOfBirth}
+                onChange={(e) => {
+                  setDateOfBirth(e.target.value);
+                }}
+                type="date"
+                name="dateOfBirth"
+                id="dateOfBirth"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                required=""
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                CCCD
+              </label>
+              <input
+                value={CCCD}
+                onChange={(e) => {
+                  setCCCD(e.target.value);
+                }}
+                type="text"
+                name="CCCD"
+                id="CCCD"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Nhập CCCD"
+                required=""
+              />
+            </div>
+            <div className="sm:col-span-2">
               <label
                 htmlFor="category"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white w-full"
               >
                 Vai trò
               </label>

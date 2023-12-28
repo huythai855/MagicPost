@@ -10,24 +10,27 @@
   }
   
   /* Modal Wrapper */
-  .modal-wrapper {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%; /* Adjust the width as needed */
-    max-width: 400px; /* Set a max-width for responsiveness */
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1001; /* Ensure it's above the overlay */
-  }
-  
-  /* Modal Content */
-  .modal {
-    /* Add your additional styling for the modal content here */
-  }
+ /* CSS styling */
+.modal-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.modal-content {
+  /* Add your additional styling for the modal content here */
+  width: 100%; /* Adjust the width as needed */
+  /* Add other styles as needed */
+}
+
   
   /* Modal Close Button */
   .modal-close-button {

@@ -55,12 +55,15 @@
 }
 main{
   width: 100%;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* margin:20px */
 }
 .sidebar{
   background: #181c1e;
   height: 120vh;
   width: 200px;
+
   transition: all 0.5s;
 }
 .top_section{

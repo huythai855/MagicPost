@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import waveImage from "../data/wave.png";
+import avatar from "../data/avatar.svg";
+import bg from "../data/bg.svg";
+import MagicPost from "./MagicPost";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -91,42 +98,54 @@ const Login = (props) => {
   };
 
   return (
-    <div className="mainContainer">
-      <div className="titleContainer">
-        <div>Magic Post</div>
-      </div>
-      <br />
-      <div className="inputContainer">
-        <input
-          value={email}
-          placeholder="Tên đăng nhập"
-          onChange={(ev) => setEmail(ev.target.value)}
-          className={"inputBox"}
-        />
-        <label className="errorLabel">{emailError}</label>
-      </div>
-      <br />
-      <div className="inputContainer">
-        <input
-          value={password}
-          type="password"
-          placeholder="Mật khâu"
-          onChange={(ev) => setPassword(ev.target.value)}
-          className="inputBox"
-        />
-        <label className="errorLabel">{passwordError}</label>
-      </div>
-      <br />
-      <div className="inputContainer">
-        <button
-          onClick={onButtonClick}
-          className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
-        >
-          Đăng nhập
-        </button>
+    <div>
+      <img className="wave" src={waveImage} alt="Wave" />
+      <div className="container_login">
+        <div className="img">
+          <img src={bg} />
+        </div>
+        <div className="login-content">
+          <form onSubmit={onButtonClick}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <img className="h-28" src={avatar} alt="Avatar" />
+            </div>
+
+            <h2 className="title">Welcome</h2>
+            <div className="input-div one">
+              <div className="i">
+                <FontAwesomeIcon icon={faUser} />
+              </div>
+              <div className="div">
+                <input
+                  type="text"
+                  value={email}
+                  placeholder="Tên đăng nhập"
+                  onChange={(ev) => setEmail(ev.target.value)}
+                  className="input"
+                />
+                <label className="errorLabel">{emailError}</label>
+              </div>
+            </div>
+            <div className="input-div pass">
+              <div className="i">
+                <FontAwesomeIcon icon={faLock} />
+              </div>
+              <div className="div">
+                <input
+                  type="password"
+                  value={password}
+                  placeholder="Mật khâu"
+                  onChange={(ev) => setPassword(ev.target.value)}
+                  className="input"
+                />
+                <label className="errorLabel">{passwordError}</label>
+              </div>
+            </div>
+            <input type="submit" value={"Đăng nhập"} className="btn" />
+          </form>
+        </div>
       </div>
     </div>
   );
 };
-
 export default Login;

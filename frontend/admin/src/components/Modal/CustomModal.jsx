@@ -14,7 +14,7 @@ const CustomModal = ({ isShowing, hide, children, onClose, title }) =>
             tabIndex={-1}
             role="dialog"
           >
-            <div className="modal">
+            <div className="modal-content">
               <div className="modal-header">
                 <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
                   {title}

@@ -14,20 +14,53 @@ const Overview = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const API = "http://localhost:3001/api/departments";
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:3001/api/transaction_point",
-          {
-            method: "POST",
-          }
-        );
+      var body1 = {
+        type: 1,
+      };
+      var body2 = {
+        type: 2,
+      };
 
-        if (response.ok) {
-          const data = await response.json();
-          setDonHangData(data);
+      try {
+        // First API request
+        const response1 = await fetch(API, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body1),
+        });
+
+        if (response1.ok) {
+          const data1 = await response1.json();
+          // Set data1 to donHangData
+          setDonHangData(data1);
+
+          // Second API request
+          const response2 = await fetch(
+            API, // Replace with the appropriate URL for the second request
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(body2),
+            }
+          );
+
+          if (response2.ok) {
+            const data2 = await response2.json();
+            // Combine data1 and data2 into a single array
+            setDonHangData((prevData) => [...prevData, ...data2]);
+
+            // Process data from the second request if needed
+          } else {
+            setError("Error fetching data 2");
+          }
         } else {
           setError("Error fetching data 1");
         }
@@ -40,6 +73,7 @@ const Overview = () => {
 
     fetchData();
   }, []);
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -128,12 +162,8 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="flex mt-32 gap-10 flex-wrap justify-center">
-        <TableDonHang
-          title={"Thống kê"}
-          dataSource={donHangData}
-          className="w-full"
-        />
+      <div className="flex mt-32 gap-10 ml-20 flex-wrap justify-center">
+        <TableDonHang title={"Thống kê"} dataSource={donHangData} />
       </div>
     </div>
   );
