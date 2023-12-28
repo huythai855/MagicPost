@@ -11,7 +11,7 @@
 }
 
 .about{
-    padding-top: 15rem;
+    padding-top: 3rem;
     .secContainer{
         //top: 2rem;
         .mainContent{
@@ -36,6 +36,7 @@
 
         .videoCard{
             video{
+                padding-top: 2rem;
                 height: 100%;
                 width: 100%;
                 object-fit: cover;

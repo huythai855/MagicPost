@@ -10,7 +10,7 @@
 }
 
 .about {
-  padding-top: 15rem;
+  padding-top: 3rem;
 }
 .about .secContainer .mainContent {
   gap: 1rem;
@@ -31,6 +31,7 @@
   color: var(--textColor);
 }
 .about .secContainer .videoCard video {
+  padding-top: 2rem;
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
