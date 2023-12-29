@@ -91,7 +91,7 @@ const ChiTietDonHangGDV = (urltruyen, packageId) => {
   const thang = d.getMonth() + 1; // Lưu ý: Tháng bắt đầu từ 0, nên cần cộng thêm 1
   const nam = d.getFullYear();
   return (
-    <div className="bg-gray-100 p-4 mx-20 mt-10 ">
+    <div className="bg-gray-100 p-4 mb-10 ">
       <form onSubmit={handleSubmit}>
         <h2 className="mb-4  text-center text-2xl font-bold text-gray-900 dark:text-white">
           Chi tiết đơn hàng

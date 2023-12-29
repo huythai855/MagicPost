@@ -246,7 +246,7 @@ const FormGiaoDich = ({ onSubmit }) => {
             type="submit"
             className="inline-flex items-center  px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-buttonCreate rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
           >
-            Tạo điểm giao dịch
+            Tạo điểm tập kết
           </button>
         </div>
       </form>
