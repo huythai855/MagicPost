@@ -8,4 +8,10 @@ Người gửi, có hàng cần gửi, đem hàng đến một điểm giao dị
 ## Nhiệm vụ
   - **Nguyễn Huy Thái**: Xây dựng Backend API, thiết kế cơ sở dữ liệu
   - **Trương Thị Huyền Trâm**: Xây dựng các tính năng: Giám đốc, Nhân viên điểm giao dịch, Trưởng điểm giao dịch, Nhân viên điểm tập kết, Trưởng điểm tập kết
-  - **Nguyễn Thị Lan Nhi**: Xây dựng các tính năng: Login, User, Nhân viên giao hàng
+  - **Nguyễn Thị Lan Nhi**: Xây dựng các tính năng: Đăng nhập, Trang chủ, Nhân viên giao hàng
+
+
+  ## Thuyết trình
+  - Phần thuyết trình của nhóm có thể truy cập 
+  [**tại đây**](https://drive.google.com/drive/folders/1Zm8qWVqldJX99Uk71pr8EXxxckMMPXLn )
+
