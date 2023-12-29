@@ -15,6 +15,7 @@
     --SecondaryColor: hsl (187, 85%, 43%);
     --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%)); 
     --bodyColor: rgb(240, 240, 246);
+    --textColor: hsl(240, 4%, 36%);
 
 }
 a{
@@ -23,6 +24,8 @@ a{
 
 li{
     list-style: none;
+    color: var(--textColor);
+    margin: 0.1px 0;
 }
 
 .section{
@@ -47,7 +50,7 @@ li{
 
 .grid{
     display: grid;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .btn{
@@ -96,6 +99,6 @@ body{
 @media screen and (min-width: 1240px) {
     .mainContent{
         width: 75% !important;
-        margin: auto !important;
+        margin: auto 
     }
 }

@@ -13,7 +13,7 @@ const Footer = () => {
                     <div className="footerLogo">
                         <a href="#" className="logo flex">
                             <h1 className="flex"> <PiFinnTheHumanDuotone className="icon"/>
-                            MagicPost</h1>
+                            Kết nối với MagicPost</h1>
                         </a>
                     </div>
 
@@ -27,29 +27,50 @@ const Footer = () => {
 
                 <div className="footerLinks">
                     <span className="linkTitle">
-                        Information
+                        Về MagicPost
                     </span>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#">Giới thiệu</a>
                     </li>
                     <li>
-                        <a href="#">Explore</a>
+                        <a href="#">Tin tức</a>
                     </li>
                     <li>
-                        <a href="#">Travel & Conditions</a>
+                        <a href="#">Mạng lưới bưu cục</a>
                     </li>
                     <li>
-                        <a href="#">Privacy</a>
+                        <a href="#">Tuyển dụng</a>
+                    </li>
+                    <li>
+                        <a href="#">Hợp tác</a>
                     </li>
                 </div>
 
                 <div className="footerLinks">
                     <span className="linkTitle">
-                        Contact Us
+                        Liên hệ
                     </span>
 
                     <span className="phone">+0123456789</span>
                     <span className="email">email@gmail.com</span>
+                </div>
+
+                <div className="footerLinks">
+                    <span className="linkTitle">
+                        Hỗ trợ khách hàng
+                    </span>
+                    <li>
+                        <a href="#">Chat online</a>
+                    </li>
+                    <li>
+                        <a href="#">Hướng dẫn sử dụng dịch vụ</a>
+                    </li>
+                    <li>
+                        <a href="#">Điều khoản sử dụng</a>
+                    </li>
+                    <li>
+                        <a href="#">Chính sách vận chuyển</a>
+                    </li>
                 </div>
 
             </div>
