@@ -5,12 +5,14 @@ import InputGroup from "react-bootstrap/InputGroup";
 import DetailModal from "../components/Modal/DetailModal";
 import { ChiTietDonHangGDV } from "../pages";
 import ReactPaginate from "react-paginate";
+import { ChiTietDonHang } from "../pages";
 import "./Shipper.css";
-// import 'bootstrap/dist/css/bootstrap.min.css'
-const API = "http://localhost:3001/item/don_noi_khu";
-const url = "http://localhost:3001/item/don_noi_khu";
 
-const DanhSachNK = () => {
+// import 'bootstrap/dist/css/bootstrap.min.css'
+const API = "http://localhost:3001/item/don_ngoai_khu";
+const urlupdate = "http://localhost:3001/item/updatenk";
+
+const DanhSachVanChuyen = () => {
   const [packages, setPackage] = useState([]);
   const [sortOrder, setSortOrder] = useState("ASC");
   const [search, setSearch] = useState("");
@@ -24,13 +26,15 @@ const DanhSachNK = () => {
 
   const fetchData = async (url) => {
     var department_id = localStorage.getItem("department_id");
+    var username = localStorage.getItem("username");
+
     try {
       const res = await fetch(url, {
         method: "POST", // Assuming your API supports updating via PUT
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ department_id: department_id }),
+        body: JSON.stringify({ department_id: department_id , username: username}),
       });
 
       const data = await res.json();
@@ -152,8 +156,8 @@ const DanhSachNK = () => {
             <th>
               Trạng thái <FaSort onClick={() => sorting("stage")} />
             </th>
-           
-            <th>Xem</th>
+
+            <th>Hành động</th>
           </tr>
         </thead>
         <tbody>
@@ -175,23 +179,21 @@ const DanhSachNK = () => {
                   <td>{receiver_address}</td>
                   <td>{type}</td>
                   <td>{stage}</td>
-                
+
                   <button
-                        onClick={() => {
-                        setSelectedPackageId(id);
-                        console.log("huhu")
-                        console.log(selectedPackageId);
-                        setOpenPopup(true);
-                        }}
-                        className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
-                    >
-                        Chi tiết
-                    </button>
+                    onClick={() => {
+                      setSelectedPackageId(id);
+                      setOpenPopup(true);
+                    }}
+                    className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
+                  >
+                    Chi tiết
+                  </button>
                 </tr>
               );
             })}
           <DetailModal openPopup={openPopup} setOpenPopup={setOpenPopup}>
-            <ChiTietDonHangGDV packageId={selectedPackageId} urltruyen ={url}  />
+            <ChiTietDonHang packageId={selectedPackageId} urlupdate = {urlupdate} urltruyen= {API} />
           </DetailModal>
         </tbody>
       </table>
@@ -213,4 +215,4 @@ const DanhSachNK = () => {
   );
 };
 
-export default DanhSachNK;
+export default DanhSachVanChuyen;

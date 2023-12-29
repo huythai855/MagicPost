@@ -7,20 +7,14 @@ import { ChiTietDonHangGDV } from "../pages";
 import ReactPaginate from "react-paginate";
 import "./Shipper.css";
 import { useNavigate } from "react-router-dom";
-import { useStateContext } from "../contexts/ContextProvider";
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
-const API = "https://6570c47809586eff6641ea69.mockapi.io/donhang/donhang";
+const API = "http://localhost:3001/item/don_ngoai_khu";
+const url = "http://localhost:3001/item/don_ngoai_khu";
 const DanhSachNgoaiKhuNew = () => {
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
-  const { isShowing, toggle } = useStateContext();
-  const [donHangData, setDonHangData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const [packages, setPackage] = useState([]);
+  const navigate = useNavigate();
+
   const [sortOrder, setSortOrder] = useState("ASC");
   const [search, setSearch] = useState("");
   const [openPopup, setOpenPopup] = useState(false);
@@ -32,9 +26,18 @@ const DanhSachNgoaiKhuNew = () => {
   const itemsPerPage = 10;
 
   const fetchData = async (url) => {
+    var department_id = localStorage.getItem("department_id");
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        method: "POST", // Assuming your API supports updating via PUT
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ department_id: department_id }),
+      });
+
       const data = await res.json();
+      console.log(data);
       if (data.length > 0) {
         setPackage(data);
       }
@@ -46,57 +49,13 @@ const DanhSachNgoaiKhuNew = () => {
   useEffect(() => {
     fetchData(API);
   }, []);
-  const handleSendButtonClick = async (id) => {
-    try {
-      // Make an API request to update the status to "Đang giao"
-      const response = await fetch(`${API}/${id}`, {
-        method: "PUT", // Assuming your API supports updating via PUT
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status: "Đang giao" }),
-      });
 
-      if (!response.ok) {
-        // Handle the case where the update was not successful
-        console.error("Failed to update status");
-        return;
-      }
 
-      // Update the local state to reflect the change
-      const updatedPackages = packages.map((pkg) =>
-        pkg.id === id ? { ...pkg, status: "Đang giao" } : pkg
-      );
-      setPackage(updatedPackages);
-    } catch (error) {
-      console.error("Error updating status", error);
-    }
-  };
-  const handleConfirmButtonClick = async (id) => {
-    try {
-      // Make an API request to update the status to "Hoàn thành"
-      const response = await fetch(`${API}/${id}`, {
-        method: "PUT", // Assuming your API supports updating via PUT
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status: "Hoàn thành" }),
-      });
-
-      if (!response.ok) {
-        // Handle the case where the update was not successful
-        console.error("Failed to update status");
-        return;
-      }
-
-      // Update the local state to reflect the change
-      const updatedPackages = packages.map((pkg) =>
-        pkg.id === id ? { ...pkg, status: "Hoàn thành" } : pkg
-      );
-      setPackage(updatedPackages);
-    } catch (error) {
-      console.error("Error updating status", error);
-    }
+ 
+  const addDonHang = () => {
+    // Thực hiện logic khác nếu cần
+    // Chuyển hướng đến trang "/formbiennhan"
+    navigate("./formbiennhan");
   };
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -143,11 +102,7 @@ const DanhSachNgoaiKhuNew = () => {
       setSortOrder("ASC");
     }
   };
-  const addDonHang = () => {
-    // Thực hiện logic khác nếu cần
-    // Chuyển hướng đến trang "/formbiennhan"
-    navigate("./formbiennhan");
-  };
+
   return (
     <>
       <button
@@ -169,97 +124,61 @@ const DanhSachNgoaiKhuNew = () => {
         <thead>
           <tr>
             <th>
-              ID <FaSort onClick={() => sortingnum("id")} />
+              Mã đơn hàng <FaSort onClick={() => sorting("id")} />
             </th>
             <th>
-              Mã đơn hàng <FaSort onClick={() => sorting("maDonHang")} />
+              Người gửi <FaSort onClick={() => sorting("sender_name")} />
             </th>
             <th>
-              Người gửi <FaSort onClick={() => sorting("fullName")} />
+              Ngày gửi <FaSort onClick={() => sorting("detail")} />
             </th>
             <th>
-              Ngày gửi <FaSort onClick={() => sorting("date")} />
+              Điểm nhận <FaSort onClick={() => sorting("receiver_address")} />
             </th>
             <th>
-              Điểm nhận <FaSort onClick={() => sorting("address")} />
+              Loại hàng <FaSort onClick={() => sorting("type")} />
             </th>
             <th>
-              Loại hàng <FaSort onClick={() => sorting("typeOfGoods")} />
+              Trạng thái <FaSort onClick={() => sorting("stage")} />
             </th>
-            <th>
-              Trạng thái <FaSort onClick={() => sorting("status")} />
-            </th>
-            <th>Hành động</th>
+
+            <th>Xem</th>
           </tr>
         </thead>
         <tbody>
-          {currentItems
+          {packages
             .filter((curList) => {
               return search.toLowerCase() === ""
                 ? curList
-                : curList.sender.toLowerCase().includes(search);
+                : curList.sender_name.toLowerCase().includes(search);
             })
             .map((curList) => {
-              const {
-                id,
-                maDonHang,
-                fullName,
-                date,
-                address,
-                typeOfGoods,
-                status,
-              } = curList;
+              const { id, sender_name, detail, receiver_address, type, stage } =
+                curList;
 
               return (
                 <tr key={id}>
                   <td>{id}</td>
-                  <td>{maDonHang}</td>
-                  <td>{fullName}</td>
-                  <td>{date}</td>
-                  <td>{address}</td>
-                  <td>{typeOfGoods}</td>
-                  <td>{status}</td>
-                  <td>
-                    {status === "Chờ gửi" ? (
-                      <button
-                        onClick={() => handleSendButtonClick(id)}
-                        className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
-                      >
-                        Gửi hàng
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => handleConfirmButtonClick(id)}
-                        disabled={
-                          status !== "Giao thành công" &&
-                          status !== "Giao thất bại"
-                        }
-                        className={`focus:outline-none text-white ${
-                          status === "Giao thành công" ||
-                          status === "Giao thất bại"
-                            ? "bg-buttonCreate"
-                            : "bg-gray-500"
-                        } hover: focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ${
-                          status === "Giao thành công" ||
-                          status === "Giao thất bại"
-                            ? ""
-                            : "cursor-not-allowed"
-                        } dark:${
-                          status === "Giao thành công" ||
-                          status === "Giao thất bại"
-                            ? "bg-green-600"
-                            : "bg-gray-500"
-                        } dark:hover:bg-green-700 dark:focus:ring-green-800 fl`}
-                      >
-                        Xác nhận
-                      </button>
-                    )}
-                  </td>
+                  <td>{sender_name}</td>
+                  <td>{detail}</td>
+                  <td>{receiver_address}</td>
+                  <td>{type}</td>
+                  <td>{stage}</td>
+
+                  <button
+                    onClick={() => {
+                      setSelectedPackageId(id);
+                      setOpenPopup(true);
+                    }}
+                    className="focus:outline-none text-white bg-buttonCreate hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 fl"
+                  >
+                    Chi tiết
+                  </button>
                 </tr>
               );
             })}
           <DetailModal openPopup={openPopup} setOpenPopup={setOpenPopup}>
-            <ChiTietDonHangGDV packageId={selectedPackageId} />
+            <ChiTietDonHangGDV packageId={selectedPackageId} urltruyen = {url} />
           </DetailModal>
         </tbody>
       </table>

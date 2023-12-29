@@ -5,16 +5,22 @@ import QRCode from "qrcode.react";
 
 const FormBienNhan = (recordForDetail) => {
   const host = "https://provinces.open-api.vn/api/";
-  const API = "https://6570c47809586eff6641ea69.mockapi.io/donhang/donhang";
+  const API = "http://localhost:3001/item/new";
   const [provinces, setProvinces] = useState();
   const [districts, setDistricts] = useState();
-  const [provincesNhan, setProvincesNhan] = useState();
+
   const [districtsNhan, setDistrictsNhan] = useState();
+  const [provincesNhan, setProvincesNhan] = useState();
+
   const [selectedProvince, setSelectedProvince] = useState("");
-  const [selectedDistrict, setSelectedDistrict] = useState("");
+  //TODO: fix
   const [selectedProvinceNhan, setSelectedProvinceNhan] = useState("");
+
+  const [provinces2, setProvinces2] = useState();
+  const [provincesNhan2, setProvincesNhan2] = useState();
+
+  const [selectedDistrict, setSelectedDistrict] = useState("");
   const [selectedDistrictNhan, setSelectedDistrictNhan] = useState("");
-  const [status, setStatus] = useState("Chờ gửi");
 
   useEffect(() => {
     const fetchProvinces = async () => {
@@ -29,7 +35,7 @@ const FormBienNhan = (recordForDetail) => {
     fetchProvinces();
   }, []);
   useEffect(() => {
-    const fetchProvinces = async () => {
+    const fetchProvincesNhan = async () => {
       try {
         const response = await axios.get(host + "?depth=1");
         setProvincesNhan(response.data);
@@ -38,8 +44,35 @@ const FormBienNhan = (recordForDetail) => {
       }
     };
 
-    fetchProvinces();
+    fetchProvincesNhan();
   }, []);
+
+  useEffect(() => {
+    const fetchProvinces2 = async () => {
+      try {
+        const response = await axios.get(host + "?depth=1");
+        setProvinces2(response.data);
+      } catch (error) {
+        console.error("Error fetching provinces:", error);
+      }
+    };
+
+    fetchProvinces2();
+  }, []);
+
+  useEffect(() => {
+    const fetchProvincesNhan2 = async () => {
+      try {
+        const response = await axios.get(host + "?depth=1");
+        setProvincesNhan2(response.data);
+      } catch (error) {
+        console.error("Error fetching provinces:", error);
+      }
+    };
+
+    fetchProvincesNhan2();
+  }, []);
+
   useEffect(() => {
     if (selectedProvince) {
       const fetchDistricts = async () => {
@@ -75,11 +108,16 @@ const FormBienNhan = (recordForDetail) => {
   const handleProvinceChange = (event) => {
     const selectedProvinceCode = event.target.value;
     setSelectedProvince(selectedProvinceCode);
+    localStorage.setItem("province1", selectedProvinceCode);
   };
-  const handleProvinceChangeNhan = (event) => {
-    const selectedProvinceCode = event.target.value;
-    setSelectedProvinceNhan(selectedProvinceCode);
+  const handleProvinceNhanChange = (event) => {
+    const selectedProvinceNhanCode = event.target.value;
+    console.log(selectedProvinceNhanCode);
+    setSelectedProvinceNhan(selectedProvinceNhanCode);
+    localStorage.setItem("province2", selectedProvinceNhanCode);
+    console.log("is clicked");
   };
+
   const handleDistrictChange = (event) => {
     const selectedDistrictCode = event.target.value;
     setSelectedDistrict(selectedDistrictCode);
@@ -105,22 +143,22 @@ const FormBienNhan = (recordForDetail) => {
   };
   // State for form data
   const [formData, setFormData] = useState({
-    nguoiGui: {
-      hoTen: "",
-      diaChi: "",
-      dienThoai: "",
+    sender: {
+      sender_name: "",
+      sender_address: "",
+      sender_tel_number: "",
     },
-    nguoiNhan: {
-      hoTen: "",
-      diaChi: "",
-      dienThoai: "",
+    receiver: {
+      receiver_name: "",
+      receiver_address: "",
+      receiver_tel_number: "",
     },
     donHang: {
-      loaiHang: "",
-      khoiLuong: "",
+      type_of_good: "",
+      weight: "",
       tongCuoc: "",
-      dichVuThem: "",
       nguoiThanhToanCuoc: "",
+      dichVuThem: "",
       nguoiTaoDon: "",
     },
   });
@@ -139,13 +177,26 @@ const FormBienNhan = (recordForDetail) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newDH = {
-      maDonHang: "65852",
-      address: formData.nguoiNhan.diaChi,
-      date: `${ngay} / ${thang} / ${nam}`,
-      typeOfGoods: formData.donHang.loaiHang,
-      fullName: formData.nguoiGui.hoTen,
-      status: status,
+      department_id: parseInt(localStorage.getItem("department_id")),
+      weight: formData.donHang.weight,
+      type_of_good: formData.donHang.type_of_good,
+      sender_name: formData.sender.sender_name,
+
+      //sai
+      sender_address_city: localStorage.getItem("province1"),
+      receiver_address_city: localStorage.getItem("province2"),
+
+      sender_address_district: selectedDistrict,
+      sender_address: formData.sender.sender_address,
+      sender_tel_number: formData.sender.sender_address,
+      receiver_name: formData.receiver.receiver_name,
+      receiver_address_district: selectedDistrictNhan,
+      receiver_address: formData.receiver.receiver_address,
+      receiver_tel_number: formData.receiver.receiver_tel_number,
+      // date: `${ngay} / ${thang} / ${nam}`,
     };
+
+    console.log(selectedProvinceNhan);
 
     console.log(newDH);
     try {
@@ -158,14 +209,12 @@ const FormBienNhan = (recordForDetail) => {
       });
 
       const json = await response.json();
-      const id = json.id;
-
-      // await getData();
-      alert("Your id is: " + id);
+      console.log(json);
     } catch (error) {
       alert(error.message);
     }
     // onSubmit();
+    window.location.href = "http://localhost:3000/tp_employee/donngoaikhu";
   };
 
   const d = new Date();
@@ -206,9 +255,9 @@ const FormBienNhan = (recordForDetail) => {
                   type="text"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nguyen Van A"
-                  value={formData.nguoiGui.hoTen}
+                  value={formData.sender.sender_name}
                   onChange={(e) =>
-                    handleInputChange("nguoiGui", "hoTen", e.target.value)
+                    handleInputChange("sender", "sender_name", e.target.value)
                   }
                   required
                 />
@@ -272,9 +321,13 @@ const FormBienNhan = (recordForDetail) => {
                   type="text"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="144 Xuan Thuy"
-                  value={formData.nguoiGui.diaChi}
+                  value={formData.sender.sender_address}
                   onChange={(e) =>
-                    handleInputChange("nguoiGui", "diaChi", e.target.value)
+                    handleInputChange(
+                      "sender",
+                      "sender_address",
+                      e.target.value
+                    )
                   }
                   required
                 />
@@ -290,9 +343,13 @@ const FormBienNhan = (recordForDetail) => {
                   type="text"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0987654343"
-                  value={formData.nguoiGui.dienThoai}
+                  value={formData.sender.sender_tel_number}
                   onChange={(e) =>
-                    handleInputChange("nguoiGui", "dienThoai", e.target.value)
+                    handleInputChange(
+                      "sender",
+                      "sender_tel_number",
+                      e.target.value
+                    )
                   }
                   required
                 />
@@ -315,9 +372,13 @@ const FormBienNhan = (recordForDetail) => {
                   type="text"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Nguyen Van A"
-                  value={formData.nguoiNhan.hoTen}
+                  value={formData.receiver.receiver_name}
                   onChange={(e) =>
-                    handleInputChange("nguoiNhan", "hoTen", e.target.value)
+                    handleInputChange(
+                      "receiver",
+                      "receiver_name",
+                      e.target.value
+                    )
                   }
                   required
                 />
@@ -336,7 +397,7 @@ const FormBienNhan = (recordForDetail) => {
                     value={selectedProvinceNhan}
                     id="province"
                     className="bg-gray-50 mr-28  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    onChange={handleProvinceChangeNhan}
+                    onChange={handleProvinceNhanChange}
                     // Other attributes
                   >
                     <option disabled value="">
@@ -380,9 +441,13 @@ const FormBienNhan = (recordForDetail) => {
                   type="text"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="144 Xuan Thuy"
-                  value={formData.nguoiNhan.diaChi}
+                  value={formData.receiver.receiver_address}
                   onChange={(e) =>
-                    handleInputChange("nguoiNhan", "diaChi", e.target.value)
+                    handleInputChange(
+                      "receiver",
+                      "receiver_address",
+                      e.target.value
+                    )
                   }
                   required
                 />
@@ -398,9 +463,13 @@ const FormBienNhan = (recordForDetail) => {
                   type="text"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0987654343"
-                  value={formData.nguoiNhan.dienThoai}
+                  value={formData.receiver.receiver_tel_number}
                   onChange={(e) =>
-                    handleInputChange("nguoiNhan", "dienThoai", e.target.value)
+                    handleInputChange(
+                      "receiver",
+                      "receiver_tel_number",
+                      e.target.value
+                    )
                   }
                   required
                 />
@@ -423,9 +492,9 @@ const FormBienNhan = (recordForDetail) => {
                   type="text"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="quần áo"
-                  value={formData.donHang.loaiHang}
+                  value={formData.donHang.type_of_good}
                   onChange={(e) =>
-                    handleInputChange("donHang", "loaiHang", e.target.value)
+                    handleInputChange("donHang", "type_of_good", e.target.value)
                   }
                   required
                 />
@@ -435,15 +504,15 @@ const FormBienNhan = (recordForDetail) => {
                   for="first_name"
                   className="block mb-2  text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Khối lượng
+                  Khối lượng (kg)
                 </label>
                 <input
                   type="text"
                   className="bg-gray-50 mb-2  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="0.5kg"
-                  value={formData.donHang.khoiLuong}
+                  value={formData.donHang.weight}
                   onChange={(e) =>
-                    handleInputChange("donHang", "khoiLuong", e.target.value)
+                    handleInputChange("donHang", "weight", e.target.value)
                   }
                   required
                 />
@@ -463,7 +532,6 @@ const FormBienNhan = (recordForDetail) => {
                   onChange={(e) =>
                     handleInputChange("donHang", "tongCuoc", e.target.value)
                   }
-                  required
                 />
               </div>
               <div className="w-90">

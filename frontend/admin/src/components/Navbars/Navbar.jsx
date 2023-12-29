@@ -23,6 +23,8 @@ const Navbar = ({ username }) => {
     setCookie("role", "", 1);
     localStorage.setItem("role", "");
     localStorage.setItem("fullname", "");
+    localStorage.setItem("username", "");
+
     localStorage.setItem("department_id", "");
     // localStorage.clear();
 

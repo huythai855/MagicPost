@@ -16,6 +16,7 @@ import {
   DanhSachNgoaiKhuNew,
   DanhSachDonNoiKhu,
   DanhSachKienHang,
+  DanhSachVanChuyen,
   FormBienNhan,
   DanhSachNK,
   DanhSachDonHangDenTKV,
@@ -27,8 +28,10 @@ function AppRouter() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState(localStorage.getItem("role"));
   const [name, setName] = useState(localStorage.getItem("fullname"));
-  
-  const [department_id, setDepartment_id] = useState(localStorage.getItem("department_id"));
+
+  const [department_id, setDepartment_id] = useState(
+    localStorage.getItem("department_id")
+  );
   console.log(name);
   console.log(localStorage.getItem("fullname"));
   function getCookie(cname) {
@@ -61,8 +64,14 @@ function AppRouter() {
                 <Navbar username={name} />
                 <Routes>
                   {/* Shipper */}
-                  {getCookie === "shipper" && (
-                    <Route path="/shipper" element={<Shipper />} />
+                  {role === "shipper" && (
+                    <>
+                      <Route path="/shipper/dsgh" element={<Shipper />} />
+                      <Route
+                        path="/shipper/dsvc"
+                        element={<DanhSachVanChuyen />}
+                      />
+                    </>
                   )}
 
                   {/* Giamdoc */}
@@ -127,12 +136,8 @@ function AppRouter() {
                       />
 
                       <Route
-                        path="gp_employee/danhsachdonden"
+                        path="gp_employee/danhsachdonhang"
                         element={<DanhSachDonHangDenTKV />}
-                      />
-                      <Route
-                        path="gp_employee/danhsachdondi"
-                        element={<DanhSachDonHangDiTKV />}
                       />
                     </>
                   )}

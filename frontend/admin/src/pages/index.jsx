@@ -21,3 +21,4 @@ export { default as ChiTietDonHangGDV } from "./ChiTietDonHangGDV";
 
 export { default as Login } from "./Login";
 export { default as Shipper } from "./Shipper";
+export { default as DanhSachVanChuyen } from "./DanhSachVanChuyen";

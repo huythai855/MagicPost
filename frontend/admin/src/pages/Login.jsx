@@ -17,10 +17,10 @@ const Login = (props) => {
 
   const navigate = useNavigate();
 
-  setCookie("username", "", 1);
-  setCookie("id", "", 1);
-  setCookie("fullname", "", 1);
-  setCookie("role", "", 1);
+  // setCookie("username", "", 1);
+  // setCookie("id", "", 1);
+  // setCookie("fullname", "", 1);
+  // setCookie("role", "", 1);
 
   function setCookie(cname, cvalue, exdays) {
     const d = new Date();

@@ -92,13 +92,8 @@ export const linksNVTK = [
     title: "Nhân viên tập kết",
     links: [
       {
-        path: "gp_employee/danhsachdonden",
-        title: "Danh Sách Đơn Đến",
-        icon: <CgNotes />,
-      },
-      {
-        path: "gp_employee/danhsachdondi",
-        title: "Danh Sách Đơn Đi",
+        path: "gp_employee/danhsachdonhang",
+        title: "Danh Sách Đơn Hàng",
         icon: <CgNotes />,
       },
     ],
@@ -150,8 +145,13 @@ export const linksShipper = [
     title: "Nhân viên giao hàng",
     links: [
       {
-        path: "shipper",
-        title: "Danh Sách Đơn Hàng",
+        path: "shipper/dsgh",
+        title: "Danh Sách Giao Hàng",
+        icon: <CgNotes />,
+      },
+      {
+        path: "shipper/dsvc",
+        title: "Danh Sách Vận Chuyển",
         icon: <CgNotes />,
       },
     ],
