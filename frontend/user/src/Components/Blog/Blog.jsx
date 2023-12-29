@@ -1,32 +1,36 @@
 import React from "react"
 import './blog.css'
 
-import img from '../../Image/tim-ava.jpg'
+import img from '../../Image/blog.png'
+import img1 from '../../Image/blog1.png'
+import img2 from '../../Image/blog2.png'
+import img3 from '../../Image/blog3.png'
+
 
 const Post = [
     {
         id: 1,
         postImage: img,
-        title: 'GIAO QUÀ 5 SAO – GỬI TRAO TÂM Ý',
-        desc: 'Các dịp lễ Tết cuối năm vừa là thời gian chúc mừng, vừa là thời gian tri ân, bày tỏ sự quan tâm và kết nối các mối quan hệ – đặc biệt là qua những món quà. Những món quà đó không chỉ là vật chất, mà còn chứa đựng tình cảm và tấm lòng dành cho người nhận. Hiểu được điều đó, Viettel Post ra mắt Dịch vụ CHUYỂN PHÁT QUÀ TẶNG: GIAO QUÀ 5 SAO – GỬI TRAO TÂM Ý, hướng đến giao chuyển an toàn – trọn vẹn những món quà.'
+        title: 'FEEDBACK CỦA KHÁCH HÀNG',
+        desc: 'Các dịp lễ Tết cuối năm vừa là thời gian chúc mừng, vừa là thời gian tri ân, bày tỏ sự quan tâm và kết nối các mối quan hệ – đặc biệt là qua những món quà. Những món quà đó không chỉ là vật chất, mà còn chứa đựng tình cảm và tấm lòng dành cho người nhận.'
     },
     {
         id: 2,
-        postImage: img,
-        title: 'GIAO QUÀ 5 SAO – GỬI TRAO TÂM Ý',
-        desc: 'Các dịp lễ Tết cuối năm vừa là thời gian chúc mừng, vừa là thời gian tri ân, bày tỏ sự quan tâm và kết nối các mối quan hệ – đặc biệt là qua những món quà. Những món quà đó không chỉ là vật chất, mà còn chứa đựng tình cảm và tấm lòng dành cho người nhận. Hiểu được điều đó, Viettel Post ra mắt Dịch vụ CHUYỂN PHÁT QUÀ TẶNG: GIAO QUÀ 5 SAO – GỬI TRAO TÂM Ý, hướng đến giao chuyển an toàn – trọn vẹn những món quà.'
+        postImage: img1,
+        title: 'HƯỚNG DẪN SỬ DỤNG DỊCH VỤ - MAGICPOST',
+        desc: 'Các dịp lễ Tết cuối năm vừa là thời gian chúc mừng, vừa là thời gian tri ân, bày tỏ sự quan tâm và kết nối các mối quan hệ – đặc biệt là qua những món quà. Những món quà đó không chỉ là vật chất, mà còn chứa đựng tình cảm và tấm lòng dành cho người nhận. '
     },
     {
         id: 3,
-        postImage: img,
-        title: 'GIAO QUÀ 5 SAO – GỬI TRAO TÂM Ý',
-        desc: 'Các dịp lễ Tết cuối năm vừa là thời gian chúc mừng, vừa là thời gian tri ân, bày tỏ sự quan tâm và kết nối các mối quan hệ – đặc biệt là qua những món quà. Những món quà đó không chỉ là vật chất, mà còn chứa đựng tình cảm và tấm lòng dành cho người nhận. Hiểu được điều đó, Viettel Post ra mắt Dịch vụ CHUYỂN PHÁT QUÀ TẶNG: GIAO QUÀ 5 SAO – GỬI TRAO TÂM Ý, hướng đến giao chuyển an toàn – trọn vẹn những món quà.'
+        postImage: img2,
+        title: 'DANH SÁCH DỊCH VỤ HỖ TRỢ',
+        desc: 'Các dịp lễ Tết cuối năm vừa là thời gian chúc mừng, vừa là thời gian tri ân, bày tỏ sự quan tâm và kết nối các mối quan hệ – đặc biệt là qua những món quà. Những món quà đó không chỉ là vật chất, mà còn chứa đựng tình cảm và tấm lòng dành cho người nhận. '
     },
     {
         id: 4,
-        postImage: img,
-        title: 'GIAO QUÀ 5 SAO – GỬI TRAO TÂM Ý',
-        desc: 'Các dịp lễ Tết cuối năm vừa là thời gian chúc mừng, vừa là thời gian tri ân, bày tỏ sự quan tâm và kết nối các mối quan hệ – đặc biệt là qua những món quà. Những món quà đó không chỉ là vật chất, mà còn chứa đựng tình cảm và tấm lòng dành cho người nhận. Hiểu được điều đó, Viettel Post ra mắt Dịch vụ CHUYỂN PHÁT QUÀ TẶNG: GIAO QUÀ 5 SAO – GỬI TRAO TÂM Ý, hướng đến giao chuyển an toàn – trọn vẹn những món quà.'
+        postImage: img3,
+        title: 'BẢNG GIÁ DỊCH VỤ - MAGICPOST',
+        desc: 'Các dịp lễ Tết cuối năm vừa là thời gian chúc mừng, vừa là thời gian tri ân, bày tỏ sự quan tâm và kết nối các mối quan hệ – đặc biệt là qua những món quà. Những món quà đó không chỉ là vật chất, mà còn chứa đựng tình cảm và tấm lòng dành cho người nhận. '
     }
 ]
 

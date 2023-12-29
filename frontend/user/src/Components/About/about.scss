@@ -11,14 +11,21 @@
 }
 
 .about{
-    padding-top: 3rem;
+    padding-top: 5rem;
+    background-color: white;
+    margin-left: 12.8rem;
+    margin-right: 12.8rem;
+    margin-top: 0;
+    //padding-right: 11rem;
+    
     .secContainer{
         //top: 2rem;
         .mainContent{
             //top: 2rem;
-            gap: 1rem;
+            gap: 9rem;
             .singleItem{
                 text-align: center;
+                width: 200px;
                 img{
                     background: rgba(84, 173, 66, 0.265);
                     width: 100px;
@@ -26,7 +33,7 @@
                     padding: 1rem;
                 }
                 p{
-                    font-size: 13px;
+                    font-size: 17px;
                     font-weight: 500;
                     padding-bottom: .5rem;
                     color: var(--textColor);
@@ -50,12 +57,18 @@
         .secContainer{
             .videoCard{
                 video {
-                padding-left: 11rem;
-                padding-right: 11rem;
+                // padding-left: 11rem;
+                // padding-right: 11rem;
                 width: 100%;
                 height: 100%;
                 }
             }
         }
+    }
+}
+@media screen and (min-width: 1240px) {
+    .mainContent{
+        margin: auto;
+        margin-left: 5rem;
     }
 }

@@ -12,6 +12,7 @@
 .home {
   width: 100%;
   height: 100%;
+  top: 6rem;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,11 +24,13 @@
 }
 .home .homeContent .bgr {
   padding-bottom: 2rem;
+  padding-left: 11rem;
+  padding-right: 11rem;
 }
 .home .homeContent .searchBox {
   padding-top: 2rem;
-  width: 100%;
-  height: 30rem;
+  width: 80%;
+  height: 33rem;
   position: relative;
   background: rgb(255, 255, 255);
   justify-content: center;
@@ -98,9 +101,20 @@
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard .searchO button {
   width: 40%;
+  margin-right: 3rem;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchOffice {
+  font-weight: 2rem;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchOffice .listPosition .info {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchOffice .listPosition .info .infoPerson {
+  width: 80%;
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard input {
-  width: 100%;
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -122,10 +136,12 @@
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard .btn {
   margin: 20px 0;
+  margin-left: 3rem;
   color: white;
   width: 30%;
   height: 3rem;
   font-weight: 600;
+  border-radius: 0.5rem;
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard .btn:hover {
   background-color: rgb(23, 99, 23);
@@ -135,16 +151,29 @@
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  gap: 10px;
+  gap: 0;
   list-style-type: none;
   padding: 0;
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard select {
+  width: 50%;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
   margin-right: 2rem;
-  border-radius: 2rem;
+  margin-left: 2rem;
+  border-radius: 0.5rem;
   height: 3rem;
   font-size: 15px;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard img {
+  margin: auto;
+  width: 20rem;
+  height: 22rem;
+}
+
+@media screen and (min-width: 884px) {
+  .home .homeContent .content-tabs .homeCard {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
 }/*# sourceMappingURL=home.css.map */

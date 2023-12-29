@@ -14,6 +14,8 @@
   padding: 2rem 0;
 }
 .footer .secContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   text-align: center;
 }
@@ -29,7 +31,7 @@
 }
 .footer .secContainer .footerLogo .logo .icon {
   font-size: 25px;
-  color: var(--PrimaryColor);
+  color: #3E723B;
   margin-right: 0.5rem;
 }
 .footer .secContainer .socials {
@@ -39,7 +41,7 @@
 }
 .footer .secContainer .socials .icon {
   font-size: 30px;
-  background: var(--PrimaryColor);
+  background: #3E723B;
   border-radius: 50%;
   padding: 8px;
   color: var(--whiteColor);
@@ -48,7 +50,8 @@
   background: var(--blackColor);
 }
 .footer .secContainer .footerLinks {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   row-gap: 0.2rem;
 }
 .footer .secContainer .footerLinks .linkTitle {
@@ -60,10 +63,30 @@
   transform: translateX(10px);
 }
 .footer .secContainer .footerLinks li:hover a {
-  color: var(--PrimaryColor);
+  color: #3E723B;
 }
 .footer .secContainer .footerLinks a, .footer .secContainer .footerLinks .phone, .footer .secContainer .footerLinks .email {
   color: var(--textColor);
   font-size: 13px;
   font-weight: 500;
+}
+
+@media screen and (min-width: 448px) {
+  .secContainer {
+    grid-template-columns: 2, 1fr;
+    align-items: flex-start;
+  }
+  .secContainer .footerLinks {
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 640px) {
+  .secContainer {
+    grid-template-columns: 4, 1fr;
+  }
+}
+@media screen and (min-width: 900px) {
+  .secContainer {
+    padding: 2rem;
+  }
 }/*# sourceMappingURL=footer.css.map */
