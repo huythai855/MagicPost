@@ -72,6 +72,7 @@ const Login = (props) => {
 
           console.log(document.cookie);
           localStorage.setItem("role", data.role);
+          localStorage.setItem("username", data.username);
           localStorage.setItem("fullname", data.fullname);
           localStorage.setItem("department_id", data.department_id);
 

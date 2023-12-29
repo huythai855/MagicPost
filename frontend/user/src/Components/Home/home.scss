@@ -33,8 +33,8 @@
         }
         .searchBox {
             padding-top: 2rem;
-            width: 80%;
-            height: 33rem;
+            width: 77%;
+            height: 40rem;
             position: relative;
             //border-radius: 2rem;
             background: rgb(255, 255, 255);
@@ -125,7 +125,7 @@
                            .listPosition {
                             .info{
                                 display: grid;
-                                grid-template-columns: 1fr 2fr;
+                                grid-template-columns: 1.25fr 1.75fr;
                                 .infoPerson {
                                 width: 80%;
                              }

@@ -162,9 +162,9 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="flex mt-32 gap-10 ml-20 flex-wrap justify-center">
+      {/* <div className="flex mt-32 gap-10 ml-20 flex-wrap justify-center">
         <TableDonHang title={"Thống kê"} dataSource={donHangData} />
-      </div>
+      </div> */}
     </div>
   );
   <Outlet />;

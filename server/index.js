@@ -54,7 +54,10 @@ app.post("/api/search", (req, res, next) => {
     }
   });
 });
+
 async function getDepartmentName(city, district) {
+  console.log(city);
+  console.log(district);
   return new Promise((resolve, reject) => {
     if (district == undefined || district == "") {
       db.all(
@@ -65,7 +68,7 @@ async function getDepartmentName(city, district) {
             console.log(err);
             reject(1000); // Trả về 1000 trong trường hợp lỗi
           } else {
-            console.log();
+            console.log(rows);
             const department_name = rows[0].name;
             resolve(department_name);
           }
@@ -120,20 +123,20 @@ app.post(
     var sender_name = req.body.sender_name;
     var sender_address_city = req.body.sender_address_city;
     var sender_address_district = req.body.sender_address_district;
-    var sender_address = sender_address_district + ", " + sender_address_city;
+    var sender_address = req.body.sender_address;
     var sender_tel_number = req.body.sender_tel_number;
     var type_of_good = req.body.type_of_good;
     var receiver_name = req.body.receiver_name;
     var receiver_address_city = req.body.receiver_address_city;
     var receiver_address_district = req.body.receiver_address_district;
-    var receiver_address =
-      receiver_address_district + ", " + receiver_address_city;
+    var receiver_address = req.body.receiver_address;
     var receiver_tel_number = req.body.receiver_tel_number;
     var cost = 0;
     var stage = 0;
     var count = (await countItem()) + 1;
     var detail = {
       stage: [
+
         { id: 0, time: "undefined", name: "undefined" },
         { id: 0, cost: "undefined" },
         { id: 0, time: "undefined", name: "undefined" },
@@ -153,7 +156,7 @@ app.post(
     try {
       const response = await axios.get(host + "?depth=1");
       rp = response.data; // Access the data property of the response
-      console.log(rp);
+      // console.log(rp);
       for (var row of rp) {
         // Use 'of' instead of 'in' when iterating over an array
         if (row.code == sender_address_city) sender_address_city = row.name;
@@ -175,6 +178,8 @@ app.post(
     // TODO: xử lý bất đồng bộ
 
     if (type == 1) {
+      console.log("type1")
+      
       cost = 30000;
       var department_name = await getDepartmentName(
         sender_address_city,
@@ -221,6 +226,7 @@ app.post(
       stage = 0;
     } else {
       // type == 3
+      console.log("typ3")
       cost = 70000;
       var sender_department_name = await getDepartmentName(
         sender_address_city,
@@ -267,7 +273,7 @@ app.post(
       stage = 0;
     }
 
-    // TODO: xu ly bat dong bo
+
     db.run(
       `INSERT INTO items 
               (id,
@@ -419,6 +425,7 @@ app.post(
                 if (row.stage == 7) row.stage = "đang giao";
                 if (row.stage == 8) row.stage = temp.stage[8].status;
                 don_noi_khu.push(row);
+
               }
             }
             // console.log(row)
@@ -524,7 +531,7 @@ app.post(
                 if (row.stage == 1) row.stage = "đang giao";
                 if (row.stage >= 2) row.stage = "giao thành công";
 
-                
+
                 don_noi_khu.push(row);
             }
           }
@@ -538,6 +545,7 @@ app.post(
 
 async function getEmployeeId(username) {
   return new Promise((resolve, reject) => {
+    console.log(username)
     db.all(
       "SELECT * FROM employees WHERE username = ?",
       [username],
@@ -921,7 +929,7 @@ app.post(
       `INSERT INTO departments 
                 (id, name, address, city, district, leader_id, type) 
             VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [id, name, address, city, district, leader_id, type],
+      [id, name, address, city, district, 1, type],
       (err) => {
         console.log(err);
         res.json({

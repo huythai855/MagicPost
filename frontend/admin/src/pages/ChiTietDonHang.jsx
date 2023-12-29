@@ -14,7 +14,6 @@ const ChiTietDonHang = (packageId, urlupdate, urltruyen) => {
   // console.log(urltruyen);
   // console.log(packageId);
 
-
   urlupdate = packageId.urlupdate;
   urltruyen = packageId.urltruyen;
   packageId = packageId.packageId;
@@ -37,7 +36,6 @@ const ChiTietDonHang = (packageId, urlupdate, urltruyen) => {
           username: username,
         }),
       });
-
 
       // console.log(urltruyen);
       const data = await res.json();
@@ -97,7 +95,7 @@ const ChiTietDonHang = (packageId, urlupdate, urltruyen) => {
   const thang = d.getMonth() + 1; // Lưu ý: Tháng bắt đầu từ 0, nên cần cộng thêm 1
   const nam = d.getFullYear();
   return (
-    <div className="bg-gray-100 p-4 mx-20 mt-10 ">
+    <div className="bg-gray-100 p-4">
       <form onSubmit={handleSubmit}>
         <h2 className="mb-4  text-center text-2xl font-bold text-gray-900 dark:text-white">
           Chi tiết đơn hàng

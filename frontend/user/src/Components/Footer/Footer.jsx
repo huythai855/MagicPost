@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className="logoDiv">
                     <div className="footerLogo">
                         <a href="#" className="logo flex">
-                            <h1 className="flex"> <PiFinnTheHumanDuotone className="icon"/>
+                            <h1 className="flex"> 
                             Kết nối với MagicPost</h1>
                         </a>
                     </div>

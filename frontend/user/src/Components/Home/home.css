@@ -29,8 +29,8 @@
 }
 .home .homeContent .searchBox {
   padding-top: 2rem;
-  width: 80%;
-  height: 33rem;
+  width: 77%;
+  height: 40rem;
   position: relative;
   background: rgb(255, 255, 255);
   justify-content: center;
@@ -108,7 +108,7 @@
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard .searchOffice .listPosition .info {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.25fr 1.75fr;
 }
 .home .homeContent .searchBox .tab .content-tabs .homeCard .searchOffice .listPosition .info .infoPerson {
   width: 80%;
