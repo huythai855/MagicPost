@@ -6,6 +6,6 @@ Người gửi, có hàng cần gửi, đem hàng đến một điểm giao dị
 - **Trương Thị Huyền Trâm** -21020413
 - **Nguyễn Thị Lan Nhi** - 21020372
 ## Nhiệm vụ
-  - **Nguyễn Huy Thái**: Xây dựng BackEnd API
+  - **Nguyễn Huy Thái**: Xây dựng Backend API, thiết kế cơ sở dữ liệu
   - **Trương Thị Huyền Trâm**: Xây dựng các tính năng: Giám đốc, Nhân viên điểm giao dịch, Trưởng điểm giao dịch, Nhân viên điểm tập kết, Trưởng điểm tập kết
   - **Nguyễn Thị Lan Nhi**: Xây dựng các tính năng: Login, User, Nhân viên giao hàng
