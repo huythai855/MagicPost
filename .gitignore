@@ -2,3 +2,8 @@
 server/credentials.json
 server/node_modules
 server/package-lock.json
+frontend/credentials.json
+frontend/node_modules
+frontend/package-lock.json
+frontend/user/node_modules
+frontend/user/package-lock.json

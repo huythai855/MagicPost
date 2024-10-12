@@ -1,0 +1,179 @@
+:root {
+  --whiteColor: hsl(0, 0%, 100%);
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl (187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --bodyColor: rgb(240, 240, 246);
+  --blackColor: hsl(201, 33%, 16%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --textColor: hsl(240, 4%, 36%);
+}
+
+.home {
+  width: 100%;
+  height: 100%;
+  top: 6rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+}
+.home .homeContent .bgr {
+  padding-bottom: 2rem;
+  padding-left: 11rem;
+  padding-right: 11rem;
+}
+.home .homeContent .searchBox {
+  padding-top: 2rem;
+  width: 77%;
+  height: 40rem;
+  position: relative;
+  background: rgb(255, 255, 255);
+  justify-content: center;
+  margin: auto;
+}
+.home .homeContent .searchBox .tab {
+  width: 75%;
+  height: auto;
+  position: absolute;
+  border-radius: 1rem;
+  left: 15%;
+}
+.home .homeContent .searchBox .tab .tab-headers {
+  display: flex;
+}
+.home .homeContent .searchBox .tab .tabs {
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  box-sizing: content-box;
+  outline: none;
+  border-radius: 0.5rem;
+  border: none;
+  color: black;
+}
+.home .homeContent .searchBox .tab .tabs:not(:last-child) {
+  border: none;
+  border-radius: 0.5rem;
+}
+.home .homeContent .searchBox .tab .active-tabs {
+  background: rgb(4, 54, 4);
+  border-bottom: 1px solid transparent;
+  color: rgb(255, 255, 255);
+}
+.home .homeContent .searchBox .tab .active-tabs::before {
+  content: "";
+  display: block;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  border-radius: 1rem;
+}
+.home .homeContent .searchBox .tab .content {
+  background: var(--whiteColor);
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.home .homeContent .searchBox .tab .active-content {
+  display: block;
+}
+.home .homeContent .searchBox .tab .content-tabs {
+  width: 100%;
+  border-radius: 2rem;
+  background: var(--whiteColor);
+  position: relative;
+  gap: 1rem;
+  justify-content: center;
+  transform: translate(-50%);
+  left: 50%;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchO {
+  display: flex;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchO button {
+  width: 40%;
+  margin-right: 3rem;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchOffice {
+  font-weight: 2rem;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchOffice .listPosition .info {
+  display: grid;
+  grid-template-columns: 1.25fr 1.75fr;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .searchOffice .listPosition .info .infoPerson {
+  width: 80%;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard input {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: black;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard input::-moz-placeholder {
+  font-size: 17px;
+  opacity: 0.5;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard input::placeholder {
+  font-size: 17px;
+  opacity: 0.5;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .listPosition {
+  font-size: 14px;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .btn {
+  margin: 20px 0;
+  margin-left: 3rem;
+  color: white;
+  width: 30%;
+  height: 3rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .btn:hover {
+  background-color: rgb(23, 99, 23);
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .icon {
+  padding-top: 1rem;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard .list {
+  display: grid;
+  gap: 0;
+  list-style-type: none;
+  padding: 0;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard select {
+  width: 50%;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  border-radius: 0.5rem;
+  height: 3rem;
+  font-size: 15px;
+}
+.home .homeContent .searchBox .tab .content-tabs .homeCard img {
+  margin: auto;
+  width: 20rem;
+  height: 22rem;
+}
+
+@media screen and (min-width: 884px) {
+  .home .homeContent .content-tabs .homeCard {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}/*# sourceMappingURL=home.css.map */

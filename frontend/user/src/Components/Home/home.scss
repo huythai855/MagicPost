@@ -1,0 +1,225 @@
+:root{
+    --whiteColor: hsl(0, 0%, 100%);
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl (187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%)); 
+    --bodyColor: rgb(240, 240, 246);
+    --blackColor: hsl(201, 33%, 16%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --textColor: hsl(240, 4%, 36%);
+
+}
+
+.home{
+    width: 100%;
+    height: 100%;
+    top: 6rem;
+    //background: url('../../Image/back_gr.png');
+    //padding: 15rem 1.5rem 2rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+
+    .homeContent{
+        .bgr{
+            padding-bottom: 2rem;
+            padding-left: 11rem;
+            padding-right: 11rem;
+        }
+        .searchBox {
+            padding-top: 2rem;
+            width: 77%;
+            height: 40rem;
+            position: relative;
+            //border-radius: 2rem;
+            background: rgb(255, 255, 255);
+            justify-content: center;
+            margin: auto;
+
+            .tab{
+                width: 75%;
+                height: auto;
+                position: absolute;
+                border-radius: 1rem;
+                left: 15%;
+                //justify-content: center;
+
+                .tab-headers {
+                    display: flex;
+                }
+                .tabs{
+                    padding: 15px;
+                    text-align: center;
+                    width: 100%;
+                    //background: rgba(128, 128, 128, 0.075);
+                    cursor: pointer;
+                    box-sizing: content-box;
+                    outline: none;
+                    border-radius: 0.5rem;
+                    border: none;
+                    color: black;
+                }
+                .tabs:not(:last-child){
+                    //border-right: 1px solid rgba(0, 0, 0, 0.274);
+                    border: none;
+                    border-radius: 0.5rem;
+                }
+                .active-tabs{
+                    background: rgb(4, 54, 4);
+                    border-bottom: 1px solid transparent;
+                    color: rgb(255, 255, 255);
+                }
+                .active-tabs::before{
+                    content: "";
+                    display: block;
+                    //position: absolute;
+                    top: -5px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: calc(100% + 2px);
+                    height: 5px;
+                    border-radius: 1rem;
+                }
+                .content{
+                    background: var(--whiteColor);
+                    padding: 20px;
+                    width: 100%;
+                    height: 100%;
+                    display: none;
+                }
+                .active-content{
+                    display: block;
+                }
+
+                .content-tabs{
+                    width: 100%;
+                    border-radius: 2rem;
+                    // padding: 2rem;
+                    background: var(--whiteColor);
+                    position: relative;
+                    gap: 1rem;
+                    justify-content: center;
+                    //bottom: -100%;
+                    transform: translate(-50%);
+                    left: 50%;
+                    
+                    
+                    .homeCard{
+                        
+                        .searchO{
+                            display: flex;
+
+                            button {
+                                width: 40%;
+                                margin-right: 3rem;
+                                //padding-right: 2rem;
+                            }
+                        }
+                        .searchOffice {
+                           font-weight: 2rem;
+                           .listPosition {
+                            .info{
+                                display: grid;
+                                grid-template-columns: 1.25fr 1.75fr;
+                                .infoPerson {
+                                width: 80%;
+                             }
+                            }
+                             
+                           }
+                        }
+                        input{
+                            width: 50%;
+                            padding: 12px 20px;
+                            margin: 8px 0;
+                            box-sizing: border-box;
+                            border: 2px solid #ccc;
+                            border-radius: 0.5rem;
+                            background-color: white;
+                            color: black;
+                            // margin-right: 2rem;
+                            // margin-bottom: 2rem;
+                            // width: 50%;
+                            // height: 100%;
+                            // border-radius: 5px;
+                            // border: none;
+                            // //padding: 5px;
+                            // font-size: 17px;
+                            // font-weight: 300;
+
+        
+                            &::placeholder{
+                                font-size: 17px;
+                                opacity: .5;
+                            }
+                        }
+
+                        .listPosition {
+                            font-size: 14px;
+                        }
+        
+                        .btn{
+                        margin: 20px 0;
+                        margin-left: 3rem;
+                        color: white;
+                        width: 30%;
+                        height: 3rem;
+                        font-weight: 600;
+                        border-radius: 0.5rem;
+                        }
+
+                        .btn:hover {
+                            background-color: rgb(23, 99, 23);
+                        }
+                        
+                        .icon {
+                            padding-top: 1rem;
+                        }
+                        .list{
+                            display: grid;
+                            //grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+                            gap: 0;
+                            list-style-type: none;
+                            padding: 0;
+                        }
+                        select {
+                            width: 50%;
+                            margin-top: 1.5rem;
+                            margin-bottom: 2rem;
+                            margin-right: 2rem;
+                            margin-left: 2rem;
+                            border-radius: 0.5rem;
+                            height: 3rem;
+                            font-size: 15px;
+                        }
+                        img {
+                            margin: auto;
+                            width: 20rem;
+                            height: 22rem;
+                        }
+                    }
+                    
+                }
+
+            } 
+        }
+    }
+}
+
+@media screen and (min-width: 884px) {
+    .home{
+        .homeContent {
+            .content-tabs{
+                .homeCard{
+                    display: grid;
+                    grid-template-columns: 2fr 1fr;
+                }
+            }
+        }
+    }
+}

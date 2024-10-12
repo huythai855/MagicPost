@@ -1,0 +1,73 @@
+.navbar-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+  
+  .nav-items {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .profile-greeting-name {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-greeting {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .profile-name {
+    color: #666;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .profile-caret {
+    color: #666;
+    font-size: 20px;
+    margin-left: 4px;
+  }
+  
+  .profile-menu {
+    position: absolute;
+    top: 42px;
+    
+    /* right: 0; */
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 4px 0;
+    z-index: 1;
+  }
+  
+  .profile-menu-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile-menu-item:hover {
+    background-color: #f5f5f5;
+  }

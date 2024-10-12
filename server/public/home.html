@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Private</title>
+
+
+    <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if(getCookie('username') == '') {
+               window.location.href = 'http://localhost:3001/login';
+            }
+            else {
+                console.log(getCookie('username'));
+                document.getElementById('private-text').innerHTML = 'Xin chào, ' + getCookie('username');
+            }
+        });
+
+        
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="title">Homepage</div>
+
+            <div id="private-text"> Xin chào </div>
+        </div>
+    </div>
+</body>
+</html>
